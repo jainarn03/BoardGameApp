@@ -1,5 +1,21 @@
 namespace DevelopmentInTeam.Pages;
 
+/// <summary>
+/// 
+/// ALEKS' task
+/// main page
+/// do not touch unless messaged
+/// 
+/// </summary>
+/// 
+
+
+// TODO: Add buttons for navigating across pages
+//
+// pages needed: TicTacToePage, ConnectFourPage, 
+// folders needed: Logic (with subfolder for every game: e.g. ConnectFourLogic)
+//
+
 public partial class MainPage : ContentPage
 {
     // declaring fields and properties
@@ -13,6 +29,7 @@ public partial class MainPage : ContentPage
         BindingContext = this;
     }
 
+
     public class CarouselCover
     {
         /// <summary>
@@ -23,7 +40,6 @@ public partial class MainPage : ContentPage
         "checkers_art.png",
         "connectfour_art.png",
         "tictactoe_art.png",
-        "tictactoe_art.png"
         };
     }
 }
