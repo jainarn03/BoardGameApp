@@ -1,5 +1,12 @@
 namespace DevelopmentInTeam.Pages;
 
+/// <summary>
+/// 
+/// ALEKS' task
+/// main page
+/// do not touch unless messaged
+/// 
+/// </summary>
 public partial class MainPage : ContentPage
 {
     // declaring fields and properties
@@ -13,6 +20,13 @@ public partial class MainPage : ContentPage
         BindingContext = this;
     }
 
+    // TODO: Add buttons for navigating across pages
+    //
+    // pages needed: ticTacToePage, ConnectFourPage, 
+    // 
+    //
+    //
+    //
     public class CarouselCover
     {
         /// <summary>
@@ -23,7 +37,6 @@ public partial class MainPage : ContentPage
         "checkers_art.png",
         "connectfour_art.png",
         "tictactoe_art.png",
-        "tictactoe_art.png"
         };
     }
 }
