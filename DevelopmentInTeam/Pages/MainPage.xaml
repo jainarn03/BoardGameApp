@@ -6,11 +6,27 @@
 
     <!--MAIN GRID-->
     <Grid BackgroundColor="#333333" 
-          RowDefinitions="*,5*,*">
-        <CarouselView Grid.Row="1" ItemsSource="{Binding Carousel.ImageURLs}">
+          RowDefinitions=".7*,3*,.2*"
+          ColumnDefinitions=".3*,*,*">
+        <Grid
+            Grid.RowSpan="3"
+            Grid.Column="0"
+            BackgroundColor="#222222"
+            >
+            
+        </Grid>
+        <CarouselView
+            Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2"
+            ItemsSource="{Binding Carousel.ImageURLs}">
             <CarouselView.ItemTemplate>
                 <DataTemplate>
-                    <Image Source="{Binding .}" Aspect="AspectFit"/>
+                    <ImageButton
+                        x:Name="GameImage"
+                        Source="{Binding .}"
+                        Aspect="AspectFit"
+                        BackgroundColor="#333333"
+                        Clicked="OnImageClicked"
+                        />
                 </DataTemplate>
             </CarouselView.ItemTemplate>
         </CarouselView>
