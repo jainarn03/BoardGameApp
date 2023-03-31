@@ -7,13 +7,18 @@ namespace DevelopmentInTeam.Pages;
 /// do not touch unless messaged
 /// 
 /// </summary>
-/// 
 
 
-// TODO: Add buttons for navigating across pages
+// TERM PROJECT TODO: 
 //
-// pages needed: TicTacToePage, ConnectFourPage, 
+// pages needed: ???
 // folders needed: Logic (with subfolder for every game: e.g. ConnectFourLogic)
+// 
+//
+
+// MAIN PAGE TODO:
+// add title contents
+// add side bar contents
 //
 
 public partial class MainPage : ContentPage
@@ -25,7 +30,7 @@ public partial class MainPage : ContentPage
     {
         InitializeComponent();
 
-        _carouselCover = new CarouselCover();
+        _carouselCover = new CarouselCover(); // creating new Carousel
 
         BindingContext = this;
     }
@@ -47,17 +52,17 @@ public partial class MainPage : ContentPage
 
         
     }
-    private async void GoToCheckersPage()
+    public async void GoToCheckersPage()
     {
         await Navigation.PushAsync(new CheckersPage());
     }
-    private async void GoToConnectFourPage()
+    public async void GoToConnectFourPage()
     {
         await Navigation.PushAsync(new ConnectFourPage());
     }
-    private async void GoToTicTacToePage()
+    public async void GoToTicTacToePage()
     {
-        await Navigation.PushAsync(new CheckersPage());
+        await Navigation.PushAsync(new TicTacToePage());
     }
 
     /// <summary>
@@ -68,7 +73,23 @@ public partial class MainPage : ContentPage
         ImageButton clickedImageButton = (ImageButton)sender; // casts sender object to ImageButton
         string imageUrl = clickedImageButton.Source.ToString(); //gets url of clicked ImageButton
 
-        DisplayAlert(",", imageUrl, "ok"); 
+
+        // switch statement to compare imageUrl and navigate to corresponding page
+        //      note: imageUrl string starts with File: 
+        switch (imageUrl)
+        {
+            case "File: checkers_art.png":
+                GoToCheckersPage();
+                break;
+
+            case "File: connectfour_art.png":
+                GoToConnectFourPage();
+                break;
+                
+            case "File: tictactoe_art.png":
+                GoToTicTacToePage();
+                break;
+        }
     }
 
 }

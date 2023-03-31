@@ -8,25 +8,25 @@
     <Grid BackgroundColor="#333333" 
           RowDefinitions=".7*,3*,.2*"
           ColumnDefinitions=".3*,*,*">
+        <!--SUB GRID-->
+        <!--TODO: figure out what kind of stuff to add here-->
         <Grid
             Grid.RowSpan="3"
             Grid.Column="0"
-            BackgroundColor="#222222"
-            >
-            
+            BackgroundColor="#222222">
         </Grid>
+        
+        <!--Navigation Menu for the Games-->
         <CarouselView
             Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2"
             ItemsSource="{Binding Carousel.ImageURLs}">
             <CarouselView.ItemTemplate>
                 <DataTemplate>
                     <ImageButton
-                        x:Name="GameImage"
                         Source="{Binding .}"
                         Aspect="AspectFit"
                         BackgroundColor="#333333"
-                        Clicked="OnImageClicked"
-                        />
+                        Clicked="OnImageClicked"/>
                 </DataTemplate>
             </CarouselView.ItemTemplate>
         </CarouselView>
