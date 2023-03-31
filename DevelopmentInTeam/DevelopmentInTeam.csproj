@@ -58,6 +58,13 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="Resources\Images\checkers_art.png" />
+	  <None Remove="Resources\Images\connectfour_art.png" />
+	  <None Remove="Resources\Images\tictactoe_art.png" />
+	  <None Remove="Resources\Images\tictactoe_art2.png" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="7.0.0" />
 	</ItemGroup>
 

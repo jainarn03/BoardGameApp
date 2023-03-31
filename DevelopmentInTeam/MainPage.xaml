@@ -4,17 +4,15 @@
              x:Class="DevelopmentInTeam.MainPage"
              Title="" >
 
-    <Border Background="#132237">
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="200">
-                </ColumnDefinition>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="75">
-                </RowDefinition>
-            </Grid.RowDefinitions>
-        </Grid>
-    </Border>
+    <Grid BackgroundColor="#333333" 
+          RowDefinitions="*,5*,*">
+        <CarouselView Grid.Row="1" ItemsSource="{Binding Carousel.ImageURLs}">
+            <CarouselView.ItemTemplate>
+                    <DataTemplate>
+                        <Image Source="{Binding .}" Aspect="AspectFit"/>
+                    </DataTemplate>
+                </CarouselView.ItemTemplate>
+            </CarouselView>
+    </Grid>
 
 </ContentPage>
