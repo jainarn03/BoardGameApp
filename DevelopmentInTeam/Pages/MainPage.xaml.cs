@@ -1,16 +1,17 @@
-﻿namespace DevelopmentInTeam;
+namespace DevelopmentInTeam.Pages;
 
 public partial class MainPage : ContentPage
 {
+    // declaring fields and properties
     CarouselCover _carouselCover;
     public CarouselCover Carousel => _carouselCover;
-	public MainPage()
-	{
-		InitializeComponent();
+    public MainPage()
+    {
+        InitializeComponent();
         _carouselCover = new CarouselCover();
 
         BindingContext = this;
-	}
+    }
 
     public class CarouselCover
     {
@@ -26,4 +27,3 @@ public partial class MainPage : ContentPage
         };
     }
 }
-
