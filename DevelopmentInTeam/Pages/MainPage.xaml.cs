@@ -12,13 +12,11 @@ namespace DevelopmentInTeam.Pages;
 // TERM PROJECT TODO: 
 //
 // pages needed: ???
-// folders needed: Logic (with subfolder for every game: e.g. ConnectFourLogic)
-// 
+// folders needed: Logic (with subfolder for each page that needs logic separation: e.g. ConnectFourLogic)
 //
 
 // MAIN PAGE TODO:
-// add title contents
-// add side bar contents
+// add buttons for 
 //
 
 public partial class MainPage : ContentPage
@@ -50,8 +48,10 @@ public partial class MainPage : ContentPage
         "tictactoe_art.png",
         };
 
-        
     }
+    /// <summary>
+    /// navigation methods
+    /// </summary>
     public async void GoToCheckersPage()
     {
         await Navigation.PushAsync(new CheckersPage());
