@@ -73,7 +73,6 @@ public partial class MainPage : ContentPage
         ImageButton clickedImageButton = (ImageButton)sender; // casts sender object to ImageButton
         string imageUrl = clickedImageButton.Source.ToString(); //gets url of clicked ImageButton
 
-
         // switch statement to compare imageUrl and navigate to corresponding page
         //      note: imageUrl string starts with File: 
         switch (imageUrl)

@@ -2,23 +2,16 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="DevelopmentInTeam.Pages.MainPage"
-             Title="MainPage">
+             Title="Home">
 
     <!--MAIN GRID-->
     <Grid BackgroundColor="#333333" 
           RowDefinitions=".7*,3*,.2*"
           ColumnDefinitions=".3*,*,*">
-        <!--SUB GRID-->
-        <!--TODO: figure out what kind of stuff to add here-->
-        <Grid
-            Grid.RowSpan="3"
-            Grid.Column="0"
-            BackgroundColor="#222222">
-        </Grid>
-        
+
         <!--Navigation Menu for the Games-->
         <CarouselView
-            Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2"
+            Grid.Row="1" Grid.ColumnSpan="3"
             ItemsSource="{Binding Carousel.ImageURLs}">
             <CarouselView.ItemTemplate>
                 <DataTemplate>
