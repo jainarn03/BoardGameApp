@@ -2,13 +2,50 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="DevelopmentInTeam.Pages.TicTacToePage"
-             Title="TicTacToePage">
-    
-    <!--MAIN GRID-->
-    <Grid BackgroundColor="#333333" 
-          RowDefinitions="*,*,*"
-          ColumnDefinitions="*,*,*">
+             Title="Tic Tac Toe">
 
+    <Grid RowDefinitions=".5*,*,3*,*,*" ColumnDefinitions="*,*" BackgroundColor="#333333">
+
+        <Label x:Name="xWinner" TextColor="White" Text="X Wins" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="Center" VerticalOptions="Center" IsVisible="False" IsEnabled="True" FontSize="30"/>
+        <Label x:Name="oWinner" TextColor="White" Text="O Wins" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="Center" VerticalOptions="Center" IsVisible="False" IsEnabled="True" FontSize="30"/>
+        <Label x:Name="NoWinner" TextColor="White" Text="No Winner" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="Center" VerticalOptions="Center" IsVisible="False" IsEnabled="True" FontSize="30"/>
+
+        <Grid Grid.Row="2" Grid.ColumnSpan="3" RowDefinitions="*,*,*" ColumnDefinitions="*,*,*" >
+
+            <!-- Horizontal lines -->
+            <BoxView Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" HeightRequest="2" Color="#3700B3" VerticalOptions="End"/>
+            <BoxView Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" HeightRequest="2" Color="#3700B3" VerticalOptions="End"/>
+
+            <!-- Vertical lines -->
+            <BoxView Grid.Row="0" Grid.Column="0" Grid.RowSpan="3" WidthRequest="2" Color="#3700B3" HorizontalOptions="End" />
+            <BoxView Grid.Row="0" Grid.Column="1" Grid.RowSpan="3" WidthRequest="2" Color="#3700B3" HorizontalOptions="End"/>
+
+            <!-- Tic-tac-toe Button cells -->
+            <Button x:Name="topLeft" IsEnabled="True" Grid.Row="0" Grid.Column="0"  BorderColor="Transparent" BackgroundColor="Transparent" />
+            <Button x:Name="topMiddle" IsEnabled="True" Grid.Row="0" Grid.Column="1"  BorderColor="Transparent" BackgroundColor="Transparent" />
+            <Button x:Name="topRight" IsEnabled="True" Grid.Row="0" Grid.Column="2"  BorderColor="Transparent" BackgroundColor="Transparent" />
+            <Button x:Name="middleLeft" IsEnabled="True" Grid.Row="1" Grid.Column="0"  BorderColor="Transparent" BackgroundColor="Transparent" />
+            <Button x:Name="middMiddle" IsEnabled="True" Grid.Row="1" Grid.Column="1"  BorderColor="Transparent" BackgroundColor="Transparent" />
+            <Button x:Name="middleRight" IsEnabled="True" Grid.Row="1" Grid.Column="2"  BorderColor="Transparent" BackgroundColor="Transparent" />
+            <Button x:Name="bottomLeft" IsEnabled="True"  Grid.Row="2" Grid.Column="0"  BorderColor="Transparent" BackgroundColor="Transparent" />
+            <Button x:Name="bottomMiddle" IsEnabled="True" Grid.Row="2" Grid.Column="1"  BorderColor="Transparent" BackgroundColor="Transparent" />
+            <Button x:Name="bottomRight" IsEnabled="True" Grid.Row="2" Grid.Column="2"  BorderColor="Transparent" BackgroundColor="Transparent"/>
+
+            <Image x:Name="topLeftImage" IsVisible="False"  Grid.Row="0" Grid.Column="0"/>
+            <Image x:Name="topMiddleImage" IsVisible="False" Grid.Row="0" Grid.Column="1"/>
+            <Image x:Name="topRightImage" IsVisible="False"  Grid.Row="0" Grid.Column="2"/>
+            <Image x:Name="middleLeftImage" IsVisible="False" Grid.Row="1" Grid.Column="0"/>
+            <Image x:Name="middMiddleImage" IsVisible="False"  Grid.Row="1" Grid.Column="1"/>
+            <Image x:Name="middleRightImage" IsVisible="False" Grid.Row="1" Grid.Column="2" />
+            <Image x:Name="bottomLeftImage" IsVisible="False"   Grid.Row="2" Grid.Column="0"/>
+            <Image x:Name="bottomMiddleImage" IsVisible="False"  Grid.Row="2" Grid.Column="1"/>
+            <Image x:Name="bottomRightImage" IsVisible="False"  Grid.Row="2" Grid.Column="2"/>
+
+        </Grid>
+        <Label x:Name="xTurn" TextColor="White" Text="X To Move" IsVisible="False" IsEnabled="True" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="Center" VerticalOptions="Center"  FontSize="30"/>
+        <Label x:Name="oTurn" TextColor="White" Text="O To Move" IsVisible="False" IsEnabled="True" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="Center" VerticalOptions="Center"  FontSize="30"/>
+
+        <Button x:Name="NewGame" IsEnabled="True" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Text="Start New Game" Margin="110,10,110,60" />
     </Grid>
-    
+
 </ContentPage>
