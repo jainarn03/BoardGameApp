@@ -13,6 +13,27 @@ public partial class TicTacToePage : ContentPage
         spot.IsEnabled = false;
 
     }
+    public String turn()
+    {
+        //Determines players turn using even and odd counter, also displays whos turn it is
+        playerTurn++;
+        String imageturn;
+        if (playerTurn % 2 == 0)
+        {
+            imageturn = "purple_x.svg";
+
+            oTurn.IsVisible = true;
+            xTurn.IsVisible = false;
+        }
+        else
+        {
+            imageturn = "blue_circle.svg";
+            xTurn.IsVisible = true;
+            oTurn.IsVisible = false;
+        }
+        return imageturn;
+    }
+    //Onces button is clicked, app restarts
     private void NewGame_Clicked(object sender, EventArgs e)
     {
         Application.Current.MainPage = new MainPage();
