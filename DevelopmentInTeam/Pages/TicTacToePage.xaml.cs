@@ -44,7 +44,32 @@ public partial class TicTacToePage : ContentPage
     {
         Application.Current.MainPage = new MainPage();
     }
+    public void winCheck()
+    //This starts the win condition for X
+    {   //This if statement checks for top line completion of X
+        if (topLeftImage.Source != null && topMiddleImage.Source != null && topRightImage.Source != null)
+        {
+            if (topLeftImage.Source is FileImageSource topLeftSource && topMiddleImage.Source is FileImageSource topMiddleSource && topRightImage.Source is FileImageSource topRightSource)
+            {
+                if (topLeftSource.File == "purple_x.svg" && topMiddleSource.File == "purple_x.svg" && topRightSource.File == "purple_x.svg")
+                {
+                    xWinner.IsVisible = true;
+                    topLeft.IsEnabled = false;
+                    topRight.IsEnabled = false;
+                    topMiddle.IsEnabled = false;
+                    middleLeft.IsEnabled = false;
+                    middleRight.IsEnabled = false;
+                    middMiddle.IsEnabled = false;
+                    bottomLeft.IsEnabled = false;
+                    bottomMiddle.IsEnabled = false;
+                    bottomRight.IsEnabled = false;
+                    xTurn.IsVisible = false;
+                    oTurn.IsVisible = false;
+                }
+            }
 
+        }
+    }
         private void TopLeft_Clicked(object sender, EventArgs e)
     {
         imageApp(turn(), topLeftImage);
