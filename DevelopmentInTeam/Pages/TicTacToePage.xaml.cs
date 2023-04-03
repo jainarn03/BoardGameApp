@@ -2,7 +2,9 @@ namespace DevelopmentInTeam.Pages;
 
 public partial class TicTacToePage : ContentPage
 {
-	public TicTacToePage()
+    int playerTurn = 0;
+
+    public TicTacToePage()
 	{
 		InitializeComponent();
 	}
@@ -11,7 +13,11 @@ public partial class TicTacToePage : ContentPage
         spot.IsEnabled = false;
 
     }
-    private void TopLeft_Clicked(object sender, EventArgs e)
+    private void NewGame_Clicked(object sender, EventArgs e)
+    {
+        Application.Current.MainPage = new MainPage();
+
+        private void TopLeft_Clicked(object sender, EventArgs e)
     {
         spotPressed(topLeft);
     }

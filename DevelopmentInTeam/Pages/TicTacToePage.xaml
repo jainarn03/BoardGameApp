@@ -16,7 +16,7 @@
             <BoxView Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" HeightRequest="2" Color="#3700B3" VerticalOptions="End"/>
             <BoxView Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" HeightRequest="2" Color="#3700B3" VerticalOptions="End"/>
 
-            <!-- Vertical lines -->
+            <!-- Vertical lines --> 
             <BoxView Grid.Row="0" Grid.Column="0" Grid.RowSpan="3" WidthRequest="2" Color="#3700B3" HorizontalOptions="End" />
             <BoxView Grid.Row="0" Grid.Column="1" Grid.RowSpan="3" WidthRequest="2" Color="#3700B3" HorizontalOptions="End"/>
 
