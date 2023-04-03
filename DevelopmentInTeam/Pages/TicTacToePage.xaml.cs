@@ -16,6 +16,7 @@ public partial class TicTacToePage : ContentPage
     private void NewGame_Clicked(object sender, EventArgs e)
     {
         Application.Current.MainPage = new MainPage();
+    }
 
         private void TopLeft_Clicked(object sender, EventArgs e)
     {
@@ -62,8 +63,5 @@ public partial class TicTacToePage : ContentPage
         spotPressed(bottomRight);
     }
 
-    private void NewGame_Clicked(object sender, EventArgs e)
-    {
-        spotPressed(NewGame);
-    }
+ 
 }
