@@ -74,18 +74,21 @@ public partial class TicTacToePage : ContentPage
     {
         imageApp(turn(), topLeftImage);
         spotPressed(topLeft);
+        winCheck();
     }
 
     private void TopMiddle_Clicked(object sender, EventArgs e)
     {
         imageApp(turn(), topMiddleImage);
         spotPressed(topMiddle);
+        winCheck();
+
     }
 
     private void TopRight_Clicked(object sender, EventArgs e)
     {
         imageApp(turn(), topRightImage);
-
+        winCheck();
         spotPressed(topRight);
     }
 
