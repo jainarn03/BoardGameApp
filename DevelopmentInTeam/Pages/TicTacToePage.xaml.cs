@@ -33,6 +33,12 @@ public partial class TicTacToePage : ContentPage
         }
         return imageturn;
     }
+    //This method makes either an X or an O appear depending on the turn
+    public void imageApp(string imageturn, Image image)
+    {
+        image.IsVisible = true;
+        image.Source = ImageSource.FromFile(imageturn);
+    }
     //Onces button is clicked, app restarts
     private void NewGame_Clicked(object sender, EventArgs e)
     {
@@ -41,6 +47,7 @@ public partial class TicTacToePage : ContentPage
 
         private void TopLeft_Clicked(object sender, EventArgs e)
     {
+        imageApp(turn(), topLeftImage);
         spotPressed(topLeft);
     }
 
