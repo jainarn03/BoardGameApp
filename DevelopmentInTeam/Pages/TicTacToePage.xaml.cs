@@ -53,41 +53,50 @@ public partial class TicTacToePage : ContentPage
 
     private void TopMiddle_Clicked(object sender, EventArgs e)
     {
+        imageApp(turn(), topMiddleImage);
         spotPressed(topMiddle);
     }
 
     private void TopRight_Clicked(object sender, EventArgs e)
     {
+        imageApp(turn(), topRightImage);
+
         spotPressed(topRight);
     }
 
     private void MiddleLeft_Clicked(object sender, EventArgs e)
     {
+        imageApp(turn(), middleLeftImage);
         spotPressed(middleLeft);
     }
 
     private void MiddMiddle_Clicked(object sender, EventArgs e)
     {
+        imageApp(turn(), middMiddleImage);
         spotPressed(middMiddle);
     }
 
     private void MiddleRight_Clicked(object sender, EventArgs e)
     {
+        imageApp(turn(), middleRightImage); 
         spotPressed(middleRight);
     }
 
     private void BottomLeft_Clicked(object sender, EventArgs e)
     {
+        imageApp(turn(), bottomLeftImage);  
         spotPressed(bottomLeft);
     }
 
     private void BottomMiddle_Clicked(object sender, EventArgs e)
     {
+        imageApp(turn(), bottomMiddleImage);
         spotPressed(bottomMiddle);
     }
 
     private void BottomRight_Clicked(object sender, EventArgs e)
     {
+        imageApp(turn(), bottomRightImage);
         spotPressed(bottomRight);
     }
 
