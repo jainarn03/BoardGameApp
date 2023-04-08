@@ -9,6 +9,14 @@
           RowDefinitions=".7*,3*,.2*"
           ColumnDefinitions=".3*,*,*">
 
+        <Image 
+            Grid.Row="0" Grid.ColumnSpan="3"
+            Source="title4.png"
+            MaximumHeightRequest="100"
+            Margin="15"
+            VerticalOptions="End">
+        </Image>
+
         <!--Navigation Menu for the Games-->
         <CarouselView
             Grid.Row="1" Grid.ColumnSpan="3"
