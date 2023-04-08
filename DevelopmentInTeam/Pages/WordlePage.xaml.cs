@@ -1,9 +1,14 @@
 namespace DevelopmentInTeam.Pages;
 
-public partial class NewPage1 : ContentPage
+public partial class WordlePage : ContentPage
 {
-	public NewPage1()
+	public WordlePage()
 	{
 		InitializeComponent();
 	}
+
+    private void LetterEntry(object sender, TextChangedEventArgs e)
+    {
+
+    }
 }

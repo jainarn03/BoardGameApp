@@ -11,7 +11,7 @@ namespace DevelopmentInTeam.Pages;
 
 // TERM PROJECT TODO: 
 //
-// pages needed: ???
+// 
 // folders needed: Logic (with subfolder for each page that needs logic separation: e.g. ConnectFourLogic)
 //
 
@@ -39,18 +39,20 @@ public partial class MainPage : ContentPage
     public class CarouselCover
     {
         /// <summary>
-        /// specified image URLs in string array assigned to ImageURLs property
+        /// read-only property returns a collection of image URLs  
         /// </summary>
         public IEnumerable<string> ImageURLs { get; } = new List<string>
         {
         "checkers_art.png",
         "connectfour_art.png",
         "tictactoe_art.png",
+        "memory_art.png",
+        "wordle_art.png"
         };
 
     }
     /// <summary>
-    /// navigation methods
+    /// page navigation methods
     /// </summary>
     public async void GoToCheckersPage()
     {
@@ -64,9 +66,17 @@ public partial class MainPage : ContentPage
     {
         await Navigation.PushAsync(new TicTacToePage());
     }
+    public async void GoToMemoryPage()
+    {
+        await Navigation.PushAsync(new MemoryPage());
+    }
+    public async void GoToWordlePage()
+    {
+        await Navigation.PushAsync(new WordlePage());
+    }
 
     /// <summary>
-    /// page navigation event handler for when ImageButton is clicked
+    /// Clicked event handler that takes ImageButton's source URL and navigates to the corresponding game page
     /// </summary>
     private void OnImageClicked(object sender, EventArgs e)
     {
@@ -87,6 +97,14 @@ public partial class MainPage : ContentPage
                 
             case "File: tictactoe_art.png":
                 GoToTicTacToePage();
+                break;
+
+            case "File: memory_art.png":
+                GoToMemoryPage();
+                break;
+
+            case "File: wordle_art.png":
+                GoToWordlePage();
                 break;
         }
     }

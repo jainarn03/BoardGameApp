@@ -15,14 +15,18 @@
             ItemsSource="{Binding Carousel.ImageURLs}">
             <CarouselView.ItemTemplate>
                 <DataTemplate>
-                    <ImageButton
+                    <Grid
+                        MaximumHeightRequest="540" MaximumWidthRequest="475">
+                        <ImageButton  
                         Source="{Binding .}"
-                        Aspect="AspectFit"
+                        Aspect="AspectFill"
                         BackgroundColor="#333333"
                         Clicked="OnImageClicked"/>
+                    </Grid>
                 </DataTemplate>
             </CarouselView.ItemTemplate>
         </CarouselView>
+        
     </Grid>
 
 </ContentPage>
