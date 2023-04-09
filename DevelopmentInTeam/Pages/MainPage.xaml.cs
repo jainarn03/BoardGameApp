@@ -47,7 +47,8 @@ public partial class MainPage : ContentPage
         "connectfour_art.png",
         "tictactoe_art.png",
         "memory_art.png",
-        "wordle_art.png"
+        "wordle_art.png",
+        "hangman_art.png"
         };
 
     }
@@ -58,21 +59,30 @@ public partial class MainPage : ContentPage
     {
         await Navigation.PushAsync(new CheckersPage());
     }
+
     public async void GoToConnectFourPage()
     {
         await Navigation.PushAsync(new ConnectFourPage());
     }
+
     public async void GoToTicTacToePage()
     {
         await Navigation.PushAsync(new TicTacToePage());
     }
+
     public async void GoToMemoryPage()
     {
         await Navigation.PushAsync(new MemoryPage());
     }
+
     public async void GoToWordlePage()
     {
         await Navigation.PushAsync(new WordlePage());
+    }
+
+    public async void GoToHangmanPage()
+    {
+        await Navigation.PushAsync(new HangmanPage());
     }
 
     /// <summary>
@@ -105,6 +115,10 @@ public partial class MainPage : ContentPage
 
             case "File: wordle_art.png":
                 GoToWordlePage();
+                break;
+
+            case "File: hangman_art.png":
+                GoToHangmanPage();
                 break;
         }
     }
