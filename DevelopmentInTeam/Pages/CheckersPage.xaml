@@ -3,12 +3,69 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="DevelopmentInTeam.Pages.CheckersPage"
              Title="Checkers">
-    
-    <!--MAIN GRID-->
-    <Grid BackgroundColor="#333333" 
-          RowDefinitions="*,*,*"
-          ColumnDefinitions="*,*,*">
 
+    <Grid>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <!-- ROW 1 -->
+            <Grid Grid.Row="0" Grid.Column="0" Background="{StaticResource LightBrown}"></Grid>
+            <Grid Grid.Row="0" Grid.Column="1" Background="{StaticResource DarkBrown}"></Grid>
+            <Grid Grid.Row="0" Grid.Column="2" Background="{StaticResource LightBrown}"></Grid>
+            <Grid Grid.Row="0" Grid.Column="3" Background="{StaticResource DarkBrown}"></Grid>
+            <Grid Grid.Row="0" Grid.Column="4" Background="{StaticResource LightBrown}"></Grid>
+            <Grid Grid.Row="0" Grid.Column="5" Background="{StaticResource DarkBrown}"></Grid>
+            <Grid Grid.Row="0" Grid.Column="6" Background="{StaticResource LightBrown}"></Grid>
+            <Grid Grid.Row="0" Grid.Column="7" Background="{StaticResource DarkBrown}"></Grid>
+            
+            <!-- ROW 2 -->
+            <Grid Grid.Row="1" Grid.Column="0" Background="{StaticResource DarkBrown}"></Grid>
+            <Grid Grid.Row="1" Grid.Column="1" Background="{StaticResource LightBrown}"></Grid>
+            <Grid Grid.Row="1" Grid.Column="2" Background="{StaticResource DarkBrown}"></Grid>
+            <Grid Grid.Row="1" Grid.Column="3" Background="{StaticResource LightBrown}"></Grid>
+            <Grid Grid.Row="1" Grid.Column="4" Background="{StaticResource DarkBrown}"></Grid>
+            <Grid Grid.Row="1" Grid.Column="5" Background="{StaticResource LightBrown}"></Grid>
+            <Grid Grid.Row="1" Grid.Column="6" Background="{StaticResource DarkBrown}"></Grid>
+            <Grid Grid.Row="1" Grid.Column="7" Background="{StaticResource LightBrown}"></Grid>
+
+            <!-- ROW 1 -->
+            <Grid Grid.Row="2" Grid.Column="0" Background="{StaticResource LightBrown}"></Grid>
+            <Grid Grid.Row="2" Grid.Column="1" Background="{StaticResource DarkBrown}"></Grid>
+            <Grid Grid.Row="2" Grid.Column="2" Background="{StaticResource LightBrown}"></Grid>
+            <Grid Grid.Row="2" Grid.Column="3" Background="{StaticResource DarkBrown}"></Grid>
+            <Grid Grid.Row="2" Grid.Column="4" Background="{StaticResource LightBrown}"></Grid>
+            <Grid Grid.Row="2" Grid.Column="5" Background="{StaticResource DarkBrown}"></Grid>
+            <Grid Grid.Row="2" Grid.Column="6" Background="{StaticResource LightBrown}"></Grid>
+            <Grid Grid.Row="2" Grid.Column="7" Background="{StaticResource DarkBrown}"></Grid>
+
+            <!-- ROW 2 -->
+            <Grid Grid.Row="3" Grid.Column="0" Background="{StaticResource DarkBrown}"></Grid>
+            <Grid Grid.Row="3" Grid.Column="1" Background="{StaticResource LightBrown}"></Grid>
+            <Grid Grid.Row="3" Grid.Column="2" Background="{StaticResource DarkBrown}"></Grid>
+            <Grid Grid.Row="3" Grid.Column="3" Background="{StaticResource LightBrown}"></Grid>
+            <Grid Grid.Row="3" Grid.Column="4" Background="{StaticResource DarkBrown}"></Grid>
+            <Grid Grid.Row="3" Grid.Column="5" Background="{StaticResource LightBrown}"></Grid>
+            <Grid Grid.Row="3" Grid.Column="6" Background="{StaticResource DarkBrown}"></Grid>
+            <Grid Grid.Row="3" Grid.Column="7" Background="{StaticResource LightBrown}"></Grid>
+        </Grid>
     </Grid>
     
 </ContentPage>
