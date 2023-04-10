@@ -3,12 +3,13 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="DevelopmentInTeam.Pages.CheckersPage"
              Title="Checkers">
-    
-    <!--MAIN GRID-->
-    <Grid BackgroundColor="#333333" 
-          RowDefinitions="*,*,*"
-          ColumnDefinitions="*,*,*">
 
+    <Grid>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+        </Grid>
     </Grid>
     
 </ContentPage>
