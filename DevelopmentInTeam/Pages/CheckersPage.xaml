@@ -105,6 +105,36 @@
             <Grid Grid.Row="7" Grid.Column="5" Background="{StaticResource LightBrown}"></Grid>
             <Grid Grid.Row="7" Grid.Column="6" Background="{StaticResource DarkBrown}"></Grid>
             <Grid Grid.Row="7" Grid.Column="7" Background="{StaticResource LightBrown}"></Grid>
+            
+            <!-- All image buttons for the checker peices -->
+
+            <ImageButton Grid.Row="0" Grid.Column="1" Source="red_c.png"></ImageButton>
+            <ImageButton Grid.Row="0" Grid.Column="3" Source="red_c.png"></ImageButton>
+            <ImageButton Grid.Row="0" Grid.Column="5" Source="red_c.png"></ImageButton>
+            <ImageButton Grid.Row="0" Grid.Column="7" Source="red_c.png"></ImageButton>
+            <ImageButton Grid.Row="1" Grid.Column="0" Source="red_c.png"></ImageButton>
+            <ImageButton Grid.Row="1" Grid.Column="2" Source="red_c.png"></ImageButton>
+            <ImageButton Grid.Row="1" Grid.Column="4" Source="red_c.png"></ImageButton>
+            <ImageButton Grid.Row="1" Grid.Column="6" Source="red_c.png"></ImageButton>
+            <ImageButton Grid.Row="2" Grid.Column="1" Source="red_c.png"></ImageButton>
+            <ImageButton Grid.Row="2" Grid.Column="3" Source="red_c.png"></ImageButton>
+            <ImageButton Grid.Row="2" Grid.Column="5" Source="red_c.png"></ImageButton>
+            <ImageButton Grid.Row="2" Grid.Column="7" Source="red_c.png"></ImageButton>
+
+
+            <ImageButton Grid.Row="5" Grid.Column="0" Source="black_c.png"></ImageButton>
+            <ImageButton Grid.Row="5" Grid.Column="2" Source="black_c.png"></ImageButton>
+            <ImageButton Grid.Row="5" Grid.Column="4" Source="black_c.png"></ImageButton>
+            <ImageButton Grid.Row="5" Grid.Column="6" Source="black_c.png"></ImageButton>
+            <ImageButton Grid.Row="6" Grid.Column="1" Source="black_c.png"></ImageButton>
+            <ImageButton Grid.Row="6" Grid.Column="3" Source="black_c.png"></ImageButton>
+            <ImageButton Grid.Row="6" Grid.Column="5" Source="black_c.png"></ImageButton>
+            <ImageButton Grid.Row="6" Grid.Column="7" Source="black_c.png"></ImageButton>
+            <ImageButton Grid.Row="7" Grid.Column="0" Source="black_c.png"></ImageButton>
+            <ImageButton Grid.Row="7" Grid.Column="2" Source="black_c.png"></ImageButton>
+            <ImageButton Grid.Row="7" Grid.Column="4" Source="black_c.png"></ImageButton>
+            <ImageButton Grid.Row="7" Grid.Column="6" Source="black_c.png"></ImageButton>
+
         </Grid>
         <Grid Grid.Row="2">
             <Grid.RowDefinitions>
