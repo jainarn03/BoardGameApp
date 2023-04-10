@@ -3,10 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="DevelopmentInTeam.Pages.WordlePage"
              Title="Wordle">
-    <?xml version="1.0" encoding="utf-8" ?>
-    <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Wordle.MainPage">
+    
 
         <ContentPage.Resources>
             <Style x:Key="SingleLetterEntryStyle" TargetType="Entry">
@@ -58,5 +55,3 @@
             </Grid>
         </Grid>
     </ContentPage>
-
-</ContentPage>
