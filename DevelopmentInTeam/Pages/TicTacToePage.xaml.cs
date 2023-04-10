@@ -39,10 +39,13 @@ public partial class TicTacToePage : ContentPage
         image.IsVisible = true;
         image.Source = ImageSource.FromFile(imageturn);
     }
-    //Onces button is clicked, app restarts
-    private void NewGame_Clicked(object sender, EventArgs e)
+    //Onces button is clicked, page reloads
+    private async void NewGame_Clicked(object sender, EventArgs e)
     {
-        Application.Current.MainPage = new MainPage();
+        // adds page to the navigation stack and removes the old one
+        await Navigation.PushAsync(new TicTacToePage());
+        Navigation.RemovePage(this);
+
     }
     public void winCheck()
     //This starts the win condition for X

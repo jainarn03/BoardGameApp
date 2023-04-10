@@ -27,7 +27,7 @@
                         MaximumHeightRequest="540" MaximumWidthRequest="475">
                         <ImageButton  
                         Source="{Binding .}"
-                        Aspect="AspectFill"
+                        Aspect="AspectFit"
                         BackgroundColor="#333333"
                         Clicked="OnImageClicked"/>
                     </Grid>
