@@ -5,7 +5,7 @@
              Title="Checkers">
 
     <Grid RowDefinitions="150,*,200">
-        <Grid Grid.Row="1">
+        <Grid Grid.Row="1" Grid.ColumnSpan="2">
             <Grid.RowDefinitions>
                 <RowDefinition/>
                 <RowDefinition/>
@@ -35,7 +35,7 @@
             <Grid Grid.Row="0" Grid.Column="5" Background="{StaticResource DarkBrown}"></Grid>
             <Grid Grid.Row="0" Grid.Column="6" Background="{StaticResource LightBrown}"></Grid>
             <Grid Grid.Row="0" Grid.Column="7" Background="{StaticResource DarkBrown}"></Grid>
-            
+
             <!-- ROW 2 -->
             <Grid Grid.Row="1" Grid.Column="0" Background="{StaticResource DarkBrown}"></Grid>
             <Grid Grid.Row="1" Grid.Column="1" Background="{StaticResource LightBrown}"></Grid>
@@ -105,6 +105,15 @@
             <Grid Grid.Row="7" Grid.Column="5" Background="{StaticResource LightBrown}"></Grid>
             <Grid Grid.Row="7" Grid.Column="6" Background="{StaticResource DarkBrown}"></Grid>
             <Grid Grid.Row="7" Grid.Column="7" Background="{StaticResource LightBrown}"></Grid>
+        </Grid>
+        <Grid Grid.Row="2">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Button x:Name="NewGame" Text="New Game" FontSize="Title" Grid.Row="1" HeightRequest="55" WidthRequest="250" HorizontalOptions="Center" Clicked="newGameClicked"/>
+            <Button x:Name="MainMenu" Text="Main Menu" FontSize="Title" Grid.Row="2" HeightRequest="55" WidthRequest="250" HorizontalOptions="Center" Clicked="mainMenuClicked"/>
         </Grid>
     </Grid>
     
