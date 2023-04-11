@@ -14,8 +14,12 @@ public partial class ConnectFourPage : ContentPage
         InitializeBoard(); // board initialized and all slots are empty
 
         MakeMove(2);
+        MakeMove(4);
         MakeMove(2);
         MakeMove(2);
+        MakeMove(4);
+        MakeMove(2);
+        UpdateUI();
     }
 
     /// <summary>
@@ -87,7 +91,40 @@ public partial class ConnectFourPage : ContentPage
     }
 
     /// <summary>
-    /// test method to see if makemove method works
+    /// updates the board in the UI (every slot is a button in a 7x6 grid)
+    /// finds the corresponding button by name for each slot and changes its color to represent the tiles of both players.
+    /// </summary>
+    public void UpdateUI()
+    {
+        // iterates through all the slots in the board
+        for (int row = 0; row < 6; row++)
+        {
+            for (int col = 0; col < 7; col++)
+            {
+                // sets a string to the button name corresponding to each slot
+                string buttonName = "Slot" + (row + 1) + (col + 1);
+
+                // uses the Element.FindByName(string) method to find the button name of the slot (needed in changing its background color property)
+                // docu https://learn.microsoft.com/en-us/dotnet/api/microsoft.maui.controls.element.findbyname?view=net-maui-7.0
+                // discovered on https://stackoverflow.com/questions/74344580/get-the-name-of-a-element-net-maui-xamarin-forms
+                var button = (Button)this.FindByName(buttonName);  
+
+                // changes the slot's color with respect to the player
+                if (_gameBoard[row, col] == 1)
+                {
+                    button.Background = Color.FromArgb("5440d4"); 
+                }
+                else if (_gameBoard[row, col] == 2)
+                {
+                    button.Background = Color.FromArgb("89CFF0");
+                }
+            }
+        }
+    }
+
+    /// <summary>
+    /// TEST
+    /// method to see if makemove method works
     /// </summary>
     /// <returns>number of slots claimed</returns>
     public int SlotsClaimed()
@@ -106,20 +143,21 @@ public partial class ConnectFourPage : ContentPage
     }
 
     /// <summary>
-    /// test button for whatever purposes
+    /// TEST
+    /// button for whatever purposes
     /// </summary>
     private void OnTestClicked(object sender, EventArgs e)
     {
-        Slot11.Background = Color.FromArgb("89CFF0");
+/*        Slot11.Background = Color.FromArgb("89CFF0");
         Slot12.Background = Color.FromArgb("5440d4");
         Slot21.Background = Color.FromArgb("89CFF0");
         Slot22.Background = Color.FromArgb("5440d4");
         Slot31.Background = Color.FromArgb("89CFF0");
         Slot32.Background = Color.FromArgb("5440d4");
         Slot41.Background = Color.FromArgb("89CFF0");
-        Slot42.Background = Color.FromArgb("5440d4");
+        Slot42.Background = Color.FromArgb("5440d4");*/
 
-       DisplayAlert(SlotsClaimed().ToString(), "s", "ok");
+       /*DisplayAlert(SlotsClaimed().ToString(), "test method called above", "ok")*/;
     }
 
     #region
