@@ -12,6 +12,10 @@ public partial class ConnectFourPage : ContentPage
         // ***** START OF GAME LOGIC HERE TEMPORARILY ***** will think about separation of concerns later.
 
         InitializeBoard(); // board initialized and all slots are empty
+
+        MakeMove(2);
+        MakeMove(2);
+        MakeMove(2);
     }
 
     /// <summary>
@@ -83,6 +87,25 @@ public partial class ConnectFourPage : ContentPage
     }
 
     /// <summary>
+    /// test method to see if makemove method works
+    /// </summary>
+    /// <returns>number of slots claimed</returns>
+    public int SlotsClaimed()
+    {
+        int count = 0;
+        for (int row = 0; row < 6; row++)
+        {
+            for (int col = 0; col < 7; col++)
+            {
+                if (_gameBoard[row, col] != 0)
+                    count++;
+            }
+        }
+
+        return count;
+    }
+
+    /// <summary>
     /// test button for whatever purposes
     /// </summary>
     private void OnTestClicked(object sender, EventArgs e)
@@ -96,7 +119,7 @@ public partial class ConnectFourPage : ContentPage
         Slot41.Background = Color.FromArgb("89CFF0");
         Slot42.Background = Color.FromArgb("5440d4");
 
-        //DisplayAlert(IsPlayer1Turn().ToString(), "s", "ok");
+       DisplayAlert(SlotsClaimed().ToString(), "s", "ok");
     }
 
     #region
