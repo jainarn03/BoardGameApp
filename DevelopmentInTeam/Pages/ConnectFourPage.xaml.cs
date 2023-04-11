@@ -13,13 +13,6 @@ public partial class ConnectFourPage : ContentPage
 
         InitializeBoard(); // board initialized and all slots are empty
 
-        MakeMove(2);
-        MakeMove(4);
-        MakeMove(2);
-        MakeMove(2);
-        MakeMove(4);
-        MakeMove(2);
-        UpdateUI();
     }
 
     /// <summary>
@@ -163,212 +156,254 @@ public partial class ConnectFourPage : ContentPage
     #region
     private void Slot11Clicked(object sender, EventArgs e)
     {
-
+        MakeMove(0);
+        UpdateUI();
     }
 
     private void Slot12Clicked(object sender, EventArgs e)
     {
-
+        MakeMove(1);
+        UpdateUI();
     }
 
     private void Slot13Clicked(object sender, EventArgs e)
     {
-
+        MakeMove(2);
+        UpdateUI();
     }
 
     private void Slot14Clicked(object sender, EventArgs e)
     {
-
+        MakeMove(3);
+        UpdateUI();
     }
 
     private void Slot15Clicked(object sender, EventArgs e)
     {
-
+        MakeMove(4);
+        UpdateUI();
     }
 
     private void Slot16Clicked(object sender, EventArgs e)
     {
-
+        MakeMove(5);
+        UpdateUI();
     }
 
     private void Slot17Clicked(object sender, EventArgs e)
     {
-
+        MakeMove(6);
+        UpdateUI();
     }
 
     private void Slot21Clicked(object sender, EventArgs e)
     {
-
+        MakeMove(0);
+        UpdateUI();
     }
 
     private void Slot22Clicked(object sender, EventArgs e)
     {
-
+        MakeMove(1);
+        UpdateUI();
     }
 
     private void Slot23Clicked(object sender, EventArgs e)
     {
-
+        MakeMove(2);
+        UpdateUI();
     }
 
     private void Slot24Clicked(object sender, EventArgs e)
     {
-
+        MakeMove(3);
+        UpdateUI();
     }
 
     private void Slot25Clicked(object sender, EventArgs e)
     {
-
+        MakeMove(4);
+        UpdateUI();
     }
 
     private void Slot26Clicked(object sender, EventArgs e)
     {
-
+        MakeMove(5);
+        UpdateUI();
     }
 
     private void Slot27Clicked(object sender, EventArgs e)
     {
-
+        MakeMove(6);
+        UpdateUI();
     }
 
     private void Slot31Clicked(object sender, EventArgs e)
     {
-
+        MakeMove(0);
+        UpdateUI();
     }
 
     private void Slot32Clicked(object sender, EventArgs e)
     {
-
+        MakeMove(1);
+        UpdateUI();
     }
 
     private void Slot33Clicked(object sender, EventArgs e)
     {
-
+        MakeMove(2);
+        UpdateUI();
     }
 
     private void Slot34Clicked(object sender, EventArgs e)
     {
-
+        MakeMove(3);
+        UpdateUI();
     }
 
     private void Slot35Clicked(object sender, EventArgs e)
     {
-
+        MakeMove(4);
+        UpdateUI();
     }
 
     private void Slot36Clicked(object sender, EventArgs e)
     {
-
+        MakeMove(5);
+        UpdateUI();
     }
 
     private void Slot37Clicked(object sender, EventArgs e)
     {
-
+        MakeMove(6);
+        UpdateUI();
     }
 
     private void Slot41Clicked(object sender, EventArgs e)
     {
-
+        MakeMove(0);
+        UpdateUI();
     }
 
     private void Slot42Clicked(object sender, EventArgs e)
     {
-
+        MakeMove(1);
+        UpdateUI();
     }
 
     private void Slot43Clicked(object sender, EventArgs e)
     {
-
+        MakeMove(2);
+        UpdateUI();
     }
 
     private void Slot44Clicked(object sender, EventArgs e)
     {
-
+        MakeMove(3);
+        UpdateUI();
     }
 
     private void Slot45Clicked(object sender, EventArgs e)
     {
-
+        MakeMove(4);
+        UpdateUI();
     }
 
     private void Slot46Clicked(object sender, EventArgs e)
     {
-
+        MakeMove(5);
+        UpdateUI();
     }
 
     private void Slot47Clicked(object sender, EventArgs e)
     {
-
+        MakeMove(6);
+        UpdateUI();
     }
 
     private void Slot51Clicked(object sender, EventArgs e)
     {
-
+        MakeMove(0);
+        UpdateUI();
     }
 
     private void Slot52Clicked(object sender, EventArgs e)
     {
-
+        MakeMove(1);
+        UpdateUI();
     }
 
     private void Slot53Clicked(object sender, EventArgs e)
     {
-
+        MakeMove(2);
+        UpdateUI();
     }
 
     private void Slot54Clicked(object sender, EventArgs e)
     {
-
+        MakeMove(3);
+        UpdateUI();
     }
 
     private void Slot55Clicked(object sender, EventArgs e)
     {
-
+        MakeMove(4);
+        UpdateUI();
     }
 
     private void Slot56Clicked(object sender, EventArgs e)
     {
-
+        MakeMove(5);
+        UpdateUI();
     }
 
     private void Slot57Clicked(object sender, EventArgs e)
     {
-
+        MakeMove(6);
+        UpdateUI();
     }
 
     private void Slot61Clicked(object sender, EventArgs e)
     {
-
+        MakeMove(0);
+        UpdateUI();
     }
 
     private void Slot62Clicked(object sender, EventArgs e)
     {
-
+        MakeMove(1);
+        UpdateUI();
     }
 
     private void Slot63Clicked(object sender, EventArgs e)
     {
-
+        MakeMove(2);
+        UpdateUI();
     }
 
     private void Slot64Clicked(object sender, EventArgs e)
     {
-
+        MakeMove(3);
+        UpdateUI();
     }
 
     private void Slot65Clicked(object sender, EventArgs e)
     {
-
+        MakeMove(4);
+        UpdateUI();
     }
 
     private void Slot66Clicked(object sender, EventArgs e)
     {
-
+        MakeMove(5);
+        UpdateUI();
     }
 
     private void Slot67Clicked(object sender, EventArgs e)
     {
-
+        MakeMove(6);
+        UpdateUI();
     }
     #endregion Slots Clicked Event Handlers
 
