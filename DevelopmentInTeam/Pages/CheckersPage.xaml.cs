@@ -12,8 +12,8 @@ public partial class CheckersPage : ContentPage
 
     }
 
-    private void mainMenuClicked(object sender, EventArgs e)
+    private async void mainMenuClicked(object sender, EventArgs e)
     {
-
+        await Navigation.PushAsync(new MainPage());
     }
 }

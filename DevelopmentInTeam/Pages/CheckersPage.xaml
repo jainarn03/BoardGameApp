@@ -2,30 +2,14 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="DevelopmentInTeam.Pages.CheckersPage"
-             Shell.NavBarIsVisible="False">
+             Shell.NavBarIsVisible="False"
+             BackgroundColor="#333333">
 
     <Grid RowDefinitions="150,*,200">
-        <Grid Grid.Row="1" Grid.ColumnSpan="2">
-            <Grid.RowDefinitions>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
+        <Grid Grid.Row="1" Grid.ColumnSpan="2"
+             RowDefinitions="*,*,*,*,*,*,*,*"
+             ColumnDefinitions="*,*,*,*,*,*,*,*">
+
             <!-- ROW 1 -->
             <Grid Grid.Row="0" Grid.Column="0" Background="{StaticResource LightBrown}"></Grid>
             <Grid Grid.Row="0" Grid.Column="1" Background="{StaticResource DarkBrown}"></Grid>
@@ -108,40 +92,47 @@
             
             <!-- All image buttons for the checker peices -->
 
-            <ImageButton Grid.Row="0" Grid.Column="1" Source="red_c.png"></ImageButton>
-            <ImageButton Grid.Row="0" Grid.Column="3" Source="red_c.png"></ImageButton>
-            <ImageButton Grid.Row="0" Grid.Column="5" Source="red_c.png"></ImageButton>
-            <ImageButton Grid.Row="0" Grid.Column="7" Source="red_c.png"></ImageButton>
-            <ImageButton Grid.Row="1" Grid.Column="0" Source="red_c.png"></ImageButton>
-            <ImageButton Grid.Row="1" Grid.Column="2" Source="red_c.png"></ImageButton>
-            <ImageButton Grid.Row="1" Grid.Column="4" Source="red_c.png"></ImageButton>
-            <ImageButton Grid.Row="1" Grid.Column="6" Source="red_c.png"></ImageButton>
-            <ImageButton Grid.Row="2" Grid.Column="1" Source="red_c.png"></ImageButton>
-            <ImageButton Grid.Row="2" Grid.Column="3" Source="red_c.png"></ImageButton>
-            <ImageButton Grid.Row="2" Grid.Column="5" Source="red_c.png"></ImageButton>
-            <ImageButton Grid.Row="2" Grid.Column="7" Source="red_c.png"></ImageButton>
+            <ImageButton x:Name="B8" Grid.Row="0" Grid.Column="1" Source="red_c.png"></ImageButton>
+            <ImageButton x:Name="D8" Grid.Row="0" Grid.Column="3" Source="red_c.png"></ImageButton>
+            <ImageButton x:Name="F8" Grid.Row="0" Grid.Column="5" Source="red_c.png"></ImageButton>
+            <ImageButton x:Name="H8" Grid.Row="0" Grid.Column="7" Source="red_c.png"></ImageButton>
+            <ImageButton x:Name="A7" Grid.Row="1" Grid.Column="0" Source="red_c.png"></ImageButton>
+            <ImageButton x:Name="C7" Grid.Row="1" Grid.Column="2" Source="red_c.png"></ImageButton>
+            <ImageButton x:Name="E7" Grid.Row="1" Grid.Column="4" Source="red_c.png"></ImageButton>
+            <ImageButton x:Name="G7" Grid.Row="1" Grid.Column="6" Source="red_c.png"></ImageButton>
+            <ImageButton x:Name="B6" Grid.Row="2" Grid.Column="1" Source="red_c.png"></ImageButton>
+            <ImageButton x:Name="D6" Grid.Row="2" Grid.Column="3" Source="red_c.png"></ImageButton>
+            <ImageButton x:Name="F6" Grid.Row="2" Grid.Column="5" Source="red_c.png"></ImageButton>
+            <ImageButton x:Name="H6" Grid.Row="2" Grid.Column="7" Source="red_c.png"></ImageButton>
 
 
-            <ImageButton Grid.Row="5" Grid.Column="0" Source="black_c.png"></ImageButton>
-            <ImageButton Grid.Row="5" Grid.Column="2" Source="black_c.png"></ImageButton>
-            <ImageButton Grid.Row="5" Grid.Column="4" Source="black_c.png"></ImageButton>
-            <ImageButton Grid.Row="5" Grid.Column="6" Source="black_c.png"></ImageButton>
-            <ImageButton Grid.Row="6" Grid.Column="1" Source="black_c.png"></ImageButton>
-            <ImageButton Grid.Row="6" Grid.Column="3" Source="black_c.png"></ImageButton>
-            <ImageButton Grid.Row="6" Grid.Column="5" Source="black_c.png"></ImageButton>
-            <ImageButton Grid.Row="6" Grid.Column="7" Source="black_c.png"></ImageButton>
-            <ImageButton Grid.Row="7" Grid.Column="0" Source="black_c.png"></ImageButton>
-            <ImageButton Grid.Row="7" Grid.Column="2" Source="black_c.png"></ImageButton>
-            <ImageButton Grid.Row="7" Grid.Column="4" Source="black_c.png"></ImageButton>
-            <ImageButton Grid.Row="7" Grid.Column="6" Source="black_c.png"></ImageButton>
+            <ImageButton x:Name="A3" Grid.Row="5" Grid.Column="0" Source="black_c.png"></ImageButton>
+            <ImageButton x:Name="C3" Grid.Row="5" Grid.Column="2" Source="black_c.png"></ImageButton>
+            <ImageButton x:Name="E3" Grid.Row="5" Grid.Column="4" Source="black_c.png"></ImageButton>
+            <ImageButton x:Name="G3" Grid.Row="5" Grid.Column="6" Source="black_c.png"></ImageButton>
+            <ImageButton x:Name="B2" Grid.Row="6" Grid.Column="1" Source="black_c.png"></ImageButton>
+            <ImageButton x:Name="D2" Grid.Row="6" Grid.Column="3" Source="black_c.png"></ImageButton>
+            <ImageButton x:Name="F2" Grid.Row="6" Grid.Column="5" Source="black_c.png"></ImageButton>
+            <ImageButton x:Name="H2" Grid.Row="6" Grid.Column="7" Source="black_c.png"></ImageButton>
+            <ImageButton x:Name="A1" Grid.Row="7" Grid.Column="0" Source="black_c.png"></ImageButton>
+            <ImageButton x:Name="C1" Grid.Row="7" Grid.Column="2" Source="black_c.png"></ImageButton>
+            <ImageButton x:Name="E1" Grid.Row="7" Grid.Column="4" Source="black_c.png"></ImageButton>
+            <ImageButton x:Name="G1" Grid.Row="7" Grid.Column="6" Source="black_c.png"></ImageButton>
+
+
+            <ImageButton x:Name="A5" Grid.Row="3" Grid.Column="0"></ImageButton>
+            <ImageButton x:Name="C5" Grid.Row="3" Grid.Column="2"></ImageButton>
+            <ImageButton x:Name="E5" Grid.Row="3" Grid.Column="4"></ImageButton>
+            <ImageButton x:Name="G5" Grid.Row="3" Grid.Column="6"></ImageButton>
+            <ImageButton x:Name="B4" Grid.Row="4" Grid.Column="1"></ImageButton>
+            <ImageButton x:Name="D4" Grid.Row="4" Grid.Column="3"></ImageButton>
+            <ImageButton x:Name="F4" Grid.Row="4" Grid.Column="5"></ImageButton>
+            <ImageButton x:Name="H4" Grid.Row="4" Grid.Column="7"></ImageButton>
+            
+
 
         </Grid>
-        <Grid Grid.Row="2">
-            <Grid.RowDefinitions>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-            </Grid.RowDefinitions>
+        <Grid Grid.Row="2" RowDefinitions="*,*,*">
             <Button x:Name="NewGame" Text="New Game" FontSize="Title" Grid.Row="1" HeightRequest="55" WidthRequest="250" HorizontalOptions="Center" Clicked="newGameClicked"/>
             <Button x:Name="MainMenu" Text="Main Menu" FontSize="Title" Grid.Row="2" HeightRequest="55" WidthRequest="250" HorizontalOptions="Center" Clicked="mainMenuClicked"/>
         </Grid>
