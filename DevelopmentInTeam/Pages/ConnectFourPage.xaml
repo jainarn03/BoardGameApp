@@ -12,61 +12,64 @@
         <Button x:Name="TestButton" Grid.Row="1" Grid.Column="0" Text="Test Button" HorizontalOptions="Center" VerticalOptions="Center"  Clicked="OnTestClicked"/>
         
         <!--SUB-GRID FOR THE BOARD-->
-        <Grid x:Name="ConnectFourBoard" Grid.Row="1" Grid.Column="1" RowDefinitions="*,*,*,*,*,*" ColumnDefinitions="*,*,*,*,*,*,*" BackgroundColor="LightGrey">
+        <Grid x:Name="ConnectFourBoard" Grid.Row="1" Grid.Column="1" RowDefinitions="*,*,*,*,*,*" ColumnDefinitions="*,*,*,*,*,*,*" BackgroundColor="FloralWhite" >
 
+            <!--light: #Edf0f9-->
+            <!--dark:  ##E8ebf3-->
+            
             <!--ROW 6-->
-            <Button x:Name="Slot61" Clicked="Slot61Clicked" Grid.Row="0" Grid.Column="0" Background="#D3D3D3"></Button>
-            <Button x:Name="Slot62" Clicked="Slot62Clicked" Grid.Row="0" Grid.Column="1" Background="#a9a9a9"></Button>
-            <Button x:Name="Slot63" Clicked="Slot63Clicked" Grid.Row="0" Grid.Column="2" Background="#D3D3D3"></Button>
-            <Button x:Name="Slot64" Clicked="Slot64Clicked" Grid.Row="0" Grid.Column="3" Background="#a9a9a9"></Button>
-            <Button x:Name="Slot65" Clicked="Slot65Clicked" Grid.Row="0" Grid.Column="4" Background="#D3D3D3"></Button>
-            <Button x:Name="Slot66" Clicked="Slot66Clicked" Grid.Row="0" Grid.Column="5" Background="#a9a9a9"></Button>
-            <Button x:Name="Slot67" Clicked="Slot67Clicked" Grid.Row="0" Grid.Column="6" Background="#D3D3D3"></Button>
+            <Button x:Name="Slot61" Clicked="Slot61Clicked" Grid.Row="0" Grid.Column="0" CornerRadius="100" Background="#Edf0f9"></Button>
+            <Button x:Name="Slot62" Clicked="Slot62Clicked" Grid.Row="0" Grid.Column="1" CornerRadius="100" Background="#Edf0f9"></Button>
+            <Button x:Name="Slot63" Clicked="Slot63Clicked" Grid.Row="0" Grid.Column="2" CornerRadius="100" Background="#Edf0f9"></Button>
+            <Button x:Name="Slot64" Clicked="Slot64Clicked" Grid.Row="0" Grid.Column="3" CornerRadius="100" Background="#Edf0f9"></Button>
+            <Button x:Name="Slot65" Clicked="Slot65Clicked" Grid.Row="0" Grid.Column="4" CornerRadius="100" Background="#Edf0f9"></Button>
+            <Button x:Name="Slot66" Clicked="Slot66Clicked" Grid.Row="0" Grid.Column="5" CornerRadius="100" Background="#Edf0f9"></Button>
+            <Button x:Name="Slot67" Clicked="Slot67Clicked" Grid.Row="0" Grid.Column="6" CornerRadius="100" Background="#Edf0f9"></Button>
 
             <!--ROW 5-->
-            <Button x:Name="Slot51" Clicked="Slot51Clicked" Grid.Row="1" Grid.Column="0" Background="#a9a9a9"></Button>
-            <Button x:Name="Slot52" Clicked="Slot52Clicked" Grid.Row="1" Grid.Column="1" Background="#D3D3D3"></Button>
-            <Button x:Name="Slot53" Clicked="Slot53Clicked" Grid.Row="1" Grid.Column="2" Background="#a9a9a9"></Button>
-            <Button x:Name="Slot54" Clicked="Slot54Clicked" Grid.Row="1" Grid.Column="3" Background="#D3D3D3"></Button>
-            <Button x:Name="Slot55" Clicked="Slot55Clicked" Grid.Row="1" Grid.Column="4" Background="#a9a9a9"></Button>
-            <Button x:Name="Slot56" Clicked="Slot56Clicked" Grid.Row="1" Grid.Column="5" Background="#D3D3D3"></Button>
-            <Button x:Name="Slot57" Clicked="Slot57Clicked" Grid.Row="1" Grid.Column="6" Background="#a9a9a9"></Button>
+            <Button x:Name="Slot51" Clicked="Slot51Clicked" Grid.Row="1" Grid.Column="0" CornerRadius="100" Background="#Edf0f9"></Button>
+            <Button x:Name="Slot52" Clicked="Slot52Clicked" Grid.Row="1" Grid.Column="1" CornerRadius="100" Background="#Edf0f9"></Button>
+            <Button x:Name="Slot53" Clicked="Slot53Clicked" Grid.Row="1" Grid.Column="2" CornerRadius="100" Background="#Edf0f9"></Button>
+            <Button x:Name="Slot54" Clicked="Slot54Clicked" Grid.Row="1" Grid.Column="3" CornerRadius="100" Background="#Edf0f9"></Button>
+            <Button x:Name="Slot55" Clicked="Slot55Clicked" Grid.Row="1" Grid.Column="4" CornerRadius="100" Background="#Edf0f9"></Button>
+            <Button x:Name="Slot56" Clicked="Slot56Clicked" Grid.Row="1" Grid.Column="5" CornerRadius="100" Background="#Edf0f9"></Button>
+            <Button x:Name="Slot57" Clicked="Slot57Clicked" Grid.Row="1" Grid.Column="6" CornerRadius="100" Background="#Edf0f9"></Button>
 
             <!--ROW 4-->
-            <Button x:Name="Slot41" Clicked="Slot41Clicked" Grid.Row="2" Grid.Column="0" Background="#D3D3D3"></Button>
-            <Button x:Name="Slot42" Clicked="Slot42Clicked" Grid.Row="2" Grid.Column="1" Background="#a9a9a9"></Button>
-            <Button x:Name="Slot43" Clicked="Slot43Clicked" Grid.Row="2" Grid.Column="2" Background="#D3D3D3"></Button>
-            <Button x:Name="Slot44" Clicked="Slot44Clicked" Grid.Row="2" Grid.Column="3" Background="#a9a9a9"></Button>
-            <Button x:Name="Slot45" Clicked="Slot45Clicked" Grid.Row="2" Grid.Column="4" Background="#D3D3D3"></Button>
-            <Button x:Name="Slot46" Clicked="Slot46Clicked" Grid.Row="2" Grid.Column="5" Background="#a9a9a9"></Button>
-            <Button x:Name="Slot47" Clicked="Slot47Clicked" Grid.Row="2" Grid.Column="6" Background="#D3D3D3"></Button>
+            <Button x:Name="Slot41" Clicked="Slot41Clicked" Grid.Row="2" Grid.Column="0" CornerRadius="100" Background="#Edf0f9"></Button>
+            <Button x:Name="Slot42" Clicked="Slot42Clicked" Grid.Row="2" Grid.Column="1" CornerRadius="100" Background="#Edf0f9"></Button>
+            <Button x:Name="Slot43" Clicked="Slot43Clicked" Grid.Row="2" Grid.Column="2" CornerRadius="100" Background="#Edf0f9"></Button>
+            <Button x:Name="Slot44" Clicked="Slot44Clicked" Grid.Row="2" Grid.Column="3" CornerRadius="100" Background="#Edf0f9"></Button>
+            <Button x:Name="Slot45" Clicked="Slot45Clicked" Grid.Row="2" Grid.Column="4" CornerRadius="100" Background="#Edf0f9"></Button>
+            <Button x:Name="Slot46" Clicked="Slot46Clicked" Grid.Row="2" Grid.Column="5" CornerRadius="100" Background="#Edf0f9"></Button>
+            <Button x:Name="Slot47" Clicked="Slot47Clicked" Grid.Row="2" Grid.Column="6" CornerRadius="100" Background="#Edf0f9"></Button>
 
             <!--ROW 3-->
-            <Button x:Name="Slot31" Clicked="Slot31Clicked" Grid.Row="3" Grid.Column="0" Background="#a9a9a9"></Button>
-            <Button x:Name="Slot32" Clicked="Slot32Clicked" Grid.Row="3" Grid.Column="1" Background="#D3D3D3"></Button>
-            <Button x:Name="Slot33" Clicked="Slot33Clicked" Grid.Row="3" Grid.Column="2" Background="#a9a9a9"></Button>
-            <Button x:Name="Slot34" Clicked="Slot34Clicked" Grid.Row="3" Grid.Column="3" Background="#D3D3D3"></Button>
-            <Button x:Name="Slot35" Clicked="Slot35Clicked" Grid.Row="3" Grid.Column="4" Background="#a9a9a9"></Button>
-            <Button x:Name="Slot36" Clicked="Slot36Clicked" Grid.Row="3" Grid.Column="5" Background="#D3D3D3"></Button>
-            <Button x:Name="Slot37" Clicked="Slot37Clicked" Grid.Row="3" Grid.Column="6" Background="#a9a9a9"></Button>
+            <Button x:Name="Slot31" Clicked="Slot31Clicked" Grid.Row="3" Grid.Column="0" CornerRadius="100" Background="#Edf0f9"></Button>
+            <Button x:Name="Slot32" Clicked="Slot32Clicked" Grid.Row="3" Grid.Column="1" CornerRadius="100" Background="#Edf0f9"></Button>
+            <Button x:Name="Slot33" Clicked="Slot33Clicked" Grid.Row="3" Grid.Column="2" CornerRadius="100" Background="#Edf0f9"></Button>
+            <Button x:Name="Slot34" Clicked="Slot34Clicked" Grid.Row="3" Grid.Column="3" CornerRadius="100" Background="#Edf0f9"></Button>
+            <Button x:Name="Slot35" Clicked="Slot35Clicked" Grid.Row="3" Grid.Column="4" CornerRadius="100" Background="#Edf0f9"></Button>
+            <Button x:Name="Slot36" Clicked="Slot36Clicked" Grid.Row="3" Grid.Column="5" CornerRadius="100" Background="#Edf0f9"></Button>
+            <Button x:Name="Slot37" Clicked="Slot37Clicked" Grid.Row="3" Grid.Column="6" CornerRadius="100" Background="#Edf0f9"></Button>
 
             <!--ROW 2-->
-            <Button x:Name="Slot21" Clicked="Slot21Clicked" Grid.Row="4" Grid.Column="0" Background="#D3D3D3"></Button>
-            <Button x:Name="Slot22" Clicked="Slot22Clicked" Grid.Row="4" Grid.Column="1" Background="#a9a9a9"></Button>
-            <Button x:Name="Slot23" Clicked="Slot23Clicked" Grid.Row="4" Grid.Column="2" Background="#D3D3D3"></Button>
-            <Button x:Name="Slot24" Clicked="Slot24Clicked" Grid.Row="4" Grid.Column="3" Background="#a9a9a9"></Button>
-            <Button x:Name="Slot25" Clicked="Slot25Clicked" Grid.Row="4" Grid.Column="4" Background="#D3D3D3"></Button>
-            <Button x:Name="Slot26" Clicked="Slot26Clicked" Grid.Row="4" Grid.Column="5" Background="#a9a9a9"></Button>
-            <Button x:Name="Slot27" Clicked="Slot27Clicked" Grid.Row="4" Grid.Column="6" Background="#D3D3D3"></Button>
+            <Button x:Name="Slot21" Clicked="Slot21Clicked" Grid.Row="4" Grid.Column="0" CornerRadius="100" Background="#Edf0f9"></Button>
+            <Button x:Name="Slot22" Clicked="Slot22Clicked" Grid.Row="4" Grid.Column="1" CornerRadius="100" Background="#Edf0f9"></Button>
+            <Button x:Name="Slot23" Clicked="Slot23Clicked" Grid.Row="4" Grid.Column="2" CornerRadius="100" Background="#Edf0f9"></Button>
+            <Button x:Name="Slot24" Clicked="Slot24Clicked" Grid.Row="4" Grid.Column="3" CornerRadius="100" Background="#Edf0f9"></Button>
+            <Button x:Name="Slot25" Clicked="Slot25Clicked" Grid.Row="4" Grid.Column="4" CornerRadius="100" Background="#Edf0f9"></Button>
+            <Button x:Name="Slot26" Clicked="Slot26Clicked" Grid.Row="4" Grid.Column="5" CornerRadius="100" Background="#Edf0f9"></Button>
+            <Button x:Name="Slot27" Clicked="Slot27Clicked" Grid.Row="4" Grid.Column="6" CornerRadius="100" Background="#Edf0f9"></Button>
 
             <!-- ROW 1 -->
-            <Button x:Name="Slot11" Clicked="Slot11Clicked" Grid.Row="5" Grid.Column="0" Background="#a9a9a9"></Button>
-            <Button x:Name="Slot12" Clicked="Slot12Clicked" Grid.Row="5" Grid.Column="1" Background="#D3D3D3"></Button>
-            <Button x:Name="Slot13" Clicked="Slot13Clicked" Grid.Row="5" Grid.Column="2" Background="#a9a9a9"></Button>
-            <Button x:Name="Slot14" Clicked="Slot14Clicked" Grid.Row="5" Grid.Column="3" Background="#D3D3D3"></Button>
-            <Button x:Name="Slot15" Clicked="Slot15Clicked" Grid.Row="5" Grid.Column="4" Background="#a9a9a9"></Button>
-            <Button x:Name="Slot16" Clicked="Slot16Clicked" Grid.Row="5" Grid.Column="5" Background="#D3D3D3"></Button>
-            <Button x:Name="Slot17" Clicked="Slot17Clicked" Grid.Row="5" Grid.Column="6" Background="#a9a9a9"></Button>
+            <Button x:Name="Slot11" Clicked="Slot11Clicked" Grid.Row="5" Grid.Column="0" CornerRadius="100" Background="#Edf0f9"></Button>
+            <Button x:Name="Slot12" Clicked="Slot12Clicked" Grid.Row="5" Grid.Column="1" CornerRadius="100" Background="#Edf0f9"></Button>
+            <Button x:Name="Slot13" Clicked="Slot13Clicked" Grid.Row="5" Grid.Column="2" CornerRadius="100" Background="#Edf0f9"></Button>
+            <Button x:Name="Slot14" Clicked="Slot14Clicked" Grid.Row="5" Grid.Column="3" CornerRadius="100" Background="#Edf0f9"></Button>
+            <Button x:Name="Slot15" Clicked="Slot15Clicked" Grid.Row="5" Grid.Column="4" CornerRadius="100" Background="#Edf0f9"></Button>
+            <Button x:Name="Slot16" Clicked="Slot16Clicked" Grid.Row="5" Grid.Column="5" CornerRadius="100" Background="#Edf0f9"></Button>
+            <Button x:Name="Slot17" Clicked="Slot17Clicked" Grid.Row="5" Grid.Column="6" CornerRadius="100" Background="#Edf0f9"></Button>
             
         </Grid>
 

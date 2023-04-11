@@ -452,6 +452,7 @@ public partial class ConnectFourPage : ContentPage
     {
         MakeMove(3);
         UpdateUI();
+        HandleGameStatusUI(CheckGameStatus());
     }
 
     private void Slot45Clicked(object sender, EventArgs e)
