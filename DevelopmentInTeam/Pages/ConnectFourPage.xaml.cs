@@ -12,7 +12,6 @@ public partial class ConnectFourPage : ContentPage
         // ***** START OF GAME LOGIC HERE TEMPORARILY ***** will think about separation of concerns later.
 
         InitializeBoard(); // board initialized and all slots are empty
-
     }
 
     /// <summary>
@@ -84,6 +83,94 @@ public partial class ConnectFourPage : ContentPage
     }
 
     /// <summary>
+    /// Checks the board to see if there is currently a winner, called every time a move is made.
+    /// checks row/column/diagonal winners, checks for a draw.
+    /// </summary>
+    /// <returns>0 if no player has won yet, 1 if Player 1 wins, 2 if Player 2 wins, 3 if draw</returns>
+    public int CheckWinner() // IGNORE: maybe more appropriate name for future: CheckGameStatus? (implementing draw check, yet a draw is a win for both players...)
+    {
+        // checks for wins among the ROWS
+        for (int row = 0; row < 6; row++)
+        {
+            // only necessary to iterate up to fourth column, slots for columns 5-7 will still be spanned (DO SAME FOR COLUMN CHECK)
+            for (int col = 0; col < 4; col++) 
+            {
+                int slot = _gameBoard[row, col]; // sets the current slot
+                
+                // checks for four consecutive slots in a single row
+                // checking the slots of same row but next 3 columns, if all four slots share the same value: returns the slot
+                if (slot != 0 && slot == _gameBoard[row, col + 1] && slot == _gameBoard[row, col + 2] && slot == _gameBoard[row, col + 3])
+                {
+                    return slot; // returns slot value which corresponds to a win if 1/2 or just 0 if empty consecutive rows
+                }
+            }
+        }
+
+        // checks for wins among the COLUMNS
+        for (int col = 0; col < 7; col++)
+        {
+            // iterates up to third row
+            for (int row = 0; row < 3; row++) 
+            {
+                int slot = _gameBoard[row, col]; // sets the current slot
+
+                // checks for four consective slots in a single column, incrementing the row and returning slot when four slots share the same value
+                if (slot != 0 && slot == _gameBoard[row + 1, col] && slot == _gameBoard[row + 2, col] && slot == _gameBoard[row + 3, col]) 
+                {
+                    return slot; 
+                }
+            }
+        }
+
+        // checks for wins among the DIAGONALS
+
+            // checking in direction going up-right
+        // iterate up to third row (going upwards, the three rows above will be checked)
+        for (int row = 0; row < 3; row++)
+        {
+            // iterates up to fourth column
+            for (int col = 0; col < 4; col++)
+            {
+                int slot = _gameBoard[row, col]; // current slot
+
+                // checks for four consecutive slots in diagonal, incrementing both row and column (going up and right)
+                if (slot != 0 && slot == _gameBoard[row + 1, col + 1] && slot == _gameBoard[row + 2, col + 2] && slot == _gameBoard[row + 3, col + 3])
+                {
+                    return slot;
+                }
+            }
+        }
+
+            // checking in direction going down-right
+        // iterating between rows 4-6 (going downwards, rows 3 and under are checked)
+        for (int row = 3; row < 6; row++) 
+        {
+            for (int col = 0; col < 4; col++)
+            {
+                int slot = _gameBoard[row, col]; // current slot
+
+                // checks for four consecutive slots in diagonal, decrementing row while incrementing column (going down and right)
+                if (slot != 0 && slot == _gameBoard[row - 1, col + 1] && slot == _gameBoard[row - 2, col + 2] && slot == _gameBoard[row - 3, col + 3])
+                {
+                    return slot;
+                }
+            }
+        }
+
+        // checks if game is unfinished (for case of no winner up until now while empty slots remain)
+        for (int col = 0; col < 7; col++)
+        {
+            if (_gameBoard[5, col] == 0) // if any empty slots exist on the top row
+            {
+                return 0; // game unfinished, still proceeding
+            }
+        }
+
+        // draw, no empty slots and yet no winners found.
+        return 3;
+    }
+
+    /// <summary>
     /// updates the board in the UI (every slot is a button in a 7x6 grid)
     /// finds the corresponding button by name for each slot and changes its color to represent the tiles of both players.
     /// </summary>
@@ -116,7 +203,45 @@ public partial class ConnectFourPage : ContentPage
     }
 
     /// <summary>
-    /// TEST
+    /// Displays alert if there is a winner/draw message to be made
+    /// </summary>
+    /// <param name="winner">taken from CheckWinner() method</param>
+    public void DisplayWinner(int winner)
+    {
+        if (winner == 0)
+        {
+            return;
+        }
+        else if (winner == 1)
+        {
+            DisplayAlert("Game over!", "Player 1 has won.", "OK");
+            GameComplete();
+        }
+        else if (winner == 2)
+        {
+            DisplayAlert("Game over!", "Player 2 has won.", "OK");
+            GameComplete();
+        }
+
+        else if (winner == 3)
+        {
+            DisplayAlert("Game over!", "Draw.", "OK");
+            GameComplete();
+        }
+    }
+    
+    // game complete method, stops input from the UI:
+    // iterates through every button child element of the board's grid and disables each one
+    public void GameComplete()
+    {
+        foreach (Button button in ConnectFourBoard.Children)
+        {
+            button.IsEnabled = false;
+        }
+    }
+
+/*    /// <summary>
+    /// TEST (no longer used)
     /// method to see if makemove method works
     /// </summary>
     /// <returns>number of slots claimed</returns>
@@ -133,7 +258,7 @@ public partial class ConnectFourPage : ContentPage
         }
 
         return count;
-    }
+    }*/
 
     /// <summary>
     /// TEST
@@ -141,16 +266,8 @@ public partial class ConnectFourPage : ContentPage
     /// </summary>
     private void OnTestClicked(object sender, EventArgs e)
     {
-/*        Slot11.Background = Color.FromArgb("89CFF0");
-        Slot12.Background = Color.FromArgb("5440d4");
-        Slot21.Background = Color.FromArgb("89CFF0");
-        Slot22.Background = Color.FromArgb("5440d4");
-        Slot31.Background = Color.FromArgb("89CFF0");
-        Slot32.Background = Color.FromArgb("5440d4");
-        Slot41.Background = Color.FromArgb("89CFF0");
-        Slot42.Background = Color.FromArgb("5440d4");*/
-
-       /*DisplayAlert(SlotsClaimed().ToString(), "test method called above", "ok")*/;
+        // check winner button
+        DisplayWinner(CheckWinner());
     }
 
     #region

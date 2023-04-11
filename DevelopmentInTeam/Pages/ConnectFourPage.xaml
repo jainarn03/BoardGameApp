@@ -11,7 +11,7 @@
         <Button x:Name="TestButton" Grid.Row="1" Grid.Column="0" Text="Test Button" HorizontalOptions="Center" VerticalOptions="Center"  Clicked="OnTestClicked"/>
         
         <!--SUB-GRID FOR THE BOARD-->
-        <Grid Grid.Row="1" Grid.Column="1" RowDefinitions="*,*,*,*,*,*" ColumnDefinitions="*,*,*,*,*,*,*" BackgroundColor="LightGrey">
+        <Grid x:Name="ConnectFourBoard" Grid.Row="1" Grid.Column="1" RowDefinitions="*,*,*,*,*,*" ColumnDefinitions="*,*,*,*,*,*,*" BackgroundColor="LightGrey">
 
             <!--ROW 6-->
             <Button x:Name="Slot61" Clicked="Slot61Clicked" Grid.Row="0" Grid.Column="0" Background="#D3D3D3"></Button>
