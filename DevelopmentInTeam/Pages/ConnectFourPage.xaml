@@ -74,7 +74,7 @@
 
         <!--NEW GAME BUTTON-->
         <Button x:Name="NewGameButton" Grid.Row="2" Grid.Column="1" Text="Start New Game" HorizontalOptions="Center" VerticalOptions="CenterAndExpand"  Clicked="OnNewGameClicked"/>
-        
+
     </Grid>
     
 </ContentPage>
