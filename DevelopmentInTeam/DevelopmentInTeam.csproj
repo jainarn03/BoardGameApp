@@ -50,7 +50,6 @@
 	<ItemGroup>
 	  <None Remove="Resources\Images\checkers_art.png" />
 	  <None Remove="Resources\Images\cloud_art.png" />
-	  <None Remove="Resources\Images\connectfourboard.png" />
 	  <None Remove="Resources\Images\connectfour_art.png" />
 	  <None Remove="Resources\Images\hangman_art.png" />
 	  <None Remove="Resources\Images\memory_art.png" />

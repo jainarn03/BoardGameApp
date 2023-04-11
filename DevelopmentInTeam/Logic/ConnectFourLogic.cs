@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DevelopmentInTeam.Logic
 {
-    internal class LogicPlaceholderFile
+    internal class ConnectFourLogic
     {
     }
 }

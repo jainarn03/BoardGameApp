@@ -1,3 +1,4 @@
+// ALEKS' PAGE
 namespace DevelopmentInTeam.Pages;
 
 public partial class ConnectFourPage : ContentPage
@@ -11,6 +12,7 @@ public partial class ConnectFourPage : ContentPage
 
         // ***** START OF GAME LOGIC HERE TEMPORARILY ***** will think about separation of concerns later.
 
+        // starts Connect Four
         InitializeBoard(); // board initialized and all slots are empty
     }
 

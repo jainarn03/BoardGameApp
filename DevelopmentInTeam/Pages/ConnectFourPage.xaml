@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8" ?>
+<!--ALEKS' PAGE-->
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="DevelopmentInTeam.Pages.ConnectFourPage"
              Shell.NavBarIsVisible="False">
     
     <!--MAIN GRID-->
-    <Grid BackgroundColor="#333333" RowDefinitions=".7*,5*,*" ColumnDefinitions="*,1.5*,*">
+    <Grid BackgroundColor="#333333" RowDefinitions=".7*,500,*" ColumnDefinitions="*,570,*">
         
         <!--TEST BUTTON-->
         <Button x:Name="TestButton" Grid.Row="1" Grid.Column="0" Text="Test Button" HorizontalOptions="Center" VerticalOptions="Center"  Clicked="OnTestClicked"/>
@@ -66,10 +67,7 @@
             <Button x:Name="Slot15" Clicked="Slot15Clicked" Grid.Row="5" Grid.Column="4" Background="#a9a9a9"></Button>
             <Button x:Name="Slot16" Clicked="Slot16Clicked" Grid.Row="5" Grid.Column="5" Background="#D3D3D3"></Button>
             <Button x:Name="Slot17" Clicked="Slot17Clicked" Grid.Row="5" Grid.Column="6" Background="#a9a9a9"></Button>
-
-
-            <!--IMAGE HERE-->
-            <!--<Image Source="connectfourboard.png" Aspect="Fill" Grid.RowSpan="6" Grid.ColumnSpan="7"/>-->
+            
         </Grid>
 
         <!--NEW GAME BUTTON-->
