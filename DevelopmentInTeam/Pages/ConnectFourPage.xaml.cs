@@ -87,7 +87,7 @@ public partial class ConnectFourPage : ContentPage
     /// checks row/column/diagonal winners, checks for a draw.
     /// </summary>
     /// <returns>0 if no player has won yet, 1 if Player 1 wins, 2 if Player 2 wins, 3 if draw</returns>
-    public int CheckWinner() // IGNORE: maybe more appropriate name for future: CheckGameStatus? (implementing draw check, yet a draw is a win for both players...)
+    public int CheckGameStatus() // IGNORE: maybe more appropriate name for future: CheckGameStatus? (implementing draw check, yet a draw is a win for both players...)
     {
         // checks for wins among the ROWS
         for (int row = 0; row < 6; row++)
@@ -206,7 +206,7 @@ public partial class ConnectFourPage : ContentPage
     /// Displays alert if there is a winner/draw message to be made
     /// </summary>
     /// <param name="winner">taken from CheckWinner() method</param>
-    public void DisplayWinner(int winner)
+    public void HandleGameStatusUI(int winner)
     {
         if (winner == 0)
         {
@@ -215,24 +215,24 @@ public partial class ConnectFourPage : ContentPage
         else if (winner == 1)
         {
             DisplayAlert("Game over!", "Player 1 has won.", "OK");
-            GameComplete();
+            TerminateGame();
         }
         else if (winner == 2)
         {
             DisplayAlert("Game over!", "Player 2 has won.", "OK");
-            GameComplete();
+            TerminateGame();
         }
 
         else if (winner == 3)
         {
             DisplayAlert("Game over!", "Draw.", "OK");
-            GameComplete();
+            TerminateGame();
         }
     }
     
-    // game complete method, stops input from the UI:
+    // method for ending the game, stops input from the UI:
     // iterates through every button child element of the board's grid and disables each one
-    public void GameComplete()
+    public void TerminateGame()
     {
         foreach (Button button in ConnectFourBoard.Children)
         {
@@ -266,153 +266,184 @@ public partial class ConnectFourPage : ContentPage
     /// </summary>
     private void OnTestClicked(object sender, EventArgs e)
     {
-        // check winner button
-        DisplayWinner(CheckWinner());
+
     }
 
+    /// <summary>
+    /// Event handler region for the slot buttons clicked on the ConnectFourBoard grid.
+    /// SlotXYClicked: X = row number from the bottom up, Y = column number from left to right.
+    /// Parameter for MakeMove() method is the specific slot's column.
+    /// UpdateUI() method displays the current board on the UI.
+    /// CheckGameStatus() method checks the current board's game status,
+    /// then it is passed as a parameter in HandleGameStatus() which will handle the display alerts and disabling the controls
+    /// </summary>
     #region
     private void Slot11Clicked(object sender, EventArgs e)
     {
         MakeMove(0);
         UpdateUI();
+        HandleGameStatusUI(CheckGameStatus());
     }
 
     private void Slot12Clicked(object sender, EventArgs e)
     {
         MakeMove(1);
         UpdateUI();
+        HandleGameStatusUI(CheckGameStatus());
     }
 
     private void Slot13Clicked(object sender, EventArgs e)
     {
         MakeMove(2);
         UpdateUI();
+        HandleGameStatusUI(CheckGameStatus());
     }
 
     private void Slot14Clicked(object sender, EventArgs e)
     {
         MakeMove(3);
         UpdateUI();
+        HandleGameStatusUI(CheckGameStatus());
     }
 
     private void Slot15Clicked(object sender, EventArgs e)
     {
         MakeMove(4);
         UpdateUI();
+        HandleGameStatusUI(CheckGameStatus());
     }
 
     private void Slot16Clicked(object sender, EventArgs e)
     {
         MakeMove(5);
         UpdateUI();
+        HandleGameStatusUI(CheckGameStatus());
     }
 
     private void Slot17Clicked(object sender, EventArgs e)
     {
         MakeMove(6);
         UpdateUI();
+        HandleGameStatusUI(CheckGameStatus());
     }
 
     private void Slot21Clicked(object sender, EventArgs e)
     {
         MakeMove(0);
         UpdateUI();
+        HandleGameStatusUI(CheckGameStatus());
     }
 
     private void Slot22Clicked(object sender, EventArgs e)
     {
         MakeMove(1);
         UpdateUI();
+        HandleGameStatusUI(CheckGameStatus());
     }
 
     private void Slot23Clicked(object sender, EventArgs e)
     {
         MakeMove(2);
         UpdateUI();
+        HandleGameStatusUI(CheckGameStatus());
     }
 
     private void Slot24Clicked(object sender, EventArgs e)
     {
         MakeMove(3);
         UpdateUI();
+        HandleGameStatusUI(CheckGameStatus());
     }
 
     private void Slot25Clicked(object sender, EventArgs e)
     {
         MakeMove(4);
         UpdateUI();
+        HandleGameStatusUI(CheckGameStatus());
     }
 
     private void Slot26Clicked(object sender, EventArgs e)
     {
         MakeMove(5);
         UpdateUI();
+        HandleGameStatusUI(CheckGameStatus());
     }
 
     private void Slot27Clicked(object sender, EventArgs e)
     {
         MakeMove(6);
         UpdateUI();
+        HandleGameStatusUI(CheckGameStatus());
     }
 
     private void Slot31Clicked(object sender, EventArgs e)
     {
         MakeMove(0);
         UpdateUI();
+        HandleGameStatusUI(CheckGameStatus());
     }
 
     private void Slot32Clicked(object sender, EventArgs e)
     {
         MakeMove(1);
         UpdateUI();
+        HandleGameStatusUI(CheckGameStatus());
     }
 
     private void Slot33Clicked(object sender, EventArgs e)
     {
         MakeMove(2);
         UpdateUI();
+        HandleGameStatusUI(CheckGameStatus());
     }
 
     private void Slot34Clicked(object sender, EventArgs e)
     {
         MakeMove(3);
         UpdateUI();
+        HandleGameStatusUI(CheckGameStatus());
     }
 
     private void Slot35Clicked(object sender, EventArgs e)
     {
         MakeMove(4);
         UpdateUI();
+        HandleGameStatusUI(CheckGameStatus());
     }
 
     private void Slot36Clicked(object sender, EventArgs e)
     {
         MakeMove(5);
         UpdateUI();
+        HandleGameStatusUI(CheckGameStatus());
     }
 
     private void Slot37Clicked(object sender, EventArgs e)
     {
         MakeMove(6);
         UpdateUI();
+        HandleGameStatusUI(CheckGameStatus());
     }
 
     private void Slot41Clicked(object sender, EventArgs e)
     {
         MakeMove(0);
         UpdateUI();
+        HandleGameStatusUI(CheckGameStatus());
     }
 
     private void Slot42Clicked(object sender, EventArgs e)
     {
         MakeMove(1);
         UpdateUI();
+        HandleGameStatusUI(CheckGameStatus());
     }
 
     private void Slot43Clicked(object sender, EventArgs e)
     {
         MakeMove(2);
         UpdateUI();
+        HandleGameStatusUI(CheckGameStatus());
     }
 
     private void Slot44Clicked(object sender, EventArgs e)
@@ -425,110 +456,125 @@ public partial class ConnectFourPage : ContentPage
     {
         MakeMove(4);
         UpdateUI();
+        HandleGameStatusUI(CheckGameStatus());
     }
 
     private void Slot46Clicked(object sender, EventArgs e)
     {
         MakeMove(5);
         UpdateUI();
+        HandleGameStatusUI(CheckGameStatus());
     }
 
     private void Slot47Clicked(object sender, EventArgs e)
     {
         MakeMove(6);
         UpdateUI();
+        HandleGameStatusUI(CheckGameStatus());
     }
 
     private void Slot51Clicked(object sender, EventArgs e)
     {
         MakeMove(0);
         UpdateUI();
+        HandleGameStatusUI(CheckGameStatus());
     }
 
     private void Slot52Clicked(object sender, EventArgs e)
     {
         MakeMove(1);
         UpdateUI();
+        HandleGameStatusUI(CheckGameStatus());
     }
 
     private void Slot53Clicked(object sender, EventArgs e)
     {
         MakeMove(2);
         UpdateUI();
+        HandleGameStatusUI(CheckGameStatus());
     }
 
     private void Slot54Clicked(object sender, EventArgs e)
     {
         MakeMove(3);
         UpdateUI();
+        HandleGameStatusUI(CheckGameStatus());
     }
 
     private void Slot55Clicked(object sender, EventArgs e)
     {
         MakeMove(4);
         UpdateUI();
+        HandleGameStatusUI(CheckGameStatus());
     }
 
     private void Slot56Clicked(object sender, EventArgs e)
     {
         MakeMove(5);
         UpdateUI();
+        HandleGameStatusUI(CheckGameStatus());
     }
 
     private void Slot57Clicked(object sender, EventArgs e)
     {
         MakeMove(6);
         UpdateUI();
+        HandleGameStatusUI(CheckGameStatus());
     }
 
     private void Slot61Clicked(object sender, EventArgs e)
     {
         MakeMove(0);
         UpdateUI();
+        HandleGameStatusUI(CheckGameStatus());
     }
 
     private void Slot62Clicked(object sender, EventArgs e)
     {
         MakeMove(1);
         UpdateUI();
+        HandleGameStatusUI(CheckGameStatus());
     }
 
     private void Slot63Clicked(object sender, EventArgs e)
     {
         MakeMove(2);
         UpdateUI();
+        HandleGameStatusUI(CheckGameStatus());
     }
 
     private void Slot64Clicked(object sender, EventArgs e)
     {
         MakeMove(3);
         UpdateUI();
+        HandleGameStatusUI(CheckGameStatus());
     }
 
     private void Slot65Clicked(object sender, EventArgs e)
     {
         MakeMove(4);
         UpdateUI();
+        HandleGameStatusUI(CheckGameStatus());
     }
 
     private void Slot66Clicked(object sender, EventArgs e)
     {
         MakeMove(5);
         UpdateUI();
+        HandleGameStatusUI(CheckGameStatus());
     }
 
     private void Slot67Clicked(object sender, EventArgs e)
     {
         MakeMove(6);
         UpdateUI();
+        HandleGameStatusUI(CheckGameStatus());
     }
-    #endregion Slots Clicked Event Handlers
+    #endregion 
 
     /// <summary>
     /// reloads the ConnectFourPage by pushing new one to the stack then removing the old page
     /// </summary>
-    /// <param name="sender"></param>
-    /// <param name="e"></param>
     private async void OnNewGameClicked(object sender, EventArgs e)
     {
         await Navigation.PushAsync(new ConnectFourPage());
