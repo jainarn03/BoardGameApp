@@ -9,6 +9,7 @@
           RowDefinitions=".7*,3*,.2*"
           ColumnDefinitions=".3*,*,*">
 
+        <!--Title Image-->
         <Image 
             Grid.Row="0" Grid.ColumnSpan="3"
             Source="title4.png"
@@ -34,6 +35,19 @@
                 </DataTemplate>
             </CarouselView.ItemTemplate>
         </CarouselView>
+        
+        <!--Cloud Art Image-->
+        <!--may be turned into settings/more options image button later-->
+        <Image
+            x:Name="CloudImage"
+            Grid.Row="2" Grid.ColumnSpan="3" 
+            Source="cloud_art.png"
+            Aspect="AspectFit"
+            VerticalOptions="End"
+            WidthRequest="2000"
+            HeightRequest="100"
+            Margin="24">
+        </Image>
         
     </Grid>
 
