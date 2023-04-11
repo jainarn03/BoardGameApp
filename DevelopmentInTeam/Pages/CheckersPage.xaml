@@ -5,27 +5,10 @@
              Shell.NavBarIsVisible="False">
 
     <Grid RowDefinitions="150,*,200">
-        <Grid Grid.Row="1" Grid.ColumnSpan="2">
-            <Grid.RowDefinitions>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
+        <Grid Grid.Row="1" Grid.ColumnSpan="2"
+             RowDefinitions="*,*,*,*,*,*,*,*"
+             ColumnDefinitions="*,*,*,*,*,*,*,*">
+
             <!-- ROW 1 -->
             <Grid Grid.Row="0" Grid.Column="0" Background="{StaticResource LightBrown}"></Grid>
             <Grid Grid.Row="0" Grid.Column="1" Background="{StaticResource DarkBrown}"></Grid>
