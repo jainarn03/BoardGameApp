@@ -33,8 +33,6 @@ public partial class MainPage : ContentPage
         BindingContext = this;
     }
 
-
-
     /// <summary>
     /// contents of the carousel view
     /// </summary>

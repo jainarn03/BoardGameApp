@@ -5,10 +5,73 @@
              Title="Connect Four">
     
     <!--MAIN GRID-->
-    <Grid BackgroundColor="#333333" 
-          RowDefinitions="*,*,*"
-          ColumnDefinitions="*,*,*">
+    <Grid BackgroundColor="#333333" RowDefinitions=".7*,5*,*" ColumnDefinitions="*,1.5*,*">
 
+        <!--SUB GRID FOR THE BOARD-->
+        <Grid Grid.Row="1" Grid.Column="1" RowDefinitions="*,*,*,*,*,*" ColumnDefinitions="*,*,*,*,*,*,*" BackgroundColor="LightGrey">
+            
+            <!--ROW 1-->
+            <Grid Grid.Row="0" Grid.Column="0" Background="#D3D3D3"></Grid>
+            <Grid Grid.Row="0" Grid.Column="1" Background="#a9a9a9"></Grid>
+            <Grid Grid.Row="0" Grid.Column="2" Background="#D3D3D3"></Grid>
+            <Grid Grid.Row="0" Grid.Column="3" Background="#a9a9a9"></Grid>
+            <Grid Grid.Row="0" Grid.Column="4" Background="#D3D3D3"></Grid>
+            <Grid Grid.Row="0" Grid.Column="5" Background="#a9a9a9"></Grid>
+            <Grid Grid.Row="0" Grid.Column="6" Background="#D3D3D3"></Grid>
+
+            <!--ROW 2-->
+            <Grid Grid.Row="1" Grid.Column="0" Background="#a9a9a9"></Grid>
+            <Grid Grid.Row="1" Grid.Column="1" Background="#D3D3D3"></Grid>
+            <Grid Grid.Row="1" Grid.Column="2" Background="#a9a9a9"></Grid>
+            <Grid Grid.Row="1" Grid.Column="3" Background="#D3D3D3"></Grid>
+            <Grid Grid.Row="1" Grid.Column="4" Background="#a9a9a9"></Grid>
+            <Grid Grid.Row="1" Grid.Column="5" Background="#D3D3D3"></Grid>
+            <Grid Grid.Row="1" Grid.Column="6" Background="#a9a9a9"></Grid>
+
+            <!--ROW 3-->
+            <Grid Grid.Row="2" Grid.Column="0" Background="#D3D3D3"></Grid>
+            <Grid Grid.Row="2" Grid.Column="1" Background="#a9a9a9"></Grid>
+            <Grid Grid.Row="2" Grid.Column="2" Background="#D3D3D3"></Grid>
+            <Grid Grid.Row="2" Grid.Column="3" Background="#a9a9a9"></Grid>
+            <Grid Grid.Row="2" Grid.Column="4" Background="#D3D3D3"></Grid>
+            <Grid Grid.Row="2" Grid.Column="5" Background="#a9a9a9"></Grid>
+            <Grid Grid.Row="2" Grid.Column="6" Background="#D3D3D3"></Grid>
+
+            <!--ROW 4-->
+            <Grid Grid.Row="3" Grid.Column="0" Background="#a9a9a9"></Grid>
+            <Grid Grid.Row="3" Grid.Column="1" Background="#D3D3D3"></Grid>
+            <Grid Grid.Row="3" Grid.Column="2" Background="#a9a9a9"></Grid>
+            <Grid Grid.Row="3" Grid.Column="3" Background="#D3D3D3"></Grid>
+            <Grid Grid.Row="3" Grid.Column="4" Background="#a9a9a9"></Grid>
+            <Grid Grid.Row="3" Grid.Column="5" Background="#D3D3D3"></Grid>
+            <Grid Grid.Row="3" Grid.Column="6" Background="#a9a9a9"></Grid>
+
+            <!--ROW 5-->
+            <Grid Grid.Row="4" Grid.Column="0" Background="#D3D3D3"></Grid>
+            <Grid Grid.Row="4" Grid.Column="1" Background="#a9a9a9"></Grid>
+            <Grid Grid.Row="4" Grid.Column="2" Background="#D3D3D3"></Grid>
+            <Grid Grid.Row="4" Grid.Column="3" Background="#a9a9a9"></Grid>
+            <Grid Grid.Row="4" Grid.Column="4" Background="#D3D3D3"></Grid>
+            <Grid Grid.Row="4" Grid.Column="5" Background="#a9a9a9"></Grid>
+            <Grid Grid.Row="4" Grid.Column="6" Background="#D3D3D3"></Grid>
+
+            <!-- ROW 6 -->
+            <Grid Grid.Row="5" Grid.Column="0" Background="#a9a9a9"></Grid>
+            <Grid Grid.Row="5" Grid.Column="1" Background="#D3D3D3"></Grid>
+            <Grid Grid.Row="5" Grid.Column="2" Background="#a9a9a9"></Grid>
+            <Grid Grid.Row="5" Grid.Column="3" Background="#D3D3D3"></Grid>
+            <Grid Grid.Row="5" Grid.Column="4" Background="#a9a9a9"></Grid>
+            <Grid Grid.Row="5" Grid.Column="5" Background="#D3D3D3"></Grid>
+            <Grid Grid.Row="5" Grid.Column="6" Background="#a9a9a9"></Grid>
+            
+            <!--IMAGE HERE-->
+            <!--<Image Source="connectfourboard.png" Aspect="Fill" Grid.RowSpan="6" Grid.ColumnSpan="7"/>-->
+            
+            
+        </Grid>
+
+
+        <Button x:Name="NewGameButton" Grid.Row="2" Grid.Column="1" Text="Start New Game" HorizontalOptions="Center" VerticalOptions="CenterAndExpand"  Clicked="OnNewGameClicked"/>
     </Grid>
     
 </ContentPage>
