@@ -3,7 +3,7 @@ namespace DevelopmentInTeam.Pages;
 public partial class ConnectFourPage : ContentPage
 {
     // creating a 2D array for the board with 6 rows and 7 columns
-    int[,] gameBoard = new int[6, 7];
+    int[,] _gameBoard = new int[6, 7];
 
     public ConnectFourPage()
     {
@@ -15,7 +15,7 @@ public partial class ConnectFourPage : ContentPage
     }
 
     /// <summary>
-    /// Initializes the board, iterating through each element of gameBoard and setting its value to 0
+    /// Initializes the board, iterating through each element of gameBoard and setting its value to 0.
     /// </summary>
     public void InitializeBoard()
     {
@@ -23,16 +23,16 @@ public partial class ConnectFourPage : ContentPage
         {
             for (int col = 0; col < 7; col++)
             {
-                gameBoard[row, col] = 0;
+                _gameBoard[row, col] = 0;
             }
         }
     }
 
     /// <summary>
-    /// Used to determine which player's turn it is to move
-    /// iterates through each element of the gameBoard and counts the number of non-zero elements
-    /// if the number is even (remainder of 0) then it is Player 1's turn to move
-    /// if the number is odd (remainder not 0) then it is Player 2's turn to move
+    /// Used to determine which player's turn it is to move.
+    /// Iterates through each element of the gameBoard and counts the number of non-zero elements.
+    /// If the number is even (remainder of 0) then it is Player 1's turn to move,
+    /// if the number is odd (remainder not 0) then it is Player 2's turn to move.
     /// </summary>
     /// <returns>true if Player 1's turn, false if Player 2's turn</returns>
     public bool IsPlayer1Turn()
@@ -43,13 +43,43 @@ public partial class ConnectFourPage : ContentPage
         {
             for (int row = 0; row < 6; row++)
             {
-                if (gameBoard[row, col] != 0)
+                if (_gameBoard[row, col] != 0)
                 {
                     count++;
                 }
             }
         }
         return count % 2 == 0;
+    }
+
+    /// <summary>
+    /// Main method for making a move and updating the board if valid move was made.
+    /// Takes whichever column was selected, checks if it is full or not, finds lowest empty slot, then
+    /// updates the board with the new slot claimed by the player with the current turn.
+    /// </summary>
+    /// <param name="col">selected column</param>
+    /// <returns>bool indicating if the move was successful or not</returns>
+    public bool MakeMove(int col)
+    {
+        // checking if the selected column is full
+        if (_gameBoard[5, col] != 0)
+        {
+            return false;
+        }
+
+        // applying gravity: finding the lowest empty slot
+        // searching the rows from the bottom up, will stop once a row for the selected column is empty.
+        int row = 0;
+        while (_gameBoard[row, col] != 0) 
+        {
+            row++;
+        }
+
+        // when valid slot is found:
+        int slotClaimed = IsPlayer1Turn() ? 1 : 2; // sets the value of the slot to the player with the current turn
+        _gameBoard[row, col] = slotClaimed; // updates the board with the new slot claimed
+
+        return true; // returns true as move has succeeded
     }
 
     /// <summary>
