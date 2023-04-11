@@ -2,43 +2,58 @@ namespace DevelopmentInTeam.Pages;
 
 public partial class ConnectFourPage : ContentPage
 {
-	public ConnectFourPage()
-	{
-		InitializeComponent();
+    // creating a 2D array for the board with 6 rows and 7 columns
+    int[,] gameBoard = new int[6, 7];
 
-            // START OF GAME LOGIC HERE TEMPORARILY, will think about separation of concerns later.
+    public ConnectFourPage()
+    {
+        InitializeComponent();
 
-        // creating a 2D array for the board with 6 rows and 7 columns
-        int[,] gameBoard = new int[6, 7];
+        // ***** START OF GAME LOGIC HERE TEMPORARILY ***** will think about separation of concerns later.
 
-        // initializing the board, iterating through each element of gameBoard and setting its value to 0
-        for (int i = 0; i < 6; i++)
+        InitializeBoard(); // board initialized and all slots are empty
+    }
+
+    /// <summary>
+    /// Initializes the board, iterating through each element of gameBoard and setting its value to 0
+    /// </summary>
+    public void InitializeBoard()
+    {
+        for (int row = 0; row < 6; row++)
         {
-            for (int j = 0; j < 7; j++)
+            for (int col = 0; col < 7; col++)
             {
-                gameBoard[i, j] = 0;
+                gameBoard[row, col] = 0;
             }
         }
-
-
-
-
     }
 
     /// <summary>
-    /// reloads the ConnectFourPage by pushing new one to the stack then removing the old page
-    /// 
+    /// Used to determine which player's turn it is to move
+    /// iterates through each element of the gameBoard and counts the number of non-zero elements
+    /// if the number is even (remainder of 0) then it is Player 1's turn to move
+    /// if the number is odd (remainder not 0) then it is Player 2's turn to move
     /// </summary>
-    /// <param name="sender"></param>
-    /// <param name="e"></param>
-    private async void OnNewGameClicked(object sender, EventArgs e)
+    /// <returns>true if Player 1's turn, false if Player 2's turn</returns>
+    public bool IsPlayer1Turn()
     {
-        await Navigation.PushAsync(new ConnectFourPage());
-        Navigation.RemovePage(this);
+        int count = 0;
+        
+        for (int col = 0; col < 7; col++)
+        {
+            for (int row = 0; row < 6; row++)
+            {
+                if (gameBoard[row, col] != 0)
+                {
+                    count++;
+                }
+            }
+        }
+        return count % 2 == 0;
     }
 
     /// <summary>
-    /// test button for seeing properties of the slots may be changed
+    /// test button for whatever purposes
     /// </summary>
     private void OnTestClicked(object sender, EventArgs e)
     {
@@ -51,6 +66,7 @@ public partial class ConnectFourPage : ContentPage
         Slot41.Background = Color.FromArgb("89CFF0");
         Slot42.Background = Color.FromArgb("5440d4");
 
+        //DisplayAlert(IsPlayer1Turn().ToString(), "s", "ok");
     }
 
     #region
@@ -263,6 +279,16 @@ public partial class ConnectFourPage : ContentPage
     {
 
     }
-    #endregion Slots Clicked Event Handler
+    #endregion Slots Clicked Event Handlers
 
+    /// <summary>
+    /// reloads the ConnectFourPage by pushing new one to the stack then removing the old page
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    private async void OnNewGameClicked(object sender, EventArgs e)
+    {
+        await Navigation.PushAsync(new ConnectFourPage());
+        Navigation.RemovePage(this);
+    }
 }
