@@ -3,55 +3,56 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="DevelopmentInTeam.Pages.WordlePage"
              Shell.NavBarIsVisible="False">
-    
 
-        <ContentPage.Resources>
-            <Style  TargetType="Entry">
-                <Setter Property="MaxLength" Value="1" />
-                <Setter Property="FontSize" Value="Large" />
-                <Setter Property="Placeholder" Value="Type a letter" />
-                <Setter Property="BackgroundColor" Value="LightGreen" />
-            </Style>
-        </ContentPage.Resources>
-        <Grid RowDefinitions="*,4*,*" ColumnDefinitions="*">
-            <Label Grid.Row="0" Grid.Column="0" Text="Wordle" HorizontalOptions="Center" FontSize="40" TextColor="Purple"/>
-            <Grid RowDefinitions="*,*,*,*,*,*" ColumnDefinitions="*,*,*,*,*" Grid.Row="1" Grid.Column="0" BackgroundColor="LightBlue" Grid.ColumnSpan="2">
-                <Entry x:Name="singleLetterEntry1"    Grid.Row="0" Grid.Column="0" />
-                <Entry x:Name="singleLetterEntry2"    Grid.Row="0" Grid.Column="1" />
-                <Entry x:Name="singleLetterEntry3"    Grid.Row="0" Grid.Column="2" />
-                <Entry x:Name="singleLetterEntry4"    Grid.Row="0" Grid.Column="3" />
-                <Entry x:Name="singleLetterEntry5"    Grid.Row="0" Grid.Column="4" />
-                <Entry x:Name="singleLetterEntry6"    Grid.Row="0" Grid.Column="5" />
-                <Entry x:Name="singleLetterEntry7"    Grid.Row="1" Grid.Column="0" />
-                <Entry x:Name="singleLetterEntry8"    Grid.Row="1" Grid.Column="1" />
-                <Entry x:Name="singleLetterEntry9"    Grid.Row="1" Grid.Column="2" />
-                <Entry x:Name="singleLetterEntry10"    Grid.Row="1" Grid.Column="3" />
-                <Entry x:Name="singleLetterEntry11"    Grid.Row="1" Grid.Column="4" />
-                <Entry x:Name="singleLetterEntry12"    Grid.Row="1" Grid.Column="5" />
-                <Entry x:Name="singleLetterEntry13"    Grid.Row="2" Grid.Column="0" />
-                <Entry x:Name="singleLetterEntry14"    Grid.Row="2" Grid.Column="1" />
-                <Entry x:Name="singleLetterEntry15"    Grid.Row="2" Grid.Column="2"/>
-                <Entry x:Name="singleLetterEntry16"    Grid.Row="2" Grid.Column="3"/>
-                <Entry x:Name="singleLetterEntry17"    Grid.Row="2" Grid.Column="4"/>
-                <Entry x:Name="singleLetterEntry18"    Grid.Row="2" Grid.Column="5"/>
-                <Entry x:Name="singleLetterEntry19"    Grid.Row="3" Grid.Column="0" />
-                <Entry x:Name="singleLetterEntry20"    Grid.Row="3" Grid.Column="1" />
-                <Entry x:Name="singleLetterEntry21"    Grid.Row="3" Grid.Column="2"/>
-                <Entry x:Name="singleLetterEntry22"    Grid.Row="3" Grid.Column="3"/>
-                <Entry x:Name="singleLetterEntry23"    Grid.Row="3" Grid.Column="4"/>
-                <Entry x:Name="singleLetterEntry24"    Grid.Row="3" Grid.Column="5"/>
-                <Entry x:Name="singleLetterEntry25"    Grid.Row="4" Grid.Column="0" />
-                <Entry x:Name="singleLetterEntry26"    Grid.Row="4" Grid.Column="1" />
-                <Entry x:Name="singleLetterEntry27"    Grid.Row="4" Grid.Column="2"/>
-                <Entry x:Name="singleLetterEntry28"    Grid.Row="4" Grid.Column="3"/>
-                <Entry x:Name="singleLetterEntry29"    Grid.Row="4" Grid.Column="4"/>
-                <Entry x:Name="singleLetterEntry30"    Grid.Row="4" Grid.Column="5"/>
-                <Entry x:Name="singleLetterEntry31"    Grid.Row="5" Grid.Column="0" />
-                <Entry x:Name="singleLetterEntry32"    Grid.Row="5" Grid.Column="1" />
-                <Entry x:Name="singleLetterEntry33"    Grid.Row="5" Grid.Column="2" />
-                <Entry x:Name="singleLetterEntry34"    Grid.Row="5" Grid.Column="3" />
-                <Entry x:Name="singleLetterEntry35"    Grid.Row="5" Grid.Column="4" />
-                <Entry x:Name="singleLetterEntry36"    Grid.Row="5" Grid.Column="5" />
-            </Grid>
+
+    <ContentPage.Resources>
+        <Style  TargetType="Entry">
+            <Setter Property="MaxLength" Value="1" />
+            <Setter Property="FontSize" Value="Large" />
+            <Setter Property="Placeholder" Value="Type a letter" />
+            <Setter Property="BackgroundColor" Value="LightGreen" />
+            <Setter Property="Keyboard" Value="Text"/>
+        </Style>
+    </ContentPage.Resources>
+    <Grid RowDefinitions="*,4*,*" ColumnDefinitions="*">
+        <Label Grid.Row="0" Grid.Column="0" Text="Wordle" HorizontalOptions="Center" FontSize="40" TextColor="Purple"/>
+        <Grid RowDefinitions="*,*,*,*,*,*" ColumnDefinitions="*,*,*,*,*" Grid.Row="1" Grid.Column="0" BackgroundColor="LightBlue" Grid.ColumnSpan="2">
+            <Entry x:Name="singleLetterEntry1"  TextChanged="LetterEntry1" Grid.Row="0" Grid.Column="0" />
+            <Entry x:Name="singleLetterEntry2"  TextChanged="LetterEntry2"  Grid.Row="0" Grid.Column="1" />
+            <Entry x:Name="singleLetterEntry3"  TextChanged="LetterEntry3"  Grid.Row="0" Grid.Column="2" />
+            <Entry x:Name="singleLetterEntry4"   TextChanged="LetterEntry4" Grid.Row="0" Grid.Column="3" />
+            <Entry x:Name="singleLetterEntry5"  TextChanged="LetterEntry5"  Grid.Row="0" Grid.Column="4" />
+            <Entry x:Name="singleLetterEntry6"   TextChanged="LetterEntry6" Grid.Row="0" Grid.Column="5" />
+            <Entry x:Name="singleLetterEntry7"  TextChanged="LetterEntry7"  Grid.Row="1" Grid.Column="0" />
+            <Entry x:Name="singleLetterEntry8"   TextChanged="LetterEntry8" Grid.Row="1" Grid.Column="1" />
+            <Entry x:Name="singleLetterEntry9"   TextChanged="LetterEntry9" Grid.Row="1" Grid.Column="2" />
+            <Entry x:Name="singleLetterEntry10"  TextChanged="LetterEntry10"  Grid.Row="1" Grid.Column="3" />
+            <Entry x:Name="singleLetterEntry11"  TextChanged="LetterEntry11"  Grid.Row="1" Grid.Column="4" />
+            <Entry x:Name="singleLetterEntry12"  TextChanged="LetterEntry12"  Grid.Row="1" Grid.Column="5" />
+            <Entry x:Name="singleLetterEntry13"  TextChanged="LetterEntry13"  Grid.Row="2" Grid.Column="0" />
+            <Entry x:Name="singleLetterEntry14"  TextChanged="LetterEntry14"  Grid.Row="2" Grid.Column="1" />
+            <Entry x:Name="singleLetterEntry15"  TextChanged="LetterEntry15"  Grid.Row="2" Grid.Column="2"/>
+            <Entry x:Name="singleLetterEntry16" TextChanged="LetterEntry16"   Grid.Row="2" Grid.Column="3"/>
+            <Entry x:Name="singleLetterEntry17"  TextChanged="LetterEntry17"  Grid.Row="2" Grid.Column="4"/>
+            <Entry x:Name="singleLetterEntry18"   TextChanged="LetterEntry18" Grid.Row="2" Grid.Column="5"/>
+            <Entry x:Name="singleLetterEntry19"   TextChanged="LetterEntry19" Grid.Row="3" Grid.Column="0" />
+            <Entry x:Name="singleLetterEntry20"   TextChanged="LetterEntry20" Grid.Row="3" Grid.Column="1" />
+            <Entry x:Name="singleLetterEntry21"  TextChanged="LetterEntry21"  Grid.Row="3" Grid.Column="2"/>
+            <Entry x:Name="singleLetterEntry22" TextChanged="LetterEntry22"   Grid.Row="3" Grid.Column="3"/>
+            <Entry x:Name="singleLetterEntry23"   TextChanged="LetterEntry23" Grid.Row="3" Grid.Column="4"/>
+            <Entry x:Name="singleLetterEntry24"  TextChanged="LetterEntry24"  Grid.Row="3" Grid.Column="5"/>
+            <Entry x:Name="singleLetterEntry25" TextChanged="LetterEntry25"   Grid.Row="4" Grid.Column="0" />
+            <Entry x:Name="singleLetterEntry26"  TextChanged="LetterEntry26"  Grid.Row="4" Grid.Column="1" />
+            <Entry x:Name="singleLetterEntry27"  TextChanged="LetterEntry27"  Grid.Row="4" Grid.Column="2"/>
+            <Entry x:Name="singleLetterEntry28"  TextChanged="LetterEntry28"  Grid.Row="4" Grid.Column="3"/>
+            <Entry x:Name="singleLetterEntry29"  TextChanged="LetterEntry29"  Grid.Row="4" Grid.Column="4"/>
+            <Entry x:Name="singleLetterEntry30" TextChanged="LetterEntry30"   Grid.Row="4" Grid.Column="5"/>
+            <Entry x:Name="singleLetterEntry31" TextChanged="LetterEntry31"   Grid.Row="5" Grid.Column="0" />
+            <Entry x:Name="singleLetterEntry32"  TextChanged="LetterEntry32"  Grid.Row="5" Grid.Column="1" />
+            <Entry x:Name="singleLetterEntry33"  TextChanged="LetterEntry33"  Grid.Row="5" Grid.Column="2" />
+            <Entry x:Name="singleLetterEntry34"  TextChanged="LetterEntry34"  Grid.Row="5" Grid.Column="3" />
+            <Entry x:Name="singleLetterEntry35" TextChanged="LetterEntry35"   Grid.Row="5" Grid.Column="4" />
+            <Entry x:Name="singleLetterEntry36" TextChanged="LetterEntry36"   Grid.Row="5" Grid.Column="5" />
         </Grid>
-    </ContentPage>
+    </Grid>
+</ContentPage>
