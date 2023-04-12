@@ -26,7 +26,30 @@ public partial class CheckersPage : ContentPage
         {
             for (int col = 0; col < 8; col++)
             {
-                _gameBoard[row, col] = 0;
+                if ((row + col) % 2 == 0 && row < 3)
+                {
+                    _gameBoard[row, col] = 2; // black piece
+                }
+                else if ((row + col) % 2 == 0 && row > 4)
+                {
+                    _gameBoard[row, col] = 1; // red piece
+                }
+                else //empty square
+                {
+                    _gameBoard[row, col] = 0;
+                }
+
+                // Initialize red king pieces
+                if (_gameBoard[row, col] == 1 && row == 0)
+                {
+                    _gameBoard[row, col] = 3;
+                }
+
+                // Initialize black king pieces
+                if (_gameBoard[row, col] == 2 && row == 7)
+                {
+                    _gameBoard[row, col] = 4;
+                }
             }
         }
     }
@@ -35,6 +58,7 @@ public partial class CheckersPage : ContentPage
     //red peice image button event handler
     private void square_B8_red(object sender, EventArgs e)
     {
+        _gameBoard[0, 1] = 1;
     }
     private void square_D8_red(object sender, EventArgs e)
     {
