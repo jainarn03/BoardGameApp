@@ -189,16 +189,16 @@ public partial class ConnectFourPage : ContentPage
                 // uses the Element.FindByName(string) method to find the button name of the slot (needed in changing its background color property)
                 // docu https://learn.microsoft.com/en-us/dotnet/api/microsoft.maui.controls.element.findbyname?view=net-maui-7.0
                 // discovered on https://stackoverflow.com/questions/74344580/get-the-name-of-a-element-net-maui-xamarin-forms
-                var button = (Button)this.FindByName(buttonName);  
+                var button = (Button)this.FindByName(buttonName);
 
                 // changes the slot's color with respect to the player
-                if (_gameBoard[row, col] == 1)
+                if (_gameBoard[row, col] == 1) 
                 {
-                    button.Background = Color.FromArgb("5440d4"); 
+                    button.Background = Color.FromArgb("ce3b28"); // dark color
                 }
                 else if (_gameBoard[row, col] == 2)
                 {
-                    button.Background = Color.FromArgb("89CFF0");
+                    button.Background = Color.FromArgb("2B5FC7"); // light color
                 }
             }
         }
