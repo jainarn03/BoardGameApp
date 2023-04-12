@@ -6,7 +6,7 @@
              Shell.NavBarIsVisible="False">
     
     <!--MAIN GRID-->
-    <Grid BackgroundColor="#333333" RowDefinitions=".7*,430,*" ColumnDefinitions="*,500,*">
+    <Grid BackgroundColor="#333333" RowDefinitions=".7*,400,*" ColumnDefinitions="*,470,*">
         
         <!--TEST BUTTON-->
         <!-- <Button x:Name="TestButton" Grid.Row="1" Grid.Column="0" Text="Test Button" HorizontalOptions="Center" VerticalOptions="Center"  Clicked="OnTestClicked"/>-->
