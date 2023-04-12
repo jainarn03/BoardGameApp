@@ -6,13 +6,13 @@
              Shell.NavBarIsVisible="False">
     
     <!--MAIN GRID-->
-    <Grid BackgroundColor="#333333" RowDefinitions=".7*,500,*" ColumnDefinitions="*,570,*">
+    <Grid BackgroundColor="#333333" RowDefinitions=".7*,430,*" ColumnDefinitions="*,500,*">
         
         <!--TEST BUTTON-->
-        <Button x:Name="TestButton" Grid.Row="1" Grid.Column="0" Text="Test Button" HorizontalOptions="Center" VerticalOptions="Center"  Clicked="OnTestClicked"/>
+        <!-- <Button x:Name="TestButton" Grid.Row="1" Grid.Column="0" Text="Test Button" HorizontalOptions="Center" VerticalOptions="Center"  Clicked="OnTestClicked"/>-->
         
         <!--SUB-GRID FOR THE BOARD-->
-        <Grid x:Name="ConnectFourBoard" Grid.Row="1" Grid.Column="1" RowDefinitions="*,*,*,*,*,*" ColumnDefinitions="*,*,*,*,*,*,*" BackgroundColor="FloralWhite" >
+        <Grid x:Name="ConnectFourBoard" Grid.Row="1" Grid.Column="1" RowDefinitions="*,*,*,*,*,*" ColumnDefinitions="*,*,*,*,*,*,*" BackgroundColor="#333333" >
 
             <!--light: #Edf0f9-->
             <!--dark:  ##E8ebf3-->
