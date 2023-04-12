@@ -1,4 +1,5 @@
 // Arnav's Page
+
 namespace DevelopmentInTeam.Pages;
 
 public partial class CheckersPage : ContentPage
@@ -31,138 +32,499 @@ public partial class CheckersPage : ContentPage
     }
 
     #region Image Buttons
-
-    // red peices image buttons
-    private void square_B8(object sender, EventArgs e)
+    //red peice image button event handler
+    private void square_B8_red(object sender, EventArgs e)
     {
     }
-    private void square_D8(object sender, EventArgs e)
+    private void square_D8_red(object sender, EventArgs e)
     {
-
     }
-    private void square_F8(object sender, EventArgs e)
+    private void square_F8_red(object sender, EventArgs e)
     {
-
     }
-    private void square_H8(object sender, EventArgs e)
+    private void square_H8_red(object sender, EventArgs e)
     {
-
     }
-    private void square_A7(object sender, EventArgs e)
+    private void square_A7_red(object sender, EventArgs e)
     {
-
     }
-    private void square_C7(object sender, EventArgs e)
+    private void square_C7_red(object sender, EventArgs e)
     {
-
     }
-    private void square_E7(object sender, EventArgs e)
+    private void square_E7_red(object sender, EventArgs e)
     {
-
     }
-    private void square_G7(object sender, EventArgs e)
+    private void square_G7_red(object sender, EventArgs e)
     {
-
     }
-    private void square_B6(object sender, EventArgs e)
+    private void square_B6_red(object sender, EventArgs e)
     {
-
     }
-    private void square_D6(object sender, EventArgs e)
+    private void square_D6_red(object sender, EventArgs e)
     {
-
     }
-    private void square_F6(object sender, EventArgs e)
+    private void square_F6_red(object sender, EventArgs e)
     {
-
     }
-    private void square_H6(object sender, EventArgs e)
+    private void square_H6_red(object sender, EventArgs e)
     {
-
+    }
+    private void square_A5_red(object sender, EventArgs e)
+    {
+    }
+    private void square_C5_red(object sender, EventArgs e)
+    {
+    }
+    private void square_E5_red(object sender, EventArgs e)
+    {
+    }
+    private void square_G5_red(object sender, EventArgs e)
+    {
+    }
+    private void square_B4_red(object sender, EventArgs e)
+    {
+    }
+    private void square_D4_red(object sender, EventArgs e)
+    {
+    }
+    private void square_F4_red(object sender, EventArgs e)
+    {
+    }
+    private void square_H4_red(object sender, EventArgs e)
+    {
+    }
+    private void square_A3_red(object sender, EventArgs e)
+    {
+    }
+    private void square_C3_red(object sender, EventArgs e)
+    {
+    }
+    private void square_E3_red(object sender, EventArgs e)
+    {
+    }
+    private void square_G3_red(object sender, EventArgs e)
+    {
+    }
+    private void square_B2_red(object sender, EventArgs e)
+    {
+    }
+    private void square_D2_red(object sender, EventArgs e)
+    {
+    }
+    private void square_F2_red(object sender, EventArgs e)
+    {
+    }
+    private void square_H2_red(object sender, EventArgs e)
+    {
+    }
+    private void square_A1_red(object sender, EventArgs e)
+    {
+    }
+    private void square_C1_red(object sender, EventArgs e)
+    {
+    }
+    private void square_E1_red(object sender, EventArgs e)
+    {
+    }
+    private void square_G1_red(object sender, EventArgs e)
+    {
     }
 
-    //black peices image buttons
-    private void square_A3(object sender, EventArgs e)
-    {
 
+    //black peice image button event handler
+    private void square_B8_black(object sender, EventArgs e)
+    {
     }
-    private void square_C3(object sender, EventArgs e)
+    private void square_D8_black(object sender, EventArgs e)
     {
-
     }
-    private void square_E3(object sender, EventArgs e)
+    private void square_F8_black(object sender, EventArgs e)
     {
-
     }
-    private void square_G3(object sender, EventArgs e)
+    private void square_H8_black(object sender, EventArgs e)
     {
-
     }
-    private void square_B2(object sender, EventArgs e)
+    private void square_A7_black(object sender, EventArgs e)
     {
-
     }
-    private void square_D2(object sender, EventArgs e)
+    private void square_C7_black(object sender, EventArgs e)
     {
-
     }
-    private void square_F2(object sender, EventArgs e)
+    private void square_E7_black(object sender, EventArgs e)
     {
-
     }
-    private void square_H2(object sender, EventArgs e)
+    private void square_G7_black(object sender, EventArgs e)
     {
-
     }
-    private void square_A1(object sender, EventArgs e)
+    private void square_B6_black(object sender, EventArgs e)
     {
-
     }
-    private void square_C1(object sender, EventArgs e)
+    private void square_D6_black(object sender, EventArgs e)
     {
-
     }
-    private void square_E1(object sender, EventArgs e)
+    private void square_F6_black(object sender, EventArgs e)
     {
-
     }
-    private void square_G1(object sender, EventArgs e)
+    private void square_H6_black(object sender, EventArgs e)
     {
-
+    }
+    private void square_A5_black(object sender, EventArgs e)
+    {
+    }
+    private void square_C5_black(object sender, EventArgs e)
+    {
+    }
+    private void square_E5_black(object sender, EventArgs e)
+    {
+    }
+    private void square_G5_black(object sender, EventArgs e)
+    {
+    }
+    private void square_B4_black(object sender, EventArgs e)
+    {
+    }
+    private void square_D4_black(object sender, EventArgs e)
+    {
+    }
+    private void square_F4_black(object sender, EventArgs e)
+    {
+    }
+    private void square_H4_black(object sender, EventArgs e)
+    {
+    }
+    private void square_A3_black(object sender, EventArgs e)
+    {
+    }
+    private void square_C3_black(object sender, EventArgs e)
+    {
+    }
+    private void square_E3_black(object sender, EventArgs e)
+    {
+    }
+    private void square_G3_black(object sender, EventArgs e)
+    {
+    }
+    private void square_B2_black(object sender, EventArgs e)
+    {
+    }
+    private void square_D2_black(object sender, EventArgs e)
+    {
+    }
+    private void square_F2_black(object sender, EventArgs e)
+    {
+    }
+    private void square_H2_black(object sender, EventArgs e)
+    {
+    }
+    private void square_A1_black(object sender, EventArgs e)
+    {
+    }
+    private void square_C1_black(object sender, EventArgs e)
+    {
+    }
+    private void square_E1_black(object sender, EventArgs e)
+    {
+    }
+    private void square_G1_black(object sender, EventArgs e)
+    {
     }
 
-    //non image buttons
-    private void square_A5(object sender, EventArgs e)
-    {
 
+    //red King peice image button event handler
+    private void square_B8_redking(object sender, EventArgs e)
+    {
     }
-    private void square_C5(object sender, EventArgs e)
+    private void square_D8_redking(object sender, EventArgs e)
     {
-
     }
-    private void square_E5(object sender, EventArgs e)
+    private void square_F8_redking(object sender, EventArgs e)
     {
-
     }
-    private void square_G5(object sender, EventArgs e)
+    private void square_H8_redking(object sender, EventArgs e)
     {
-
     }
-    private void square_B4(object sender, EventArgs e)
+    private void square_A7_redking(object sender, EventArgs e)
     {
-
     }
-    private void square_D4(object sender, EventArgs e)
+    private void square_C7_redking(object sender, EventArgs e)
     {
-
     }
-    private void square_F4(object sender, EventArgs e)
+    private void square_E7_redking(object sender, EventArgs e)
     {
-
     }
-    private void square_H4(object sender, EventArgs e)
+    private void square_G7_redking(object sender, EventArgs e)
     {
+    }
+    private void square_B6_redking(object sender, EventArgs e)
+    {
+    }
+    private void square_D6_redking(object sender, EventArgs e)
+    {
+    }
+    private void square_F6_redking(object sender, EventArgs e)
+    {
+    }
+    private void square_H6_redking(object sender, EventArgs e)
+    {
+    }
+    private void square_A5_redking(object sender, EventArgs e)
+    {
+    }
+    private void square_C5_redking(object sender, EventArgs e)
+    {
+    }
+    private void square_E5_redking(object sender, EventArgs e)
+    {
+    }
+    private void square_G5_redking(object sender, EventArgs e)
+    {
+    }
+    private void square_B4_redking(object sender, EventArgs e)
+    {
+    }
+    private void square_D4_redking(object sender, EventArgs e)
+    {
+    }
+    private void square_F4_redking(object sender, EventArgs e)
+    {
+    }
+    private void square_H4_redking(object sender, EventArgs e)
+    {
+    }
+    private void square_A3_redking(object sender, EventArgs e)
+    {
+    }
+    private void square_C3_redking(object sender, EventArgs e)
+    {
+    }
+    private void square_E3_redking(object sender, EventArgs e)
+    {
+    }
+    private void square_G3_redking(object sender, EventArgs e)
+    {
+    }
+    private void square_B2_redking(object sender, EventArgs e)
+    {
+    }
+    private void square_D2_redking(object sender, EventArgs e)
+    {
+    }
+    private void square_F2_redking(object sender, EventArgs e)
+    {
+    }
+    private void square_H2_redking(object sender, EventArgs e)
+    {
+    }
+    private void square_A1_redking(object sender, EventArgs e)
+    {
+    }
+    private void square_C1_redking(object sender, EventArgs e)
+    {
+    }
+    private void square_E1_redking(object sender, EventArgs e)
+    {
+    }
+    private void square_G1_redking(object sender, EventArgs e)
+    {
+    }
 
+
+
+    //black King peice image button event handler
+    private void square_B8_blackking(object sender, EventArgs e)
+    {
+    }
+    private void square_D8_blackking(object sender, EventArgs e)
+    {
+    }
+    private void square_F8_blackking(object sender, EventArgs e)
+    {
+    }
+    private void square_H8_blackking(object sender, EventArgs e)
+    {
+    }
+    private void square_A7_blackking(object sender, EventArgs e)
+    {
+    }
+    private void square_C7_blackking(object sender, EventArgs e)
+    {
+    }
+    private void square_E7_blackking(object sender, EventArgs e)
+    {
+    }
+    private void square_G7_blackking(object sender, EventArgs e)
+    {
+    }
+    private void square_B6_blackking(object sender, EventArgs e)
+    {
+    }
+    private void square_D6_blackking(object sender, EventArgs e)
+    {
+    }
+    private void square_F6_blackking(object sender, EventArgs e)
+    {
+    }
+    private void square_H6_blackking(object sender, EventArgs e)
+    {
+    }
+    private void square_A5_blackking(object sender, EventArgs e)
+    {
+    }
+    private void square_C5_blackking(object sender, EventArgs e)
+    {
+    }
+    private void square_E5_blackking(object sender, EventArgs e)
+    {
+    }
+    private void square_G5_blackking(object sender, EventArgs e)
+    {
+    }
+    private void square_B4_blackking(object sender, EventArgs e)
+    {
+    }
+    private void square_D4_blackking(object sender, EventArgs e)
+    {
+    }
+    private void square_F4_blackking(object sender, EventArgs e)
+    {
+    }
+    private void square_H4_blackking(object sender, EventArgs e)
+    {
+    }
+    private void square_A3_blackking(object sender, EventArgs e)
+    {
+    }
+    private void square_C3_blackking(object sender, EventArgs e)
+    {
+    }
+    private void square_E3_blackking(object sender, EventArgs e)
+    {
+    }
+    private void square_G3_blackking(object sender, EventArgs e)
+    {
+    }
+    private void square_B2_blackking(object sender, EventArgs e)
+    {
+    }
+    private void square_D2_blackking(object sender, EventArgs e)
+    {
+    }
+    private void square_F2_blackking(object sender, EventArgs e)
+    {
+    }
+    private void square_H2_blackking(object sender, EventArgs e)
+    {
+    }
+    private void square_A1_blackking(object sender, EventArgs e)
+    {
+    }
+    private void square_C1_blackking(object sender, EventArgs e)
+    {
+    }
+    private void square_E1_blackking(object sender, EventArgs e)
+    {
+    }
+    private void square_G1_blackking(object sender, EventArgs e)
+    {
+    }
+
+
+    // green dot image button event handler
+    private void square_B8_greendot(object sender, EventArgs e)
+    {
+    }
+    private void square_D8_greendot(object sender, EventArgs e)
+    {
+    }
+    private void square_F8_greendot(object sender, EventArgs e)
+    {
+    }
+    private void square_H8_greendot(object sender, EventArgs e)
+    {
+    }
+    private void square_A7_greendot(object sender, EventArgs e)
+    {
+    }
+    private void square_C7_greendot(object sender, EventArgs e)
+    {
+    }
+    private void square_E7_greendot(object sender, EventArgs e)
+    {
+    }
+    private void square_G7_greendot(object sender, EventArgs e)
+    {
+    }
+    private void square_B6_greendot(object sender, EventArgs e)
+    {
+    }
+    private void square_D6_greendot(object sender, EventArgs e)
+    {
+    }
+    private void square_F6_greendot(object sender, EventArgs e)
+    {
+    }
+    private void square_H6_greendot(object sender, EventArgs e)
+    {
+    }
+    private void square_A5_greendot(object sender, EventArgs e)
+    {
+    }
+    private void square_C5_greendot(object sender, EventArgs e)
+    {
+    }
+    private void square_E5_greendot(object sender, EventArgs e)
+    {
+    }
+    private void square_G5_greendot(object sender, EventArgs e)
+    {
+    }
+    private void square_B4_greendot(object sender, EventArgs e)
+    {
+    }
+    private void square_D4_greendot(object sender, EventArgs e)
+    {
+    }
+    private void square_F4_greendot(object sender, EventArgs e)
+    {
+    }
+    private void square_H4_greendot(object sender, EventArgs e)
+    {
+    }
+    private void square_A3_greendot(object sender, EventArgs e)
+    {
+    }
+    private void square_C3_greendot(object sender, EventArgs e)
+    {
+    }
+    private void square_E3_greendot(object sender, EventArgs e)
+    {
+    }
+    private void square_G3_greendot(object sender, EventArgs e)
+    {
+    }
+    private void square_B2_greendot(object sender, EventArgs e)
+    {
+    }
+    private void square_D2_greendot(object sender, EventArgs e)
+    {
+    }
+    private void square_F2_greendot(object sender, EventArgs e)
+    {
+    }
+    private void square_H2_greendot(object sender, EventArgs e)
+    {
+    }
+    private void square_A1_greendot(object sender, EventArgs e)
+    {
+    }
+    private void square_C1_greendot(object sender, EventArgs e)
+    {
+    }
+    private void square_E1_greendot(object sender, EventArgs e)
+    {
+    }
+    private void square_G1_greendot(object sender, EventArgs e)
+    {
     }
     #endregion
 
