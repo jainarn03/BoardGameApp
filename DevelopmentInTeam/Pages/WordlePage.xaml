@@ -54,6 +54,9 @@
             <Entry x:Name="singleLetterEntry35" TextChanged="LetterEntry35"   Grid.Row="5" Grid.Column="4" />
             <Entry x:Name="singleLetterEntry36" TextChanged="LetterEntry36"   Grid.Row="5" Grid.Column="5" />
         </Grid>
-        <Button x:Name="Newapp" Text="Restart" Grid.Row="2" Margin="110,10,110,60" Clicked="Restartclick"/>
+        <Grid Grid.Row="2" ColumnDefinitions="*,*">
+        <Button x:Name="Newapp" Text="Restart" Grid.Row="2" Margin="11,10,11,60" Clicked="Restartclick" HorizontalOptions="Center"/>
+        <ImageButton Source="backspace.png" Grid.Column="1"/>
+        </Grid>
     </Grid>
 </ContentPage>

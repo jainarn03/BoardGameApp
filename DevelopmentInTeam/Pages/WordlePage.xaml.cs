@@ -2,7 +2,8 @@
 namespace DevelopmentInTeam.Pages;
 
 public partial class WordlePage : ContentPage
-{
+{    
+
     public WordlePage()
     {
         InitializeComponent();
@@ -17,6 +18,10 @@ public partial class WordlePage : ContentPage
 
         
     }
+
+    
+
+
     private void OnTextChanged(object sender, TextChangedEventArgs e)
     {
         // Check if the entered text contains non-letter characters
@@ -46,12 +51,9 @@ public partial class WordlePage : ContentPage
     }
     private void LetterEntry1(object sender, TextChangedEventArgs e)
     {
-        
+            
             OnTextChanged(sender, e);
-
-            check(singleLetterEntry1, singleLetterEntry2);
-
-        
+        check(singleLetterEntry1, singleLetterEntry2);
 
     }
     private void LetterEntry2(object sender, TextChangedEventArgs e)
