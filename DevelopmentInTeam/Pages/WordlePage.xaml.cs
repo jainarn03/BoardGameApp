@@ -2,25 +2,37 @@
 namespace DevelopmentInTeam.Pages;
 
 public partial class WordlePage : ContentPage
-{    
-
+{
     public WordlePage()
     {
         InitializeComponent();
     }
 
-    private void NextLetter(Entry disableCurrent, Entry input)
+    private void NextLetter(Entry CurrentEntry, Entry NextEntry)
     {
-      
-            disableCurrent.Unfocus();
-            input.IsEnabled = true;
-            input.Focus();
-            disableCurrent.IsEnabled = false;
 
-        
+        switch (CurrentEntry.StyleId)
+        {
+            case "singleLetterEntry5":
+                NextEntry.IsEnabled = true;
+                NextEntry.Focus();
+                CurrentEntry.IsEnabled = false;
+                
+                break;
+          
+           
+            default:
+                NextEntry.IsEnabled = true;
+                NextEntry.Focus();
+                CurrentEntry.IsEnabled = false;
+                
+                break;
+        }
     }
 
-    
+
+
+
 
 
     private void OnTextChanged(object sender, TextChangedEventArgs e)
@@ -301,7 +313,12 @@ public partial class WordlePage : ContentPage
             Navigation.RemovePage(this);
         }
 
-    private void OnClicked(object sender, EventArgs e)
+    private void OnBackspaceClicked(object sender, EventArgs e)
+    {
+
+    }
+
+    private void OnEnterClicked(object sender, EventArgs e)
     {
 
     }

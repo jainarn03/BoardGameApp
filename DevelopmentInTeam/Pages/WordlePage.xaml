@@ -12,6 +12,8 @@
             <Setter Property="BackgroundColor" Value="LightGreen" />
             <Setter Property="Keyboard" Value="Text"/>
             <Setter Property="IsEnabled" Value="False"/>
+            <Setter Property="HorizontalTextAlignment" Value="Center"/>
+            <Setter Property="VerticalTextAlignment" Value="End"/>
         </Style>
     </ContentPage.Resources>
     <Grid RowDefinitions="*,4*,*" ColumnDefinitions="*">
@@ -54,9 +56,10 @@
             <Entry x:Name="singleLetterEntry35" TextChanged="LetterEntry35"   Grid.Row="5" Grid.Column="4" />
             <Entry x:Name="singleLetterEntry36" TextChanged="LetterEntry36"   Grid.Row="5" Grid.Column="5" />
         </Grid>
-        <Grid Grid.Row="2" ColumnDefinitions="*,*">
+        <Grid Grid.Row="2" ColumnDefinitions="*,*,*">
         <Button x:Name="Newapp" Text="Restart" Grid.Row="2" Margin="11,10,11,60" Clicked="Restartclick" HorizontalOptions="Center"/>
-        <ImageButton Source="backspace.png" Grid.Column="1" Clicked="OnClicked"/>
+        <ImageButton Source="backspace.png" Grid.Column="1" Clicked="OnBackspaceClicked"/>
+        <Button x:Name="EnterButton" Text="Enter" Grid.Column="3" Margin="11,10,11,60" Clicked="OnEnterClicked"/>
         </Grid>
     </Grid>
 </ContentPage>

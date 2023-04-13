@@ -3,12 +3,34 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="DevelopmentInTeam.Pages.HangmanPage"
              Shell.NavBarIsVisible="False">
-
+    <ContentPage.Resources>
+        <Style  TargetType="Entry">
+            <Setter Property="MaxLength" Value="1" />
+            <Setter Property="FontSize" Value="Large" />
+            <Setter Property="BackgroundColor" Value="White" />
+            <Setter Property="Keyboard" Value="Text"/>
+            <Setter Property="IsEnabled" Value="True"/>
+            <Setter Property="HorizontalTextAlignment" Value="Center"/>
+            <Setter Property="VerticalTextAlignment" Value="Center"/>
+        </Style>
+    </ContentPage.Resources>
     <!--MAIN GRID-->
-    <Grid BackgroundColor="#333333" 
-          RowDefinitions="*,*,*"
-          ColumnDefinitions="*,*,*">
+    <Grid BackgroundColor="#333333" RowDefinitions="*,2*,0.5*,*" ColumnDefinitions="*">
+        <Label Text="Hangman" Grid.Row="0" FontSize="50" HorizontalTextAlignment="Center" TextColor="Purple"/>
+        <Image Source="hangmanfull.svg" Grid.Row="1"/>
+        <Grid Grid.Row="2" RowDefinitions="*" ColumnDefinitions="*,*,*,*,*,*,*,*" BackgroundColor="LightBlue">
+            <Entry TextChanged="Slot0"   Grid.Row="0"  Grid.Column="0"/>
+            <Entry TextChanged="Slot1"  Grid.Row="0" Grid.Column="1"/>
+            <Entry TextChanged="Slot2"   Grid.Row="0" Grid.Column="2"/>
+            <Entry  TextChanged="Slot3"  Grid.Row="0" Grid.Column="3 "/>
+            <Entry  TextChanged="Slot4"  Grid.Row="0" Grid.Column="4 "/>
+            <Entry  TextChanged="Slot5"  Grid.Row="0" Grid.Column="5 "/>
+            <Entry  TextChanged="Slot6"  Grid.Row="0" Grid.Column="6 "/>
+            <Entry   TextChanged="Slot7" Grid.Row="0" Grid.Column="7 "/>
+        </Grid>
+
+        <Button x:Name="RestartButton" Grid.Row="3" Text="Restart" Clicked="OnRestartClicked" />
 
     </Grid>
-    
+
 </ContentPage>
