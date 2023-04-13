@@ -13,6 +13,7 @@ public partial class WordlePage : ContentPage
     {
       
             disableCurrent.Unfocus();
+            input.IsEnabled = true;
             input.Focus();
             disableCurrent.IsEnabled = false;
 
@@ -299,4 +300,9 @@ public partial class WordlePage : ContentPage
             await Navigation.PushAsync(new WordlePage());
             Navigation.RemovePage(this);
         }
+
+    private void OnClicked(object sender, EventArgs e)
+    {
+
+    }
 }

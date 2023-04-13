@@ -3,8 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="DevelopmentInTeam.Pages.WordlePage"
              Shell.NavBarIsVisible="False">
-
-
+    
     <ContentPage.Resources>
         <Style  TargetType="Entry">
             <Setter Property="MaxLength" Value="1" />
@@ -12,12 +11,13 @@
             <Setter Property="Placeholder" Value="Type a letter" />
             <Setter Property="BackgroundColor" Value="LightGreen" />
             <Setter Property="Keyboard" Value="Text"/>
+            <Setter Property="IsEnabled" Value="False"/>
         </Style>
     </ContentPage.Resources>
     <Grid RowDefinitions="*,4*,*" ColumnDefinitions="*">
         <Label Grid.Row="0" Grid.Column="0" Text="Wordle" HorizontalOptions="Center" FontSize="40" TextColor="Purple"/>
         <Grid RowDefinitions="*,*,*,*,*,*" ColumnDefinitions="*,*,*,*,*" Grid.Row="1" Grid.Column="0" BackgroundColor="LightBlue" Grid.ColumnSpan="2">
-            <Entry x:Name="singleLetterEntry1"  TextChanged="LetterEntry1" Grid.Row="0" Grid.Column="0" />
+            <Entry x:Name="singleLetterEntry1"  TextChanged="LetterEntry1" Grid.Row="0" Grid.Column="0" IsEnabled="True"/>
             <Entry x:Name="singleLetterEntry2"  TextChanged="LetterEntry2"  Grid.Row="0" Grid.Column="1" />
             <Entry x:Name="singleLetterEntry3"  TextChanged="LetterEntry3"  Grid.Row="0" Grid.Column="2" />
             <Entry x:Name="singleLetterEntry4"   TextChanged="LetterEntry4" Grid.Row="0" Grid.Column="3" />
@@ -56,7 +56,7 @@
         </Grid>
         <Grid Grid.Row="2" ColumnDefinitions="*,*">
         <Button x:Name="Newapp" Text="Restart" Grid.Row="2" Margin="11,10,11,60" Clicked="Restartclick" HorizontalOptions="Center"/>
-        <ImageButton Source="backspace.png" Grid.Column="1"/>
+        <ImageButton Source="backspace.png" Grid.Column="1" Clicked="OnClicked"/>
         </Grid>
     </Grid>
 </ContentPage>
