@@ -1,3 +1,4 @@
+
 namespace DevelopmentInTeam.Pages;
 
 public partial class WordlePage : ContentPage
@@ -10,14 +11,43 @@ public partial class WordlePage : ContentPage
     private void NextLetter(Entry disableCurrent, Entry input)
     {
       
+            disableCurrent.Unfocus();
             input.Focus();
             disableCurrent.IsEnabled = false;
 
         
     }
+    private void OnTextChanged(object sender, TextChangedEventArgs e)
+    {
+        // Check if the entered text contains non-letter characters
+        if (!string.IsNullOrEmpty(e.NewTextValue))
+        {
+            foreach (char c in e.NewTextValue)
+            {
+                if (!char.IsLetter(c))
+                {
+                    // Revert back to the old text value if it contains non-letter characters
+                    ((Entry)sender).Text = e.OldTextValue;
+
+                    // Set focus back to the entry that contains the non-letter character
+                    ((Entry)sender).Focus();
+
+                    break;
+                }
+            }
+        }
+    }
     private void LetterEntry1(object sender, TextChangedEventArgs e)
     {
-        NextLetter(singleLetterEntry1, singleLetterEntry2);
+        
+            OnTextChanged(sender, e);
+
+        if (!string.IsNullOrWhiteSpace(singleLetterEntry1.Text) && singleLetterEntry1.Text.All(char.IsLetter))
+
+        {
+            NextLetter(singleLetterEntry1, singleLetterEntry2);
+
+        }
 
 
     }
@@ -189,5 +219,10 @@ public partial class WordlePage : ContentPage
     {
 
     }
-
+        private async void Restartclick(object sender, EventArgs e)
+        {
+            // adds page to the navigation stack and removes the old one
+            await Navigation.PushAsync(new WordlePage());
+            Navigation.RemovePage(this);
+        }
 }
