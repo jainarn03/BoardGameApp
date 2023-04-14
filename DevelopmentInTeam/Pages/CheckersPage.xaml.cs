@@ -1,7 +1,4 @@
 // Arnav's Page
-
-
-
 namespace DevelopmentInTeam.Pages;
 
 public partial class CheckersPage : ContentPage
@@ -14,19 +11,19 @@ public partial class CheckersPage : ContentPage
     public CheckersPage()
     {
         _gameBoard = new int[8, 8] {
-            { 0, 1, 0, 1, 0, 1, 0, 1 },
-            { 1, 0, 1, 0, 1, 0, 1, 0 },
-            { 0, 1, 0, 1, 0, 1, 0, 1 },
             { 0, 0, 0, 0, 0, 0, 0, 0 },
             { 0, 0, 0, 0, 0, 0, 0, 0 },
-            { 3, 0, 2, 0, 2, 0, 2, 0 },
-            { 0, 1, 0, 2, 0, 2, 0, 2 },
-            { 0, 0, 2, 0, 2, 0, 2, 0 }
+            { 0, 0, 0, 0, 0, 0, 0, 0 },
+            { 0, 0, 1, 0, 0, 0, 0, 0 },
+            { 0, 0, 0, 2, 0, 0, 0, 0 },
+            { 0, 0, 0, 0, 0, 0, 0, 0 },
+            { 0, 0, 0, 0, 0, 0, 0, 0 },
+            { 0, 0, 0, 0, 0, 0, 0, 0 }
         };
 
         // Initialize piece counts and current player
         _redCount = 12;
-        _blackCount = 12;
+        _blackCount = 1;
         _currentPlayer = 1;
 
         InitializeComponent();
@@ -105,6 +102,7 @@ public partial class CheckersPage : ContentPage
 
         // Move the piece and update the board
         UpdateBoard(fromRow, fromCol, toRow, toCol);
+        CheckResult();
 
         // Check if the piece should be promoted to a king
         if (_gameBoard[toRow, toCol] == 1 && toRow == 7)
@@ -236,9 +234,28 @@ public partial class CheckersPage : ContentPage
         }
     }
 
-
-
-
+    private string CheckResult()
+    {
+        if (_redCount == 0)
+        {
+            Console.WriteLine("Black Wins!");
+            return "Black Wins!";
+        }
+        else if (_blackCount == 0)
+        {
+            Console.WriteLine("Red Wins!");
+            return "Red Wins!";
+        }
+        else if (_redCount == 1 && _blackCount == 1)
+        {
+            Console.WriteLine("Draw!");
+            return "Draw!"; // Both have one piece left
+        }
+        else
+        {
+            return ""; // Game is still in progress
+        }
+    }
 
     // for testing
     int B6 = 1;
@@ -249,7 +266,7 @@ public partial class CheckersPage : ContentPage
     {
         int row = 0; int col = 1; int piece = 1;
         _gameBoard[2, 1] = 1;
-        MovePiece(6,1,7,0);
+        MovePiece(3,2,5,4);
     }
     private void square_D8_red(object sender, EventArgs e)
     {
