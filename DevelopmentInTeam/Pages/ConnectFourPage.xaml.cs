@@ -1,175 +1,20 @@
 // ALEKS' PAGE
+using DevelopmentInTeam.Logic;
+
 namespace DevelopmentInTeam.Pages;
 
 public partial class ConnectFourPage : ContentPage
 {
-    // creating a 2D array for the board with 6 rows and 7 columns
-    int[,] _gameBoard = new int[6, 7];
+    // declaring field for ConnectFourGame class and its corresponding property
+    ConnectFourGame _connectFourGame;
+    public ConnectFourGame ConnectFourGame => _connectFourGame;
 
     public ConnectFourPage()
     {
         InitializeComponent();
 
-        // ***** START OF GAME LOGIC HERE TEMPORARILY ***** will think about separation of concerns later.
-
-        // starts Connect Four
-        InitializeBoard(); // board initialized and all slots are empty
-    }
-
-    /// <summary>
-    /// Initializes the board, iterating through each element of _gameBoard and setting its value to 0.
-    /// </summary>
-    public void InitializeBoard()
-    {
-        for (int row = 0; row < 6; row++)
-        {
-            for (int col = 0; col < 7; col++)
-            {
-                _gameBoard[row, col] = 0;
-            }
-        }
-    }
-
-    /// <summary>
-    /// Used to determine which player's turn it is to move.
-    /// Iterates through each element of the _gameBoard and counts the number of non-zero elements.
-    /// If the number is even (remainder of 0) then it is Player 1's turn to move,
-    /// if the number is odd (remainder not 0) then it is Player 2's turn to move.
-    /// </summary>
-    /// <returns>true if Player 1's turn, false if Player 2's turn</returns>
-    public bool IsPlayer1Turn()
-    {
-        int count = 0;
-        
-        for (int col = 0; col < 7; col++)
-        {
-            for (int row = 0; row < 6; row++)
-            {
-                if (_gameBoard[row, col] != 0)
-                {
-                    count++;
-                }
-            }
-        }
-        return count % 2 == 0;
-    }
-
-    /// <summary>
-    /// Main method for making a move and updating the board if valid move was made.
-    /// Takes whichever column was selected, checks if it is full or not, finds lowest empty slot, then
-    /// updates the board with the new slot claimed by the player with the current turn.
-    /// </summary>
-    /// <param name="col">selected column</param>
-    /// <returns>bool indicating if the move was successful or not</returns>
-    public bool MakeMove(int col)
-    {
-        // checking if the selected column is full
-        if (_gameBoard[5, col] != 0)
-        {
-            return false;
-        }
-
-        // applying gravity: finding the lowest empty slot
-        // searching the rows from the bottom up, will stop once a row for the selected column is empty.
-        int row = 0;
-        while (_gameBoard[row, col] != 0) 
-        {
-            row++;
-        }
-
-        // when valid slot is found:
-        int slotClaimed = IsPlayer1Turn() ? 1 : 2; // sets the value of the slot to the player with the current turn
-        _gameBoard[row, col] = slotClaimed; // updates the board with the new slot claimed
-
-        return true; // returns true as move has succeeded
-    }
-
-    /// <summary>
-    /// Checks the board to see if there is currently a winner, called every time a move is made.
-    /// checks row/column/diagonal winners, checks for a draw.
-    /// </summary>
-    /// <returns>0 if no player has won yet, 1 if Player 1 wins, 2 if Player 2 wins, 3 if draw</returns>
-    public int CheckGameStatus() // IGNORE: maybe more appropriate name for future: CheckGameStatus? (implementing draw check, yet a draw is a win for both players...)
-    {
-        // checks for wins among the ROWS
-        for (int row = 0; row < 6; row++)
-        {
-            // only necessary to iterate up to fourth column, slots for columns 5-7 will still be spanned (DO SAME FOR COLUMN CHECK)
-            for (int col = 0; col < 4; col++) 
-            {
-                int slot = _gameBoard[row, col]; // sets the current slot
-                
-                // checks for four consecutive slots in a single row
-                // checking the slots of same row but next 3 columns, if all four slots share the same value: returns the slot
-                if (slot != 0 && slot == _gameBoard[row, col + 1] && slot == _gameBoard[row, col + 2] && slot == _gameBoard[row, col + 3])
-                {
-                    return slot; // returns slot value which corresponds to a win if 1/2 or just 0 if empty consecutive rows
-                }
-            }
-        }
-
-        // checks for wins among the COLUMNS
-        for (int col = 0; col < 7; col++)
-        {
-            // iterates up to third row
-            for (int row = 0; row < 3; row++) 
-            {
-                int slot = _gameBoard[row, col]; // sets the current slot
-
-                // checks for four consective slots in a single column, incrementing the row and returning slot when four slots share the same value
-                if (slot != 0 && slot == _gameBoard[row + 1, col] && slot == _gameBoard[row + 2, col] && slot == _gameBoard[row + 3, col]) 
-                {
-                    return slot; 
-                }
-            }
-        }
-
-        // checks for wins among the DIAGONALS
-
-            // checking in direction going up-right
-        // iterate up to third row (going upwards, the three rows above will be checked)
-        for (int row = 0; row < 3; row++)
-        {
-            // iterates up to fourth column
-            for (int col = 0; col < 4; col++)
-            {
-                int slot = _gameBoard[row, col]; // current slot
-
-                // checks for four consecutive slots in diagonal, incrementing both row and column (going up and right)
-                if (slot != 0 && slot == _gameBoard[row + 1, col + 1] && slot == _gameBoard[row + 2, col + 2] && slot == _gameBoard[row + 3, col + 3])
-                {
-                    return slot;
-                }
-            }
-        }
-
-            // checking in direction going down-right
-        // iterating between rows 4-6 (going downwards, rows 3 and under are checked)
-        for (int row = 3; row < 6; row++) 
-        {
-            for (int col = 0; col < 4; col++)
-            {
-                int slot = _gameBoard[row, col]; // current slot
-
-                // checks for four consecutive slots in diagonal, decrementing row while incrementing column (going down and right)
-                if (slot != 0 && slot == _gameBoard[row - 1, col + 1] && slot == _gameBoard[row - 2, col + 2] && slot == _gameBoard[row - 3, col + 3])
-                {
-                    return slot;
-                }
-            }
-        }
-
-        // checks if game is unfinished (for case of no winner up until now while empty slots remain)
-        for (int col = 0; col < 7; col++)
-        {
-            if (_gameBoard[5, col] == 0) // if any empty slots exist on the top row
-            {
-                return 0; // game unfinished, still proceeding
-            }
-        }
-
-        // draw, no empty slots and yet no winners found.
-        return 3;
+        // creating new instance of ConnectFourGame class
+        _connectFourGame = new ConnectFourGame();
     }
 
     /// <summary>
@@ -192,11 +37,11 @@ public partial class ConnectFourPage : ContentPage
                 var button = (Button)this.FindByName(buttonName);
 
                 // changes the slot's color with respect to the player
-                if (_gameBoard[row, col] == 1) 
+                if (ConnectFourGame.GameBoard[row, col] == 1) 
                 {
                     button.Background = Color.FromArgb("ce3b28"); // dark color
                 }
-                else if (_gameBoard[row, col] == 2)
+                else if (ConnectFourGame.GameBoard[row, col] == 2)
                 {
                     button.Background = Color.FromArgb("2B5FC7"); // light color
                 }
@@ -242,26 +87,6 @@ public partial class ConnectFourPage : ContentPage
         }
     }
 
-/*    /// <summary>
-    /// TEST (no longer used)
-    /// method to see if makemove method works
-    /// </summary>
-    /// <returns>number of slots claimed</returns>
-    public int SlotsClaimed()
-    {
-        int count = 0;
-        for (int row = 0; row < 6; row++)
-        {
-            for (int col = 0; col < 7; col++)
-            {
-                if (_gameBoard[row, col] != 0)
-                    count++;
-            }
-        }
-
-        return count;
-    }*/
-
     /// <summary>
     /// TEST
     /// button for whatever purposes
@@ -282,305 +107,313 @@ public partial class ConnectFourPage : ContentPage
     #region
     private void Slot11Clicked(object sender, EventArgs e)
     {
-        MakeMove(0);
+        ConnectFourGame.MakeMove(0);
         UpdateUI();
-        HandleGameStatusUI(CheckGameStatus());
+        HandleGameStatusUI(ConnectFourGame.CheckGameStatus());
     }
 
     private void Slot12Clicked(object sender, EventArgs e)
     {
-        MakeMove(1);
+        ConnectFourGame.MakeMove(1);
         UpdateUI();
-        HandleGameStatusUI(CheckGameStatus());
+        HandleGameStatusUI(ConnectFourGame.CheckGameStatus());
     }
 
     private void Slot13Clicked(object sender, EventArgs e)
     {
-        MakeMove(2);
+        ConnectFourGame.MakeMove(2);
         UpdateUI();
-        HandleGameStatusUI(CheckGameStatus());
+        HandleGameStatusUI(ConnectFourGame.CheckGameStatus());
     }
 
     private void Slot14Clicked(object sender, EventArgs e)
     {
-        MakeMove(3);
+        ConnectFourGame.MakeMove(3);
         UpdateUI();
-        HandleGameStatusUI(CheckGameStatus());
+        HandleGameStatusUI(ConnectFourGame.CheckGameStatus());
     }
 
     private void Slot15Clicked(object sender, EventArgs e)
     {
-        MakeMove(4);
+        ConnectFourGame.MakeMove(4);
         UpdateUI();
-        HandleGameStatusUI(CheckGameStatus());
+        HandleGameStatusUI(ConnectFourGame.CheckGameStatus());
     }
 
     private void Slot16Clicked(object sender, EventArgs e)
     {
-        MakeMove(5);
+        ConnectFourGame.MakeMove(5);
         UpdateUI();
-        HandleGameStatusUI(CheckGameStatus());
+        HandleGameStatusUI(ConnectFourGame.CheckGameStatus());
     }
 
     private void Slot17Clicked(object sender, EventArgs e)
     {
-        MakeMove(6);
+        ConnectFourGame.MakeMove(6);
         UpdateUI();
-        HandleGameStatusUI(CheckGameStatus());
+        HandleGameStatusUI(ConnectFourGame.CheckGameStatus());
     }
 
     private void Slot21Clicked(object sender, EventArgs e)
     {
-        MakeMove(0);
+        ConnectFourGame.MakeMove(0);
         UpdateUI();
-        HandleGameStatusUI(CheckGameStatus());
+        HandleGameStatusUI(ConnectFourGame.CheckGameStatus());
     }
 
     private void Slot22Clicked(object sender, EventArgs e)
     {
-        MakeMove(1);
+        ConnectFourGame.MakeMove(1);
         UpdateUI();
-        HandleGameStatusUI(CheckGameStatus());
+        HandleGameStatusUI(ConnectFourGame.CheckGameStatus());
     }
 
     private void Slot23Clicked(object sender, EventArgs e)
     {
-        MakeMove(2);
+        ConnectFourGame.MakeMove(2);
         UpdateUI();
-        HandleGameStatusUI(CheckGameStatus());
+        HandleGameStatusUI(ConnectFourGame.CheckGameStatus());
     }
 
     private void Slot24Clicked(object sender, EventArgs e)
     {
-        MakeMove(3);
+        ConnectFourGame.MakeMove(3);
         UpdateUI();
-        HandleGameStatusUI(CheckGameStatus());
+        HandleGameStatusUI(ConnectFourGame.CheckGameStatus());
     }
 
     private void Slot25Clicked(object sender, EventArgs e)
     {
-        MakeMove(4);
+        ConnectFourGame.MakeMove(4);
         UpdateUI();
-        HandleGameStatusUI(CheckGameStatus());
+        HandleGameStatusUI(ConnectFourGame.CheckGameStatus());
     }
 
     private void Slot26Clicked(object sender, EventArgs e)
     {
-        MakeMove(5);
+        ConnectFourGame.MakeMove(5);
         UpdateUI();
-        HandleGameStatusUI(CheckGameStatus());
+        HandleGameStatusUI(ConnectFourGame.CheckGameStatus());
     }
 
     private void Slot27Clicked(object sender, EventArgs e)
     {
-        MakeMove(6);
+        ConnectFourGame.MakeMove(6);
         UpdateUI();
-        HandleGameStatusUI(CheckGameStatus());
+        HandleGameStatusUI(ConnectFourGame.CheckGameStatus());
     }
 
     private void Slot31Clicked(object sender, EventArgs e)
     {
-        MakeMove(0);
+        ConnectFourGame.MakeMove(0);
         UpdateUI();
-        HandleGameStatusUI(CheckGameStatus());
+        HandleGameStatusUI(ConnectFourGame.CheckGameStatus());
     }
 
     private void Slot32Clicked(object sender, EventArgs e)
     {
-        MakeMove(1);
+        ConnectFourGame.MakeMove(1);
         UpdateUI();
-        HandleGameStatusUI(CheckGameStatus());
+        HandleGameStatusUI(ConnectFourGame.CheckGameStatus());
     }
 
     private void Slot33Clicked(object sender, EventArgs e)
     {
-        MakeMove(2);
+        ConnectFourGame.MakeMove(2);
         UpdateUI();
-        HandleGameStatusUI(CheckGameStatus());
+        HandleGameStatusUI(ConnectFourGame.CheckGameStatus());
     }
 
     private void Slot34Clicked(object sender, EventArgs e)
     {
-        MakeMove(3);
+        ConnectFourGame.MakeMove(3);
         UpdateUI();
-        HandleGameStatusUI(CheckGameStatus());
+        HandleGameStatusUI(ConnectFourGame.CheckGameStatus());
     }
 
     private void Slot35Clicked(object sender, EventArgs e)
     {
-        MakeMove(4);
+        ConnectFourGame.MakeMove(4);
         UpdateUI();
-        HandleGameStatusUI(CheckGameStatus());
+        HandleGameStatusUI(ConnectFourGame.CheckGameStatus());
     }
 
     private void Slot36Clicked(object sender, EventArgs e)
     {
-        MakeMove(5);
+        ConnectFourGame.MakeMove(5);
         UpdateUI();
-        HandleGameStatusUI(CheckGameStatus());
+        HandleGameStatusUI(ConnectFourGame.CheckGameStatus());
     }
 
     private void Slot37Clicked(object sender, EventArgs e)
     {
-        MakeMove(6);
+        ConnectFourGame.MakeMove(6);
         UpdateUI();
-        HandleGameStatusUI(CheckGameStatus());
+        HandleGameStatusUI(ConnectFourGame.CheckGameStatus());
     }
 
     private void Slot41Clicked(object sender, EventArgs e)
     {
-        MakeMove(0);
+        ConnectFourGame.MakeMove(0);
         UpdateUI();
-        HandleGameStatusUI(CheckGameStatus());
+        HandleGameStatusUI(ConnectFourGame.CheckGameStatus());
     }
 
     private void Slot42Clicked(object sender, EventArgs e)
     {
-        MakeMove(1);
+        ConnectFourGame.MakeMove(1);
         UpdateUI();
-        HandleGameStatusUI(CheckGameStatus());
+        HandleGameStatusUI(ConnectFourGame.CheckGameStatus());
     }
 
     private void Slot43Clicked(object sender, EventArgs e)
     {
-        MakeMove(2);
+        ConnectFourGame.MakeMove(2);
         UpdateUI();
-        HandleGameStatusUI(CheckGameStatus());
+        HandleGameStatusUI(ConnectFourGame.CheckGameStatus());
     }
 
     private void Slot44Clicked(object sender, EventArgs e)
     {
-        MakeMove(3);
+        ConnectFourGame.MakeMove(3);
         UpdateUI();
-        HandleGameStatusUI(CheckGameStatus());
+        HandleGameStatusUI(ConnectFourGame.CheckGameStatus());
     }
 
     private void Slot45Clicked(object sender, EventArgs e)
     {
-        MakeMove(4);
+        ConnectFourGame.MakeMove(4);
         UpdateUI();
-        HandleGameStatusUI(CheckGameStatus());
+        HandleGameStatusUI(ConnectFourGame.CheckGameStatus());
     }
 
     private void Slot46Clicked(object sender, EventArgs e)
     {
-        MakeMove(5);
+        ConnectFourGame.MakeMove(5);
         UpdateUI();
-        HandleGameStatusUI(CheckGameStatus());
+        HandleGameStatusUI(ConnectFourGame.CheckGameStatus());
     }
 
     private void Slot47Clicked(object sender, EventArgs e)
     {
-        MakeMove(6);
+        ConnectFourGame.MakeMove(6);
         UpdateUI();
-        HandleGameStatusUI(CheckGameStatus());
+        HandleGameStatusUI(ConnectFourGame.CheckGameStatus());
     }
 
     private void Slot51Clicked(object sender, EventArgs e)
     {
-        MakeMove(0);
+        ConnectFourGame.MakeMove(0);
         UpdateUI();
-        HandleGameStatusUI(CheckGameStatus());
+        HandleGameStatusUI(ConnectFourGame.CheckGameStatus());
     }
 
     private void Slot52Clicked(object sender, EventArgs e)
     {
-        MakeMove(1);
+        ConnectFourGame.MakeMove(1);
         UpdateUI();
-        HandleGameStatusUI(CheckGameStatus());
+        HandleGameStatusUI(ConnectFourGame.CheckGameStatus());
     }
 
     private void Slot53Clicked(object sender, EventArgs e)
     {
-        MakeMove(2);
+        ConnectFourGame.MakeMove(2);
         UpdateUI();
-        HandleGameStatusUI(CheckGameStatus());
+        HandleGameStatusUI(ConnectFourGame.CheckGameStatus());
     }
 
     private void Slot54Clicked(object sender, EventArgs e)
     {
-        MakeMove(3);
+        ConnectFourGame.MakeMove(3);
         UpdateUI();
-        HandleGameStatusUI(CheckGameStatus());
+        HandleGameStatusUI(ConnectFourGame.CheckGameStatus());
     }
 
     private void Slot55Clicked(object sender, EventArgs e)
     {
-        MakeMove(4);
+        ConnectFourGame.MakeMove(4);
         UpdateUI();
-        HandleGameStatusUI(CheckGameStatus());
+        HandleGameStatusUI(ConnectFourGame.CheckGameStatus());
     }
 
     private void Slot56Clicked(object sender, EventArgs e)
     {
-        MakeMove(5);
+        ConnectFourGame.MakeMove(5);
         UpdateUI();
-        HandleGameStatusUI(CheckGameStatus());
+        HandleGameStatusUI(ConnectFourGame.CheckGameStatus());
     }
 
     private void Slot57Clicked(object sender, EventArgs e)
     {
-        MakeMove(6);
+        ConnectFourGame.MakeMove(6);
         UpdateUI();
-        HandleGameStatusUI(CheckGameStatus());
+        HandleGameStatusUI(ConnectFourGame.CheckGameStatus());
     }
 
     private void Slot61Clicked(object sender, EventArgs e)
     {
-        MakeMove(0);
+        ConnectFourGame.MakeMove(0);
         UpdateUI();
-        HandleGameStatusUI(CheckGameStatus());
+        HandleGameStatusUI(ConnectFourGame.CheckGameStatus());
     }
 
     private void Slot62Clicked(object sender, EventArgs e)
     {
-        MakeMove(1);
+        ConnectFourGame.MakeMove(1);
         UpdateUI();
-        HandleGameStatusUI(CheckGameStatus());
+        HandleGameStatusUI(ConnectFourGame.CheckGameStatus());
     }
 
     private void Slot63Clicked(object sender, EventArgs e)
     {
-        MakeMove(2);
+        ConnectFourGame.MakeMove(2);
         UpdateUI();
-        HandleGameStatusUI(CheckGameStatus());
+        HandleGameStatusUI(ConnectFourGame.CheckGameStatus());
     }
 
     private void Slot64Clicked(object sender, EventArgs e)
     {
-        MakeMove(3);
+        ConnectFourGame.MakeMove(3);
         UpdateUI();
-        HandleGameStatusUI(CheckGameStatus());
+        HandleGameStatusUI(ConnectFourGame.CheckGameStatus());
     }
 
     private void Slot65Clicked(object sender, EventArgs e)
     {
-        MakeMove(4);
+        ConnectFourGame.MakeMove(4);
         UpdateUI();
-        HandleGameStatusUI(CheckGameStatus());
+        HandleGameStatusUI(ConnectFourGame.CheckGameStatus());
     }
 
     private void Slot66Clicked(object sender, EventArgs e)
     {
-        MakeMove(5);
+        ConnectFourGame.MakeMove(5);
         UpdateUI();
-        HandleGameStatusUI(CheckGameStatus());
+        HandleGameStatusUI(ConnectFourGame.CheckGameStatus());
     }
 
     private void Slot67Clicked(object sender, EventArgs e)
     {
-        MakeMove(6);
+        ConnectFourGame.MakeMove(6);
         UpdateUI();
-        HandleGameStatusUI(CheckGameStatus());
+        HandleGameStatusUI(ConnectFourGame.CheckGameStatus());
     }
     #endregion 
 
     /// <summary>
-    /// reloads the ConnectFourPage by pushing new one to the stack then removing the old page
+    /// Restarts the game when start new game button is clicked, 
+    /// by re-enabling the board buttons, resetting the slot colors to empty, and creating a new game instance
     /// </summary>
-    private async void OnNewGameClicked(object sender, EventArgs e)
+    private void OnNewGameClicked(object sender, EventArgs e)
     {
-        await Navigation.PushAsync(new ConnectFourPage());
-        Navigation.RemovePage(this);
+        // iterate through all the buttons of the board grid
+        foreach (Button button in ConnectFourBoard.Children)
+        {
+            button.IsEnabled = true; // re-enables them
+            button.Background = Color.FromArgb("Edf0f9"); // changes back to empty slot color
+        }
+
+        _connectFourGame = new ConnectFourGame(); // resets old game object by assigning its field to new instance 
+
     }
 }
