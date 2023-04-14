@@ -19,9 +19,9 @@ public partial class CheckersPage : ContentPage
             { 0, 1, 0, 1, 0, 1, 0, 1 },
             { 0, 0, 0, 0, 0, 0, 0, 0 },
             { 0, 0, 0, 0, 0, 0, 0, 0 },
-            { 2, 0, 2, 0, 2, 0, 2, 0 },
-            { 0, 2, 0, 2, 0, 2, 0, 2 },
-            { 2, 0, 2, 0, 2, 0, 2, 0 }
+            { 3, 0, 2, 0, 2, 0, 2, 0 },
+            { 0, 1, 0, 2, 0, 2, 0, 2 },
+            { 0, 0, 2, 0, 2, 0, 2, 0 }
         };
 
         // Initialize piece counts and current player
@@ -83,24 +83,7 @@ public partial class CheckersPage : ContentPage
         // Check if the move is valid
         if (!IsValidMove(piece, fromRow, fromCol, toRow, toCol))
         {
-            //G1_black.IsVisible= false;*******************
             return;
-        }
-
-        // Move the piece
-        _gameBoard[fromRow, fromCol] = 0;
-        _gameBoard[toRow, toCol] = piece;
-
-        // Check if the piece should be promoted to a king
-        if (piece == 1 && toRow == 7)
-        {
-            _gameBoard[toRow, toCol] = 3; // Promote to red king
-            Console.WriteLine("Red piece promoted to king!");
-        }
-        else if (piece == 2 && toRow == 0)
-        {
-            _gameBoard[toRow, toCol] = 4; // Promote to black king
-            Console.WriteLine("Black piece promoted to king!");
         }
 
         // Check if a piece was captured
@@ -118,6 +101,21 @@ public partial class CheckersPage : ContentPage
                 _blackCount--;
             }
             _gameBoard[capturedRow, capturedCol] = 0;
+        }
+
+        // Move the piece and update the board
+        UpdateBoard(fromRow, fromCol, toRow, toCol);
+
+        // Check if the piece should be promoted to a king
+        if (_gameBoard[toRow, toCol] == 1 && toRow == 7)
+        {
+            _gameBoard[toRow, toCol] = 3; // Promote to red king
+            Console.WriteLine("Red piece promoted to king!");
+        }
+        else if (_gameBoard[toRow, toCol] == 2 && toRow == 0)
+        {
+            _gameBoard[toRow, toCol] = 4; // Promote to black king
+            Console.WriteLine("Black piece promoted to king!");
         }
 
         // Switch the turn to the other player
@@ -190,6 +188,55 @@ public partial class CheckersPage : ContentPage
         return true;
     }
 
+    public void UpdateBoard(int oldRow, int oldCol, int newRow, int newCol)
+    {
+        // Check if the piece has captured an opponent's piece
+        int capturedRow = (oldRow + newRow) / 2;
+        int capturedCol = (oldCol + newCol) / 2;
+        int capturedPiece = _gameBoard[capturedRow, capturedCol];
+        if (capturedPiece != 0)
+        {
+            if (capturedPiece == 1 || capturedPiece == 3)
+            {
+                _redCount--;
+            }
+            else
+            {
+                _blackCount--;
+            }
+            _gameBoard[capturedRow, capturedCol] = 0;
+        }
+
+        // Move the piece to the new position
+        _gameBoard[newRow, newCol] = _gameBoard[oldRow, oldCol];
+        _gameBoard[oldRow, oldCol] = 0;
+
+        // Check if the piece has reached the last row of the opponent's side or if it is a king in the last row
+        if (_gameBoard[newRow, newCol] == 1 && (newRow == 7 || (newRow == 6 && _gameBoard[newRow, newCol] == 3)))
+        {
+            _gameBoard[newRow, newCol] = 3; // promote red piece to king
+        }
+        else if (_gameBoard[newRow, newCol] == 2 && (newRow == 0 || (newRow == 1 && _gameBoard[newRow, newCol] == 4)))
+        {
+            _gameBoard[newRow, newCol] = 4; // promote black piece to king
+        }
+
+        // Update current player
+        _currentPlayer = (_currentPlayer == 1) ? 2 : 1;
+
+        // Print the updated game board
+        Console.WriteLine("Updated game board:");
+        for (int i = 0; i < 8; i++)
+        {
+            for (int j = 0; j < 8; j++)
+            {
+                Console.Write(_gameBoard[i, j] + " ");
+            }
+            Console.WriteLine();
+        }
+    }
+
+
 
 
 
@@ -202,17 +249,17 @@ public partial class CheckersPage : ContentPage
     {
         int row = 0; int col = 1; int piece = 1;
         _gameBoard[2, 1] = 1;
-        MovePiece(1, 4, 0, 5);
+        MovePiece(6,1,7,0);
     }
     private void square_D8_red(object sender, EventArgs e)
     {
         _gameBoard[0, 3] = 1;
-        MovePiece(2, 1, 3, 2);
+        MovePiece(7,2,6,1);
     }
     private void square_F8_red(object sender, EventArgs e)
     {
         _gameBoard[0, 5] = 1;
-        MovePiece(2, 1, 4, 5);
+        MovePiece(7,0,6,1);
     }
     private void square_H8_red(object sender, EventArgs e)
     {
