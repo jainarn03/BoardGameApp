@@ -401,11 +401,19 @@ public partial class ConnectFourPage : ContentPage
     #endregion 
 
     /// <summary>
-    /// reloads the ConnectFourPage by pushing new one to the stack then removing the old page
+    /// Restarts the game when start new game button is clicked, 
+    /// by re-enabling the board buttons, resetting the slot colors to empty, and creating a new game instance
     /// </summary>
-    private async void OnNewGameClicked(object sender, EventArgs e)
+    private void OnNewGameClicked(object sender, EventArgs e)
     {
-        await Navigation.PushAsync(new ConnectFourPage());
-        Navigation.RemovePage(this);
+        // iterate through all the buttons of the board grid
+        foreach (Button button in ConnectFourBoard.Children)
+        {
+            button.IsEnabled = true; // re-enables them
+            button.Background = Color.FromArgb("Edf0f9"); // changes back to empty slot color
+        }
+
+        _connectFourGame = new ConnectFourGame(); // resets old game object by assigning its field to new instance 
+
     }
 }
