@@ -16,9 +16,9 @@ public partial class CheckersPage : ContentPage
             { 0, 1, 0, 1, 0, 1, 0, 1 },
             { 0, 0, 0, 0, 0, 0, 0, 0 },
             { 0, 0, 0, 0, 0, 0, 0, 0 },
-            { 3, 0, 2, 0, 2, 0, 2, 0 },
-            { 0, 1, 0, 2, 0, 2, 0, 2 },
-            { 0, 0, 2, 0, 2, 0, 2, 0 }
+            { 2, 0, 2, 0, 2, 0, 2, 0 },
+            { 0, 2, 0, 2, 0, 2, 0, 2 },
+            { 2, 0, 2, 0, 2, 0, 2, 0 }
         };
 
         // Initialize piece counts and current player
@@ -257,124 +257,136 @@ public partial class CheckersPage : ContentPage
         }
     }
 
-    // for testing
-    int B6 = 1;
-
     #region Image Buttons
     //red peice image button event handler
     private void square_B8_red(object sender, EventArgs e)
     {
-        int row = 0; int col = 1; int piece = 1;
-        _gameBoard[2, 1] = 1;
-        MovePiece(3,2,5,4);
+        int row = 0; int col = 1;
     }
     private void square_D8_red(object sender, EventArgs e)
     {
-        _gameBoard[0, 3] = 1;
-        MovePiece(7,2,6,1);
+        int row = 0; int col = 3;
+        
     }
     private void square_F8_red(object sender, EventArgs e)
     {
-        _gameBoard[0, 5] = 1;
-        MovePiece(7,0,6,1);
+        int row = 0; int col = 5;
     }
     private void square_H8_red(object sender, EventArgs e)
     {
-        _gameBoard[0, 7] = 1;
+        int row = 0; int col = 7;
     }
     private void square_A7_red(object sender, EventArgs e)
     {
-        _gameBoard[1, 0] = 1;
+        int row = 1; int col = 0;
     }
     private void square_C7_red(object sender, EventArgs e)
     {
-        _gameBoard[1, 2] = 1;
+        int row = 1; int col = 2;
     }
     private void square_E7_red(object sender, EventArgs e)
     {
-        _gameBoard[1, 4] = 1;
+        int row = 1; int col = 4;
     }
     private void square_G7_red(object sender, EventArgs e)
     {
-        _gameBoard[1, 6] = 1;
+        int row = 1; int col = 6;
     }
     private void square_B6_red(object sender, EventArgs e)
     {
-        _gameBoard[2, 1] = 1;
-        B6 = (B6 == 1) ? 2 : 1;
-
+        int row = 2; int col = 1;
     }
     private void square_D6_red(object sender, EventArgs e)
     {
-        _gameBoard[2, 3] = 1;
+        int row = 2; int col = 3;
     }
     private void square_F6_red(object sender, EventArgs e)
     {
-        _gameBoard[2, 5] = 1;
+        int row = 2; int col = 5;
     }
     private void square_H6_red(object sender, EventArgs e)
     {
-        _gameBoard[2, 7] = 1;
+        int row = 2; int col = 7;
     }
     private void square_A5_red(object sender, EventArgs e)
     {
+        int row = 3; int col = 0;
     }
     private void square_C5_red(object sender, EventArgs e)
     {
+        int row = 3; int col = 2;
     }
     private void square_E5_red(object sender, EventArgs e)
     {
+        int row = 3; int col = 4;
     }
     private void square_G5_red(object sender, EventArgs e)
     {
+        int row = 3; int col = 6;
     }
     private void square_B4_red(object sender, EventArgs e)
     {
+        int row = 4; int col = 1;
     }
     private void square_D4_red(object sender, EventArgs e)
     {
+        int row = 4; int col = 3;
     }
     private void square_F4_red(object sender, EventArgs e)
     {
+        int row = 4; int col = 5;
     }
     private void square_H4_red(object sender, EventArgs e)
     {
+        int row = 4; int col = 7;
     }
     private void square_A3_red(object sender, EventArgs e)
     {
+        int row = 5; int col = 0;
     }
     private void square_C3_red(object sender, EventArgs e)
     {
+        int row = 5; int col = 2;
     }
     private void square_E3_red(object sender, EventArgs e)
     {
+        int row = 5; int col = 4;
     }
     private void square_G3_red(object sender, EventArgs e)
     {
+        int row = 5; int col = 6;
     }
     private void square_B2_red(object sender, EventArgs e)
     {
+        int row = 6; int col = 1;
     }
     private void square_D2_red(object sender, EventArgs e)
     {
+        int row = 6; int col = 3;
     }
     private void square_F2_red(object sender, EventArgs e)
     {
+        int row = 6; int col = 5;
     }
     private void square_H2_red(object sender, EventArgs e)
     {
+        int row = 6; int col = 7;
     }
     private void square_A1_red(object sender, EventArgs e)
     {
+        int row = 7; int col = 0;
     }
     private void square_C1_red(object sender, EventArgs e)
     {
+        int row = 7; int col = 2;
     }
     private void square_E1_red(object sender, EventArgs e)
     {
+        int row = 7; int col = 4;
     }
     private void square_G1_red(object sender, EventArgs e)
     {
+        int row = 7; int col = 6;
     }
 
 

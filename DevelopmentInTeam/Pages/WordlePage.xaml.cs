@@ -8,15 +8,33 @@ public partial class WordlePage : ContentPage
         InitializeComponent();
     }
 
-    private void NextLetter(Entry disableCurrent, Entry input)
+    private void NextLetter(Entry CurrentEntry, Entry NextEntry)
     {
-      
-            disableCurrent.Unfocus();
-            input.Focus();
-            disableCurrent.IsEnabled = false;
 
-        
+        switch (CurrentEntry.StyleId)
+        {
+            case "singleLetterEntry5":
+                NextEntry.IsEnabled = true;
+                NextEntry.Focus();
+                CurrentEntry.IsEnabled = false;
+                
+                break;
+          
+           
+            default:
+                NextEntry.IsEnabled = true;
+                NextEntry.Focus();
+                CurrentEntry.IsEnabled = false;
+                
+                break;
+        }
     }
+
+
+
+
+
+
     private void OnTextChanged(object sender, TextChangedEventArgs e)
     {
         // Check if the entered text contains non-letter characters
@@ -46,12 +64,9 @@ public partial class WordlePage : ContentPage
     }
     private void LetterEntry1(object sender, TextChangedEventArgs e)
     {
-        
+            
             OnTextChanged(sender, e);
-
-            check(singleLetterEntry1, singleLetterEntry2);
-
-        
+        check(singleLetterEntry1, singleLetterEntry2);
 
     }
     private void LetterEntry2(object sender, TextChangedEventArgs e)
@@ -297,4 +312,14 @@ public partial class WordlePage : ContentPage
             await Navigation.PushAsync(new WordlePage());
             Navigation.RemovePage(this);
         }
+
+    private void OnBackspaceClicked(object sender, EventArgs e)
+    {
+
+    }
+
+    private void OnEnterClicked(object sender, EventArgs e)
+    {
+
+    }
 }
