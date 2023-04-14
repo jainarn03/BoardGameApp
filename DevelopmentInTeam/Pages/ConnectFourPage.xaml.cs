@@ -17,12 +17,33 @@ public partial class ConnectFourPage : ContentPage
         _connectFourGame = new ConnectFourGame();
     }
 
+
+    public void DisplayPlayerTurn()
+    {
+        bool playerTurn = ConnectFourGame.IsPlayer1Turn(); // assigned to method that returns 1 if Player 1's turn and 0 if Player 2's turn
+
+        // changes icon color and label text based on the current player to move
+        if (playerTurn)
+        {
+            PlayerTurnIcon.Background = Color.FromArgb("ce3b28"); // player 1 (red)
+            PlayerToMove.Text = "Red To Move";
+        }
+        else
+        {
+            PlayerTurnIcon.Background = Color.FromArgb("2B5FC7"); // player 2 (blue)
+            PlayerToMove.Text = "Blue To Move";
+        }
+    }    
+
     /// <summary>
     /// updates the board in the UI (every slot is a button in a 7x6 grid)
     /// finds the corresponding button by name for each slot and changes its color to represent the tiles of both players.
     /// </summary>
     public void UpdateUI()
     {
+        // updates player turn status with corresponding icon color and text
+        DisplayPlayerTurn();
+
         // iterates through all the slots in the board
         for (int row = 0; row < 6; row++)
         {
@@ -39,11 +60,11 @@ public partial class ConnectFourPage : ContentPage
                 // changes the slot's color with respect to the player
                 if (ConnectFourGame.GameBoard[row, col] == 1) 
                 {
-                    button.Background = Color.FromArgb("ce3b28"); // dark color
+                    button.Background = Color.FromArgb("ce3b28"); // player 1 (red)
                 }
                 else if (ConnectFourGame.GameBoard[row, col] == 2)
                 {
-                    button.Background = Color.FromArgb("2B5FC7"); // light color
+                    button.Background = Color.FromArgb("2B5FC7"); // player 2 (blue)
                 }
             }
         }
@@ -63,17 +84,25 @@ public partial class ConnectFourPage : ContentPage
         {
             DisplayAlert("Game over!", "Player 1 has won.", "OK");
             TerminateGame();
+            PlayerTurnIcon.Background = Color.FromArgb("ce3b28"); // player 1 (red)
+            PlayerToMove.Text = "Red Won!";
+
+
         }
         else if (winner == 2)
         {
             DisplayAlert("Game over!", "Player 2 has won.", "OK");
             TerminateGame();
+            PlayerTurnIcon.Background = Color.FromArgb("2B5FC7"); // player 2 (blue)
+            PlayerToMove.Text = "Blue Won!";
         }
 
         else if (winner == 3)
         {
-            DisplayAlert("Game over!", "Draw.", "OK");
+            DisplayAlert("Game over!", "Game has ended in draw.", "OK");
             TerminateGame();
+            PlayerTurnIcon.Background = Color.FromArgb("Edf0f9"); // neutral empty slot color
+            PlayerToMove.Text = "Game Drawn!";
         }
     }
     
@@ -414,6 +443,6 @@ public partial class ConnectFourPage : ContentPage
         }
 
         _connectFourGame = new ConnectFourGame(); // resets old game object by assigning its field to new instance 
-
+        UpdateUI();
     }
 }
