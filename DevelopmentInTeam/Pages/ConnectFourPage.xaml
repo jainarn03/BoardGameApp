@@ -72,12 +72,16 @@
 
         <!--CURRENT PLAYER TURN / GAME STATUS DISPLAY-->
         <HorizontalStackLayout Grid.Row="2" Grid.ColumnSpan="3" HorizontalOptions="Center" VerticalOptions="Center">
+            
+            <!--TURN/STATUS ICON-->
             <Button 
                 x:Name="PlayerTurnIcon"
                 IsEnabled="False"
                 CornerRadius="100"
                 Background="#ce3b28"
                 />
+            
+            <!--TURN/STATUS MESSAGE-->
             <Label
                 x:Name="PlayerToMove"
                 Text="Red to Move"
@@ -85,6 +89,7 @@
                 FontAttributes="Italic"
                 Margin="10.5"
                 />
+            
         </HorizontalStackLayout>
 
         <!--NEW GAME BUTTON-->
