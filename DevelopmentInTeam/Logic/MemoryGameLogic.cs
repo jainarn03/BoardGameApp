@@ -60,7 +60,6 @@ namespace DevelopmentInTeam.Logic
         private bool _gameOver; // indicates whether the game is over 
         private Dictionary<int, string> _gameStatus; // dictionary holding status of each card
 
-
         // corresponding getters/setters
         public ObservableCollection<Card> Cards
         {
@@ -107,6 +106,7 @@ namespace DevelopmentInTeam.Logic
                 new Card(6, "card_6.png", false)
             };
 
+            InitializeGameStatus();
 
         }
 
