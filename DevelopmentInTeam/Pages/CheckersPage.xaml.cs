@@ -34,9 +34,9 @@ public partial class CheckersPage : ContentPage
         InitializeComponent();
     }
 
-    private void newGameClicked(object sender, EventArgs e)
+    private async void newGameClicked(object sender, EventArgs e)
     {
-
+        await Navigation.PushAsync(new CheckersPage());
     }
 
     private async void mainMenuClicked(object sender, EventArgs e)
@@ -122,7 +122,6 @@ public partial class CheckersPage : ContentPage
         }
 
         // Switch the turn to the other player
-        _currentPlayer = (_currentPlayer == 1) ? 2 : 1;
     }
 
 
@@ -225,7 +224,7 @@ public partial class CheckersPage : ContentPage
         }
 
         // Update current player
-        Console.WriteLine(_currentPlayer);
+        _currentPlayer = (_currentPlayer == 1) ? 2 : 1;
         UpdateUI();
 
         // Print the current state of the board
@@ -266,73 +265,53 @@ public partial class CheckersPage : ContentPage
 
     private void UpdateUI()
     {
-        // Update the game board UI
-        for (int row = 0; row < 8; row++)
+        // Array of desired coordinates
+        int[][] desiredSquares = new int[][] { new int[] { 0, 1 }, new int[] { 0, 3 }, new int[] { 0, 5 }, new int[] { 0, 7 }, new int[] { 1, 0 }, new int[] { 1, 2 }, new int[] { 1, 4 }, new int[] { 1, 6 }, new int[] { 2, 1 }, new int[] { 2, 3 }, new int[] { 2, 5 }, new int[] { 2, 7 }, new int[] { 3, 0 }, new int[] { 3, 2 }, new int[] { 3, 4 }, new int[] { 3, 6 }, new int[] { 4, 1 }, new int[] { 4, 3 }, new int[] { 4, 5 }, new int[] { 4, 7 }, new int[] { 5, 0 }, new int[] { 5, 2 }, new int[] { 5, 4 }, new int[] { 5, 6 }, new int[] { 6, 1 }, new int[] { 6, 3 }, new int[] { 6, 5 }, new int[] { 6, 7 }, new int[] { 7, 0 }, new int[] { 7, 2 }, new int[] { 7, 4 }, new int[] { 7, 6 } };
+
+        // Update the game board UI for the desired squares
+        foreach (int[] square in desiredSquares)
         {
-            for (int col = 0; col < 8; col++)
+            int row = square[0];
+            int col = square[1];
+            string redButtonName = "red" + (row) + (col);
+            string blackButtonName = "black" + (row) + (col);
+
+            var redbutton = (ImageButton)this.FindByName(redButtonName);
+            var blackbutton = (ImageButton)this.FindByName(blackButtonName);
+
+            if (redbutton == null || blackbutton == null)
             {
-                string redButtonName = "red" + (row) + (col);
-                string blackButtonName = "black" + (row) + (col);
+                continue;
+            }
 
-                var redbutton = (ImageButton)this.FindByName(redButtonName);
-                var blackbutton = (ImageButton)this.FindByName(blackButtonName);
+            if (_gameBoard[row, col] == 0)
+            {
+                redbutton.IsVisible = false;
+                blackbutton.IsVisible = false;
+            }
+            else if (_gameBoard[row, col] == 1)
+            {
+                redbutton.IsVisible = true;
+                redbutton.Source = "red_c.png";
+            }
+            else if (_gameBoard[row, col] == 2)
+            {
+                blackbutton.IsVisible = true;
+                blackbutton.Source = "black_c.png";
+            }
+            else if (_gameBoard[row, col] == 3)
+            {
+                    redbutton.IsVisible = true;
+                    redbutton.Source = "red_king.png";
+            }
+            else if (_gameBoard[row, col] == 4)
+            {
+                    blackbutton.IsVisible = true;
+                    blackbutton.Source = "black_king.png";
 
-                if (redbutton == null || blackbutton == null)
-                {
-                    continue;
-                }
-
-
-                if ((_gameBoard[row, col] == 0) && (redbutton.Source != null) && (blackbutton.Source != null))
-                {
-                    redbutton.IsVisible = false;
-                    blackbutton.IsVisible = false;
-                    break;
-                }
-                else if ((_gameBoard[row, col] == 1) && redbutton.Source != null)
-                {
-                    if (row % 2 == 0 && col % 2 == 0 || row % 2 == 1 && col % 2 == 1)
-                    {
-                        redbutton.IsVisible = true;
-                        redbutton.Source = "red_piece.png";
-                    }
-                    break;
-                }
-                else if ((_gameBoard[row, col] == 2) && blackbutton.Source != null)
-                {
-                    if (row % 2 == 0 && col % 2 == 0 || row % 2 == 1 && col % 2 == 1)
-                    {
-                        blackbutton.IsVisible = true;
-                        blackbutton.Source = "black_piece.png";
-                    }
-                    break;
-                }
-                else if ((_gameBoard[row, col] == 3) && redbutton.Source != null)
-                {
-                    if (row % 2 == 0 && col % 2 == 0 || row % 2 == 1 && col % 2 == 1)
-                    {
-                        redbutton.IsVisible = true;
-                        redbutton.Source = "red_king.png";
-                    }
-                    break;
-                }
-                else if ((_gameBoard[row, col] == 2) && blackbutton.Source != null)
-                {
-                    if (row % 2 == 0 && col % 2 == 0 || row % 2 == 1 && col % 2 == 1)
-                    {
-                        blackbutton.IsVisible = true;
-                        blackbutton.Source = "black_king.png";
-                    }
-                    break;
-                }
-                else
-                {
-                    break;
-                }
             }
         }
     }
-
 
 
 
