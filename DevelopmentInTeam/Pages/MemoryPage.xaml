@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8" ?>
+<!--ALEKS' PAGE-->
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="DevelopmentInTeam.Pages.MemoryPage"
@@ -10,24 +11,24 @@
         <Grid x:Name="MemoryDeck" Grid.Row="1" Grid.Column="1" RowDefinitions="*,*,*,*" ColumnDefinitions="*,*,*" ColumnSpacing="0" RowSpacing="6" BackgroundColor="#333333" >
 
             <!--ROW 4-->
-            <ImageButton x:Name="Card11" Grid.Row="0" Grid.Column="0" Source="card_back.png" Aspect="AspectFit" BackgroundColor="#333333"></ImageButton>
-            <ImageButton x:Name="Card12" Grid.Row="0" Grid.Column="1" Source="card_1.png" Aspect="AspectFit" BackgroundColor="#333333"></ImageButton>
-            <ImageButton x:Name="Card13" Grid.Row="0" Grid.Column="2" Source="card_2.png" Aspect="AspectFit" BackgroundColor="#333333"></ImageButton>
+            <ImageButton x:Name="Card11" Clicked="Card11Clicked" Grid.Row="0" Grid.Column="0" Source="card_back.png" Aspect="AspectFit" BackgroundColor="#333333"></ImageButton>
+            <ImageButton x:Name="Card12" Clicked="Card12Clicked" Grid.Row="0" Grid.Column="1" Source="card_back.png" Aspect="AspectFit" BackgroundColor="#333333"></ImageButton>
+            <ImageButton x:Name="Card13" Clicked="Card13Clicked" Grid.Row="0" Grid.Column="2" Source="card_back.png" Aspect="AspectFit" BackgroundColor="#333333"></ImageButton>
 
             <!--ROW 3-->
-            <ImageButton x:Name="Card21" Grid.Row="1" Grid.Column="0" Source="card_3.png" Aspect="AspectFit" BackgroundColor="#333333"></ImageButton>
-            <ImageButton x:Name="Card22" Grid.Row="1" Grid.Column="1" Source="card_4.png" Aspect="AspectFit" BackgroundColor="#333333"></ImageButton>
-            <ImageButton x:Name="Card23" Grid.Row="1" Grid.Column="2" Source="card_5.png" Aspect="AspectFit" BackgroundColor="#333333"></ImageButton>
+            <ImageButton x:Name="Card21" Clicked="Card21Clicked" Grid.Row="1" Grid.Column="0" Source="card_back.png" Aspect="AspectFit" BackgroundColor="#333333"></ImageButton>
+            <ImageButton x:Name="Card22" Clicked="Card22Clicked" Grid.Row="1" Grid.Column="1" Source="card_back.png" Aspect="AspectFit" BackgroundColor="#333333"></ImageButton>
+            <ImageButton x:Name="Card23" Clicked="Card23Clicked" Grid.Row="1" Grid.Column="2" Source="card_back.png" Aspect="AspectFit" BackgroundColor="#333333"></ImageButton>
 
             <!--ROW 2-->
-            <ImageButton x:Name="Card31" Grid.Row="2" Grid.Column="0" Source="card_6.png" Aspect="AspectFit" BackgroundColor="#333333"></ImageButton>
-            <ImageButton x:Name="Card32" Grid.Row="2" Grid.Column="1" Source="card_back.png" Aspect="AspectFit" BackgroundColor="#333333"></ImageButton>
-            <ImageButton x:Name="Card33" Grid.Row="2" Grid.Column="2" Source="card_back.png" Aspect="AspectFit" BackgroundColor="#333333"></ImageButton>
+            <ImageButton x:Name="Card31" Clicked="Card31Clicked" Grid.Row="2" Grid.Column="0" Source="card_back.png" Aspect="AspectFit" BackgroundColor="#333333"></ImageButton>
+            <ImageButton x:Name="Card32" Clicked="Card32Clicked" Grid.Row="2" Grid.Column="1" Source="card_back.png" Aspect="AspectFit" BackgroundColor="#333333"></ImageButton>
+            <ImageButton x:Name="Card33" Clicked="Card33Clicked" Grid.Row="2" Grid.Column="2" Source="card_back.png" Aspect="AspectFit" BackgroundColor="#333333"></ImageButton>
 
             <!--ROW 1-->
-            <ImageButton x:Name="Card41" Grid.Row="3" Grid.Column="0" Source="card_back.png" Aspect="AspectFit" BackgroundColor="#333333"></ImageButton>
-            <ImageButton x:Name="Card42" Grid.Row="3" Grid.Column="1" Source="card_back.png" Aspect="AspectFit" BackgroundColor="#333333"></ImageButton>
-            <ImageButton x:Name="Card43" Grid.Row="3" Grid.Column="2" Source="card_back.png" Aspect="AspectFit" BackgroundColor="#333333"></ImageButton>
+            <ImageButton x:Name="Card41" Clicked="Card41Clicked" Grid.Row="3" Grid.Column="0" Source="card_back.png" Aspect="AspectFit" BackgroundColor="#333333"></ImageButton>
+            <ImageButton x:Name="Card42" Clicked="Card42Clicked" Grid.Row="3" Grid.Column="1" Source="card_back.png" Aspect="AspectFit" BackgroundColor="#333333"></ImageButton>
+            <ImageButton x:Name="Card43" Clicked="Card43Clicked" Grid.Row="3" Grid.Column="2" Source="card_back.png" Aspect="AspectFit" BackgroundColor="#333333"></ImageButton>
 
         </Grid>
 

@@ -58,6 +58,8 @@ namespace DevelopmentInTeam.Logic
         private Card _flippedCard;
         private int _matchedPairsCount; // number of matched card pairs
         private bool _gameOver; // indicates whether the game is over 
+        private Dictionary<int, string> _gameStatus; // dictionary holding status of each card
+
 
         // corresponding getters/setters
         public ObservableCollection<Card> Cards
@@ -83,6 +85,11 @@ namespace DevelopmentInTeam.Logic
             get { return _gameOver; }
             set { _gameOver = value; }
         }
+        public Dictionary<int, string> GameStatus
+        {
+            get { return _gameStatus; }
+            set { _gameStatus = value; }
+        }
 
         /// <summary>
         /// class constructor
@@ -99,7 +106,19 @@ namespace DevelopmentInTeam.Logic
                 new Card(5, "card_5.png", false),
                 new Card(6, "card_6.png", false)
             };
+
+
         }
+
+        /// <summary>
+        /// Initializes the game status dict with default values
+        /// </summary>
+        public void InitializeGameStatus()
+        {
+            _gameStatus = _cards.ToDictionary(c => c.ID, c => "unflipped");
+        }
+
+
 
         /// <summary>
         /// Method handling flipping cards: checks for a match with previously flipped card.
@@ -115,13 +134,15 @@ namespace DevelopmentInTeam.Logic
                 // if no card previously flipped
                 if (_flippedCard == null)
                 {
-                    _flippedCard = card; 
+                    _flippedCard = card;
+                    UpdateGameStatus(card.ID, "flipped"); // updates game status for current card
                     _flippedCard.IsMatched = true; // changes the card state to flipped
                 }
                 // second card flipped
                 else
                 {
                     card.IsMatched = true; // change card state to flipped
+                    UpdateGameStatus(card.ID, "flipped"); // updates game status for current card
                     if (_flippedCard.ID == card.ID) // if matching IDs
                     {
                         _flippedCard.IsMatched = true;
@@ -137,15 +158,25 @@ namespace DevelopmentInTeam.Logic
                         //https://learn.microsoft.com/en-us/dotnet/api/system.threading.tasks.task.continuewith?view=net-8.0
                         Task.Delay(2000).ContinueWith(t =>
                         {
-                            _flippedCard.IsMatched = false; // flip both cards back
-                            card.IsMatched = false; // set matched to false
+                            UpdateGameStatus(_flippedCard.ID, "unflipped"); // flip both cards back
+                            UpdateGameStatus(card.ID, "unflipped");
+                            _flippedCard.IsMatched = false;
+                            card.IsMatched = false;
+                            _flippedCard = null; // reset flipped card
                         });
                     }
-
-                    _flippedCard = null; // reset flipped card
-
                 }
             }
+        }
+
+        /// <summary>
+        /// Updates the game status for a given card ID with a new status
+        /// </summary>
+        /// <param name="cardId"></param>
+        /// <param name="newStatus"></param>
+        private void UpdateGameStatus(int cardId, string status)
+        {
+            _gameStatus[cardId] = status;
         }
 
         /// <summary>

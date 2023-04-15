@@ -18,6 +18,7 @@ public partial class MemoryPage : ContentPage
         _memoryGame = new MemoryGame();
 	}
 
+
     /// <summary>
     /// 1-12 Card clicked EventHandlers region
     /// </summary>
