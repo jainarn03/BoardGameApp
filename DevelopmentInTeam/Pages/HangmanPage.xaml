@@ -7,7 +7,8 @@
         <Style  TargetType="Entry">
             <Setter Property="MaxLength" Value="1" />
             <Setter Property="FontSize" Value="Large" />
-            <Setter Property="BackgroundColor" Value="White" />
+            <Setter Property="BackgroundColor" Value="Black" />
+            <Setter Property="Text" Value="White"/>
             <Setter Property="Keyboard" Value="Text"/>
             <Setter Property="IsEnabled" Value="True"/>
             <Setter Property="HorizontalTextAlignment" Value="Center"/>
@@ -15,22 +16,26 @@
         </Style>
     </ContentPage.Resources>
     <!--MAIN GRID-->
-    <Grid BackgroundColor="#333333" RowDefinitions="*,2*,0.5*,*" ColumnDefinitions="*">
+    <Grid BackgroundColor="#333333" RowDefinitions="*,2*,0.75*,0.75*,*" ColumnDefinitions="*">
         <Label Text="Hangman" Grid.Row="0" FontSize="50" HorizontalTextAlignment="Center" TextColor="Purple"/>
-        <Image Source="hangmanfull.svg" Grid.Row="1"/>
+        <Image x:Name="HangmanImage" Source="hangmanempty.svg" Grid.Row="1"/>
         <Grid Grid.Row="2" RowDefinitions="*" ColumnDefinitions="*,*,*,*,*,*,*,*" BackgroundColor="LightBlue">
-            <Entry TextChanged="Slot0"   Grid.Row="0"  Grid.Column="0"/>
-            <Entry TextChanged="Slot1"  Grid.Row="0" Grid.Column="1"/>
-            <Entry TextChanged="Slot2"   Grid.Row="0" Grid.Column="2"/>
-            <Entry  TextChanged="Slot3"  Grid.Row="0" Grid.Column="3 "/>
-            <Entry  TextChanged="Slot4"  Grid.Row="0" Grid.Column="4 "/>
-            <Entry  TextChanged="Slot5"  Grid.Row="0" Grid.Column="5 "/>
-            <Entry  TextChanged="Slot6"  Grid.Row="0" Grid.Column="6 "/>
-            <Entry   TextChanged="Slot7" Grid.Row="0" Grid.Column="7 "/>
+            <Entry x:Name="Slot0" Text="" TextChanged="First" Grid.Row="0" Grid.Column="0" />
+            <Entry x:Name="Slot1" Text="" TextChanged="Second" Grid.Row="0" Grid.Column="1" />
+            <Entry x:Name="Slot2" Text="" TextChanged="Third" Grid.Row="0" Grid.Column="2" />
+            <Entry x:Name="Slot3" Text="" TextChanged="Fourth" Grid.Row="0" Grid.Column="3" />
+            <Entry x:Name="Slot4" Text="" TextChanged="Fifth" Grid.Row="0" Grid.Column="4" />
+            <Entry x:Name="Slot5" Text="" TextChanged="Sixth" Grid.Row="0" Grid.Column="5" />
+            <Entry x:Name="Slot6" Text="" TextChanged="Seventh" Grid.Row="0" Grid.Column="6" />
+            <Entry x:Name="Slot7" Text="" TextChanged="Eighth" Grid.Row="0" Grid.Column="7" />
+
+
         </Grid>
-
+        <Entry  x:Name="UserInput"  TextChanged="Guess" Grid.Row="3" Margin="150,15,150,15"/>
+        <Grid Grid.Row="4" ColumnDefinitions="*,*">
         <Button x:Name="RestartButton" Grid.Row="3" Text="Restart" Clicked="OnRestartClicked" />
-
+        <Button x:Name="Enter" Grid.Column="1" Grid.Row="3" Text="Enter" Clicked="EnterGuess" />
+        </Grid>
     </Grid>
 
 </ContentPage>
