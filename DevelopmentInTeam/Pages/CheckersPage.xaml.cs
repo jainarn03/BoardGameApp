@@ -106,7 +106,8 @@ public partial class CheckersPage : ContentPage
         }
 
         // Move the piece and update the board
-        UpdateBoard(fromRow, fromCol, toRow, toCol);
+        _gameBoard[toRow, toCol] = piece;
+        _gameBoard[fromRow, fromCol] = 0;
         CheckResult();
 
         // Check if the piece should be promoted to a king
@@ -121,8 +122,10 @@ public partial class CheckersPage : ContentPage
             Console.WriteLine("Black piece promoted to king!");
         }
 
+        _currentPlayer = (_currentPlayer == 1) ? 2 : 1;
         // Switch the turn to the other player
     }
+
 
 
     private bool IsValidMove(int piece, int fromRow, int fromCol, int toRow, int toCol)
@@ -224,7 +227,7 @@ public partial class CheckersPage : ContentPage
         }
 
         // Update current player
-        _currentPlayer = (_currentPlayer == 1) ? 2 : 1;
+        
         UpdateUI();
 
         // Print the current state of the board
