@@ -85,10 +85,7 @@ namespace DevelopmentInTeam.Logic
         /// <summary>
         /// class constructor
         /// </summary>
-        public MemoryGame() 
-        { 
-
-        }
+        public MemoryGame() { }
     }
 
 
