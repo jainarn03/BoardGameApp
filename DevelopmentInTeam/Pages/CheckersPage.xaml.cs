@@ -354,7 +354,7 @@ public partial class CheckersPage : ContentPage
             E1_greendot.IsVisible = true;
             G1_greendot.IsVisible = true;
         }
-        else if ((click == 1) && (_currentPlayer == 2))
+        else if ((click == 2) && (_currentPlayer == 2))
         {
             _selectedRow = row;
             _selectedCol = col;
@@ -391,7 +391,7 @@ public partial class CheckersPage : ContentPage
             E1_greendot.IsVisible = true;
             G1_greendot.IsVisible = true;
         }
-        else if (click == 2)
+        else if (click == 3)
         {
             MovePiece(_selectedRow, _selectedCol, row, col);
             B8_greendot.IsVisible = false;
@@ -633,193 +633,193 @@ public partial class CheckersPage : ContentPage
     private void square_B8_black(object sender, EventArgs e)
     {
         int row = 0; int col = 1;
-        buttonClicked(row, col, 1);
+        buttonClicked(row, col, 2);
         UpdateUI();
     }
     private void square_D8_black(object sender, EventArgs e)
     {
         int row = 0; int col = 3;
-        buttonClicked(row, col, 1);
+        buttonClicked(row, col, 2);
         UpdateUI();
     }
     private void square_F8_black(object sender, EventArgs e)
     {
         int row = 0; int col = 5;
-        buttonClicked(row, col, 1);
+        buttonClicked(row, col, 2);
         UpdateUI();
     }
     private void square_H8_black(object sender, EventArgs e)
     {
         int row = 0; int col = 7;
-        buttonClicked(row, col, 1);
+        buttonClicked(row, col, 2);
         UpdateUI();
     }
     private void square_A7_black(object sender, EventArgs e)
     {
         int row = 1; int col = 0;
-        buttonClicked(row, col, 1);
+        buttonClicked(row, col, 2);
         UpdateUI();
     }
     private void square_C7_black(object sender, EventArgs e)
     {
         int row = 1; int col = 2;
-        buttonClicked(row, col, 1);
+        buttonClicked(row, col, 2);
         UpdateUI();
     }
     private void square_E7_black(object sender, EventArgs e)
     {
         int row = 1; int col = 4;
-        buttonClicked(row, col, 1);
+        buttonClicked(row, col, 2);
         UpdateUI();
     }
     private void square_G7_black(object sender, EventArgs e)
     {
         int row = 1; int col = 6;
-        buttonClicked(row, col, 1);
+        buttonClicked(row, col, 2);
         UpdateUI();
     }
     private void square_B6_black(object sender, EventArgs e)
     {
         int row = 2; int col = 1;
-        buttonClicked(row, col, 1);
+        buttonClicked(row, col, 2);
         UpdateUI();
     }
     private void square_D6_black(object sender, EventArgs e)
     {
         int row = 2; int col = 3;
-        buttonClicked(row, col, 1);
+        buttonClicked(row, col, 2);
         UpdateUI();
     }
     private void square_F6_black(object sender, EventArgs e)
     {
         int row = 2; int col = 5;
-        buttonClicked(row, col, 1);
+        buttonClicked(row, col, 2);
         UpdateUI();
     }
     private void square_H6_black(object sender, EventArgs e)
     {
         int row = 2; int col = 7;
-        buttonClicked(row, col, 1);
+        buttonClicked(row, col, 2);
         UpdateUI();
     }
     private void square_A5_black(object sender, EventArgs e)
     {
         int row = 3; int col = 0;
-        buttonClicked(row, col, 1);
+        buttonClicked(row, col, 2);
         UpdateUI();
     }
     private void square_C5_black(object sender, EventArgs e)
     {
         int row = 3; int col = 2;
-        buttonClicked(row, col, 1);
+        buttonClicked(row, col, 2);
         UpdateUI();
     }
     private void square_E5_black(object sender, EventArgs e)
     {
         int row = 3; int col = 4;
-        buttonClicked(row, col, 1);
+        buttonClicked(row, col, 2);
         UpdateUI();
     }
     private void square_G5_black(object sender, EventArgs e)
     {
         int row = 3; int col = 6;
-        buttonClicked(row, col, 1);
+        buttonClicked(row, col, 2);
         UpdateUI();
     }
     private void square_B4_black(object sender, EventArgs e)
     {
         int row = 4; int col = 1;
-        buttonClicked(row, col, 1);
+        buttonClicked(row, col, 2);
         UpdateUI();
     }
     private void square_D4_black(object sender, EventArgs e)
     {
         int row = 4; int col = 3;
-        buttonClicked(row, col, 1);
+        buttonClicked(row, col, 2);
         UpdateUI();
     }
     private void square_F4_black(object sender, EventArgs e)
     {
         int row = 4; int col = 5;
-        buttonClicked(row, col, 1);
+        buttonClicked(row, col, 2);
         UpdateUI();
     }
     private void square_H4_black(object sender, EventArgs e)
     {
         int row = 4; int col = 7;
-        buttonClicked(row, col, 1);
+        buttonClicked(row, col, 2);
         UpdateUI();
     }
     private void square_A3_black(object sender, EventArgs e)
     {
         int row = 5; int col = 0;
-        buttonClicked(row, col, 1);
+        buttonClicked(row, col, 2);
         UpdateUI();
     }
     private void square_C3_black(object sender, EventArgs e)
     {
         int row = 5; int col = 2;
-        buttonClicked(row, col, 1);
+        buttonClicked(row, col, 2);
         UpdateUI();
     }
     private void square_E3_black(object sender, EventArgs e)
     {
         int row = 5; int col = 4;
-        buttonClicked(row, col, 1);
+        buttonClicked(row, col, 2);
         UpdateUI();
     }
     private void square_G3_black(object sender, EventArgs e)
     {
         int row = 5; int col = 6;
-        buttonClicked(row, col, 1);
+        buttonClicked(row, col, 2);
         UpdateUI();
     }
     private void square_B2_black(object sender, EventArgs e)
     {
         int row = 6; int col = 1;
-        buttonClicked(row, col, 1);
+        buttonClicked(row, col, 2);
         UpdateUI();
     }
     private void square_D2_black(object sender, EventArgs e)
     {
         int row = 6; int col = 3;
-        buttonClicked(row, col, 1);
+        buttonClicked(row, col, 2);
         UpdateUI();
     }
     private void square_F2_black(object sender, EventArgs e)
     {
         int row = 6; int col = 5;
-        buttonClicked(row, col, 1);
+        buttonClicked(row, col, 2);
         UpdateUI();
     }
     private void square_H2_black(object sender, EventArgs e)
     {
         int row = 6; int col = 7;
-        buttonClicked(row, col, 1);
+        buttonClicked(row, col, 2);
         UpdateUI();
     }
     private void square_A1_black(object sender, EventArgs e)
     {
         int row = 7; int col = 0;
-        buttonClicked(row, col, 1);
+        buttonClicked(row, col, 2);
         UpdateUI();
     }
     private void square_C1_black(object sender, EventArgs e)
     {
         int row = 7; int col = 2;
-        buttonClicked(row, col, 1);
+        buttonClicked(row, col, 2);
         UpdateUI();
     }
     private void square_E1_black(object sender, EventArgs e)
     {
         int row = 7; int col = 4;
-        buttonClicked(row, col, 1);
+        buttonClicked(row, col, 2);
         UpdateUI();
     }
     private void square_G1_black(object sender, EventArgs e)
     {
         int row = 7; int col = 6;
-        buttonClicked(row, col, 1);
+        buttonClicked(row, col, 2);
         UpdateUI();
     }
 
@@ -827,193 +827,193 @@ public partial class CheckersPage : ContentPage
     private void square_B8_greendot(object sender, EventArgs e)
     {
         int row = 0; int col = 1;
-        buttonClicked(row, col, 2);
+        buttonClicked(row, col, 3);
         UpdateUI();
     }
     private void square_D8_greendot(object sender, EventArgs e)
     {
         int row = 0; int col = 3;
-        buttonClicked(row, col, 2);
+        buttonClicked(row, col, 3);
         UpdateUI();
     }
     private void square_F8_greendot(object sender, EventArgs e)
     {
         int row = 0; int col = 5;
-        buttonClicked(row, col, 2);
+        buttonClicked(row, col, 3);
         UpdateUI();
     }
     private void square_H8_greendot(object sender, EventArgs e)
     {
         int row = 0; int col = 7;
-        buttonClicked(row, col, 2);
+        buttonClicked(row, col, 3);
         UpdateUI();
     }
     private void square_A7_greendot(object sender, EventArgs e)
     {
         int row = 1; int col = 0;
-        buttonClicked(row, col, 2);
+        buttonClicked(row, col, 3);
         UpdateUI();
     }
     private void square_C7_greendot(object sender, EventArgs e)
     {
         int row = 1; int col = 2;
-        buttonClicked(row, col, 2);
+        buttonClicked(row, col, 3);
         UpdateUI();
     }
     private void square_E7_greendot(object sender, EventArgs e)
     {
         int row = 1; int col = 4;
-        buttonClicked(row, col, 2);
+        buttonClicked(row, col, 3);
         UpdateUI();
     }
     private void square_G7_greendot(object sender, EventArgs e)
     {
         int row = 1; int col = 6;
-        buttonClicked(row, col, 2);
+        buttonClicked(row, col, 3);
         UpdateUI();
     }
     private void square_B6_greendot(object sender, EventArgs e)
     {
         int row = 2; int col = 1;
-        buttonClicked(row, col, 2);
+        buttonClicked(row, col, 3);
         UpdateUI();
     }
     private void square_D6_greendot(object sender, EventArgs e)
     {
         int row = 2; int col = 3;
-        buttonClicked(row, col, 2);
+        buttonClicked(row, col, 3);
         UpdateUI();
     }
     private void square_F6_greendot(object sender, EventArgs e)
     {
         int row = 2; int col = 5;
-        buttonClicked(row, col, 2);
+        buttonClicked(row, col, 3);
         UpdateUI();
     }
     private void square_H6_greendot(object sender, EventArgs e)
     {
         int row = 2; int col = 7;
-        buttonClicked(row, col, 2);
+        buttonClicked(row, col, 3);
         UpdateUI();
     }
     private void square_A5_greendot(object sender, EventArgs e)
     {
         int row = 3; int col = 0;
-        buttonClicked(row, col, 2);
+        buttonClicked(row, col, 3);
         UpdateUI();
     }
     private void square_C5_greendot(object sender, EventArgs e)
     {
         int row = 3; int col = 2;
-        buttonClicked(row, col, 2);
+        buttonClicked(row, col, 3);
         UpdateUI();
     }
     private void square_E5_greendot(object sender, EventArgs e)
     {
         int row = 3; int col = 4;
-        buttonClicked(row, col, 2);
+        buttonClicked(row, col, 3);
         UpdateUI();
     }
     private void square_G5_greendot(object sender, EventArgs e)
     {
         int row = 3; int col = 6;
-        buttonClicked(row, col, 2);
+        buttonClicked(row, col, 3);
         UpdateUI();
     }
     private void square_B4_greendot(object sender, EventArgs e)
     {
         int row = 4; int col = 1;
-        buttonClicked(row, col, 2);
+        buttonClicked(row, col, 3);
         UpdateUI();
     }
     private void square_D4_greendot(object sender, EventArgs e)
     {
         int row = 4; int col = 3;
-        buttonClicked(row, col, 2);
+        buttonClicked(row, col, 3);
         UpdateUI();
     }
     private void square_F4_greendot(object sender, EventArgs e)
     {
         int row = 4; int col = 5;
-        buttonClicked(row, col, 2);
+        buttonClicked(row, col, 3);
         UpdateUI();
     }
     private void square_H4_greendot(object sender, EventArgs e)
     {
         int row = 4; int col = 7;
-        buttonClicked(row, col, 2);
+        buttonClicked(row, col, 3);
         UpdateUI();
     }
     private void square_A3_greendot(object sender, EventArgs e)
     {
         int row = 5; int col = 0;
-        buttonClicked(row, col, 2);
+        buttonClicked(row, col, 3);
         UpdateUI();
     }
     private void square_C3_greendot(object sender, EventArgs e)
     {
         int row = 5; int col = 2;
-        buttonClicked(row, col, 2);
+        buttonClicked(row, col, 3);
         UpdateUI();
     }
     private void square_E3_greendot(object sender, EventArgs e)
     {
         int row = 5; int col = 4;
-        buttonClicked(row, col, 2);
+        buttonClicked(row, col, 3);
         UpdateUI();
     }
     private void square_G3_greendot(object sender, EventArgs e)
     {
         int row = 5; int col = 6;
-        buttonClicked(row, col, 2);
+        buttonClicked(row, col, 3);
         UpdateUI();
     }
     private void square_B2_greendot(object sender, EventArgs e)
     {
         int row = 6; int col = 1;
-        buttonClicked(row, col, 2);
+        buttonClicked(row, col, 3);
         UpdateUI();
     }
     private void square_D2_greendot(object sender, EventArgs e)
     {
         int row = 6; int col = 3;
-        buttonClicked(row, col, 2);
+        buttonClicked(row, col, 3);
         UpdateUI();
     }
     private void square_F2_greendot(object sender, EventArgs e)
     {
         int row = 6; int col = 5;
-        buttonClicked(row, col, 2);
+        buttonClicked(row, col, 3);
         UpdateUI();
     }
     private void square_H2_greendot(object sender, EventArgs e)
     {
         int row = 6; int col = 7;
-        buttonClicked(row, col, 2);
+        buttonClicked(row, col, 3);
         UpdateUI();
     }
     private void square_A1_greendot(object sender, EventArgs e)
     {
         int row = 7; int col = 0;
-        buttonClicked(row, col, 2);
+        buttonClicked(row, col, 3);
         UpdateUI();
     }
     private void square_C1_greendot(object sender, EventArgs e)
     {
         int row = 7; int col = 2;
-        buttonClicked(row, col, 2);
+        buttonClicked(row, col, 3);
         UpdateUI();
     }
     private void square_E1_greendot(object sender, EventArgs e)
     {
         int row = 7; int col = 4;
-        buttonClicked(row, col, 2);
+        buttonClicked(row, col, 3);
         UpdateUI();
     }
     private void square_G1_greendot(object sender, EventArgs e)
     {
         int row = 7; int col = 6;
-        buttonClicked(row, col, 2);
+        buttonClicked(row, col, 3);
         UpdateUI();
     }
     #endregion
