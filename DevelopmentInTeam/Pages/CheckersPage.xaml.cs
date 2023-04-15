@@ -41,7 +41,7 @@ public partial class CheckersPage : ContentPage
 
     private async void mainMenuClicked(object sender, EventArgs e)
     {
-        await Navigation.PushAsync(new MainPage());
+        await Navigation.PopAsync(); // navigation stack recursion here (pushes to mainpage instead of pop) code changed by aleks 
     }
 
     public void InitializeBoard()
