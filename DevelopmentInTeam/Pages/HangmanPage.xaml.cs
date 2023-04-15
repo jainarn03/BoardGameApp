@@ -2,11 +2,34 @@ namespace DevelopmentInTeam.Pages;
 
 public partial class HangmanPage : ContentPage
 {
+
+    List<string> userEntries = new List<string>();
+
+    int imagechange = 0;
+    private List<string> eightLetterWords;
+
+    // Declare a field to store the selected random word
+    private string randomWord;
     public HangmanPage()
     {
         InitializeComponent();
+        eightLetterWords = new List<string>
+            {
+                "pavement",
+                "mountain",
+                "keyboard",
+                "language",
+                "calendar",
+                "raindrop",
+                "sweaters",
+                "toothbrush"
+            };
+
+        // Select a random word from the list and store it in a field
+        Random rand = new Random();
+        randomWord = eightLetterWords[rand.Next(0, eightLetterWords.Count)];
     }
-    int imagechange = 0;
+
 
     private void LetterOnlyCheck(object sender, TextChangedEventArgs e)
     {
@@ -37,19 +60,26 @@ public partial class HangmanPage : ContentPage
 
     private async void OnRestartClicked(object sender, EventArgs e)
     {
-        await Navigation.PushAsync(new HangmanPage());
+        await Navigation.PushAsync(new MainPage());
         Navigation.RemovePage(this);
     }
 
     private void EnterGuess(object sender, EventArgs e)
-
     {
-        string prompt = "findings";
+
+
+
+
+
+        string prompt = randomWord;
         if (!string.IsNullOrEmpty(UserInput.Text))
         {
             string entry = UserInput.Text.ToLower(); // get the text from the UserInput entry box
 
-            if (!string.IsNullOrEmpty(entry) && prompt.Contains(entry.ToLower()))
+
+
+
+            if (prompt.Contains(entry.ToLower()))
             {
                 for (int i = 0; i < prompt.Length; i++)
                 {
@@ -57,48 +87,72 @@ public partial class HangmanPage : ContentPage
                     {
                         string SlotName = "Slot" + i.ToString();
                         Entry slot = (Entry)FindByName(SlotName);
-                        slot.Text = entry;
-                    }
-                    else
-                    {
+                        slot.Text = entry.ToUpper();
 
-                        switch (imagechange)
-                        {
-                            case 0:
-                                HangmanImage.Source = "hangmanhead.svg";
-                                imagechange++;
-                                break;
-                            case 1:
-                                HangmanImage.Source = "hangmanbody.svg";
-                                imagechange++;
-                                break;
-                            case 2:
-                                HangmanImage.Source = "hangmanleg.svg";
-                                imagechange++;
-                                break;
-                            case 3:
-                                HangmanImage.Source = "hangmanarm.svg";
-                                imagechange++;
-                                break;
-                            case 4:
-                                HangmanImage.Source = "hangmanarm2.svg";
-                                imagechange++;
-                                break;
-                            case 5:
-                                HangmanImage.Source = "hangmanfull.svg";
-                                imagechange++;
-                                break;
-
-                        }
                     }
                 }
 
+            }
+
+            else
+            {
+                String Originaltext = Used.Text;
+
+                if (!userEntries.Contains(entry))
+                {
+                    userEntries.Add(entry);
+                    Used.Text = Originaltext + " " + entry.ToUpper();
 
 
 
+
+                    switch (imagechange)
+                    {
+                        case 0:
+                            HangmanImage.Source = "hangmanhead.svg";
+                            imagechange++;
+                            break;
+                        case 1:
+                            HangmanImage.Source = "hangmanbody.svg";
+                            imagechange++;
+                            break;
+                        case 2:
+                            HangmanImage.Source = "hangmanleg.svg";
+                            imagechange++;
+                            break;
+                        case 3:
+                            HangmanImage.Source = "hangmanarm.svg";
+                            imagechange++;
+                            break;
+                        case 4:
+                            HangmanImage.Source = "hangmanarm2.svg";
+                            imagechange++;
+                            break;
+                        case 5:
+                            HangmanImage.Source = "hangmanfull.svg";
+                            imagechange++;
+                            DisplayAlert("You Lost", "Sorry, the correct word was " + randomWord, "OK");
+                            UserInput.IsEnabled = false;
+                            break;
+
+                    }
+                }
 
             }
 
         }
+
+        string combinedWord = Slot0.Text + Slot1.Text + Slot2.Text + Slot3.Text + Slot4.Text + Slot5.Text + Slot6.Text + Slot7.Text;
+        if (combinedWord == randomWord.ToUpper())
+        {
+            DisplayAlert("Congratulations", "You Won", "OK");
+
+        }
+
+
+
+
+
     }
 }
+
