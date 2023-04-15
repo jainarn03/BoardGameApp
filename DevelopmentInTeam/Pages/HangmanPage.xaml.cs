@@ -2,11 +2,36 @@ namespace DevelopmentInTeam.Pages;
 
 public partial class HangmanPage : ContentPage
 {
-	public HangmanPage()
-	{
-		InitializeComponent();
-	}
-    private void OnTextChanged(object sender, TextChangedEventArgs e)
+
+    List<string> userEntries = new List<string>();
+
+    int imagechange = 0;
+    private List<string> eightLetterWords;
+
+    // Declare a field to store the selected random word
+    private string randomWord;
+    public HangmanPage()
+    {
+        InitializeComponent();
+        eightLetterWords = new List<string>
+            {
+                "pavement",
+                "mountain",
+                "keyboard",
+                "language",
+                "calendar",
+                "raindrop",
+                "sweaters",
+                "toothbrush"
+            };
+
+        // Select a random word from the list and store it in a field
+        Random rand = new Random();
+        randomWord = eightLetterWords[rand.Next(0, eightLetterWords.Count)];
+    }
+
+
+    private void LetterOnlyCheck(object sender, TextChangedEventArgs e)
     {
         // Check if the entered text contains non-letter characters
         if (!string.IsNullOrEmpty(e.NewTextValue))
@@ -26,51 +51,108 @@ public partial class HangmanPage : ContentPage
             }
         }
     }
+    private void NextLetter(Entry CurrentEntry, Entry NextEntry)
+    {
+        NextEntry.IsEnabled = true;
+        NextEntry.Focus();
+        CurrentEntry.IsEnabled = false;
+    }
 
     private async void OnRestartClicked(object sender, EventArgs e)
     {
-        await Navigation.PushAsync(new HangmanPage());
+        await Navigation.PushAsync(new MainPage());
         Navigation.RemovePage(this);
     }
 
-    private void Slot0(object sender, TextChangedEventArgs e)
+    private void EnterGuess(object sender, EventArgs e)
     {
-        OnTextChanged(sender, e);
-    }
-
-    private void Slot1(object sender, TextChangedEventArgs e)
-    {
-        OnTextChanged(sender, e);
-    }
-    private void Slot2(object sender, TextChangedEventArgs e)
-    {
-        OnTextChanged(sender, e);
-
-    }
-    private void Slot3(object sender, TextChangedEventArgs e)
-    {
-        OnTextChanged(sender, e);
-
-    }
-    private void Slot4(object sender, TextChangedEventArgs e)
-    {
-        OnTextChanged(sender, e);
-
-    }
-    private void Slot5(object sender, TextChangedEventArgs e)
-    {
-        OnTextChanged(sender, e);
 
 
-    }
-    private void Slot6(object sender, TextChangedEventArgs e)
-    {
-        OnTextChanged(sender, e);
 
-    }
-    private void Slot7(object sender, TextChangedEventArgs e)
-    {
-        OnTextChanged(sender, e);
+
+
+        string prompt = randomWord;
+        if (!string.IsNullOrEmpty(UserInput.Text))
+        {
+            string entry = UserInput.Text.ToLower(); // get the text from the UserInput entry box
+
+
+
+
+            if (prompt.Contains(entry.ToLower()))
+            {
+                for (int i = 0; i < prompt.Length; i++)
+                {
+                    if (prompt[i] == entry[0])
+                    {
+                        string SlotName = "Slot" + i.ToString();
+                        Entry slot = (Entry)FindByName(SlotName);
+                        slot.Text = entry.ToUpper();
+
+                    }
+                }
+
+            }
+
+            else
+            {
+                String Originaltext = Used.Text;
+
+                if (!userEntries.Contains(entry))
+                {
+                    userEntries.Add(entry);
+                    Used.Text = Originaltext + " " + entry.ToUpper();
+
+
+
+
+                    switch (imagechange)
+                    {
+                        case 0:
+                            HangmanImage.Source = "hangmanhead.svg";
+                            imagechange++;
+                            break;
+                        case 1:
+                            HangmanImage.Source = "hangmanbody.svg";
+                            imagechange++;
+                            break;
+                        case 2:
+                            HangmanImage.Source = "hangmanleg.svg";
+                            imagechange++;
+                            break;
+                        case 3:
+                            HangmanImage.Source = "hangmanarm.svg";
+                            imagechange++;
+                            break;
+                        case 4:
+                            HangmanImage.Source = "hangmanarm2.svg";
+                            imagechange++;
+                            break;
+                        case 5:
+                            HangmanImage.Source = "hangmanfull.svg";
+                            imagechange++;
+                            DisplayAlert("You Lost", "Sorry, the correct word was " + randomWord, "OK");
+                            UserInput.IsEnabled = false;
+                            break;
+
+                    }
+                }
+
+            }
+
+        }
+
+        string combinedWord = Slot0.Text + Slot1.Text + Slot2.Text + Slot3.Text + Slot4.Text + Slot5.Text + Slot6.Text + Slot7.Text;
+        if (combinedWord == randomWord.ToUpper())
+        {
+            DisplayAlert("Congratulations", "You Won", "OK");
+
+        }
+
+
+
+
 
     }
 }
+
