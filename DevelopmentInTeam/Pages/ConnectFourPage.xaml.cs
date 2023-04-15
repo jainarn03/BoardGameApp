@@ -5,7 +5,7 @@ namespace DevelopmentInTeam.Pages;
 
 public partial class ConnectFourPage : ContentPage
 {
-    // declaring field for ConnectFourGame class and its corresponding property
+    // declaring field for ConnectFourGame object and its corresponding property
     ConnectFourGame _connectFourGame;
     public ConnectFourGame ConnectFourGame => _connectFourGame;
 
@@ -431,11 +431,12 @@ public partial class ConnectFourPage : ContentPage
 
     /// <summary>
     /// Restarts the game when start new game button is clicked, 
-    /// by re-enabling the board buttons, resetting the slot colors to empty, and creating a new game instance
+    /// by re-enabling the board buttons, resetting the slot colors to empty, 
+    /// creating a new game instance and calling UpdateUI().
     /// </summary>
     private void OnNewGameClicked(object sender, EventArgs e)
     {
-        // iterate through all the buttons of the board grid
+        // iterates through each button (slot) of the board grid
         foreach (Button button in ConnectFourBoard.Children)
         {
             button.IsEnabled = true; // re-enables them
