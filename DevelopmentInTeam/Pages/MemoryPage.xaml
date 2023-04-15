@@ -5,9 +5,34 @@
              Shell.NavBarIsVisible="False">
 
     <!--MAIN GRID-->
-    <Grid BackgroundColor="#333333" 
-          RowDefinitions="*,*,*"
-          ColumnDefinitions="*,*,*">
+    <Grid BackgroundColor="#333333" RowDefinitions=".7*,500,*" ColumnDefinitions="*,300,*">
+
+        <Grid x:Name="MemoryDeck" Grid.Row="1" Grid.Column="1" RowDefinitions="*,*,*,*" ColumnDefinitions="*,*,*" ColumnSpacing="0" RowSpacing="6" BackgroundColor="#333333" >
+
+            <!--ROW 4-->
+            <ImageButton Grid.Row="0" Grid.Column="0" Source="card_back.png" Aspect="AspectFit" BackgroundColor="#333333"></ImageButton>
+            <ImageButton Grid.Row="0" Grid.Column="1" Source="card_1.png" Aspect="AspectFit" BackgroundColor="#333333"></ImageButton>
+            <ImageButton Grid.Row="0" Grid.Column="2" Source="card_2.png" Aspect="AspectFit" BackgroundColor="#333333"></ImageButton>
+
+            <!--ROW 3-->
+            <ImageButton Grid.Row="1" Grid.Column="0" Source="card_3.png" Aspect="AspectFit" BackgroundColor="#333333"></ImageButton>
+            <ImageButton Grid.Row="1" Grid.Column="1" Source="card_4.png" Aspect="AspectFit" BackgroundColor="#333333"></ImageButton>
+            <ImageButton Grid.Row="1" Grid.Column="2" Source="card_5.png" Aspect="AspectFit" BackgroundColor="#333333"></ImageButton>
+
+            <!--ROW 2-->
+            <ImageButton Grid.Row="2" Grid.Column="0" Source="card_6.png" Aspect="AspectFit" BackgroundColor="#333333"></ImageButton>
+            <ImageButton Grid.Row="2" Grid.Column="1" Source="card_back.png" Aspect="AspectFit" BackgroundColor="#333333"></ImageButton>
+            <ImageButton Grid.Row="2" Grid.Column="2" Source="card_back.png" Aspect="AspectFit" BackgroundColor="#333333"></ImageButton>
+
+            <!--ROW 1-->
+            <ImageButton Grid.Row="3" Grid.Column="0" Source="card_back.png" Aspect="AspectFit" BackgroundColor="#333333"></ImageButton>
+            <ImageButton Grid.Row="3" Grid.Column="1" Source="card_back.png" Aspect="AspectFit" BackgroundColor="#333333"></ImageButton>
+            <ImageButton Grid.Row="3" Grid.Column="2" Source="card_back.png" Aspect="AspectFit" BackgroundColor="#333333"></ImageButton>
+
+        </Grid>
+
+        <!--NEW GAME BUTTON-->
+        <Button x:Name="NewGameButton" Grid.Row="3" Grid.Column="1" Text="Start New Game" HorizontalOptions="Center" VerticalOptions="CenterAndExpand"  Clicked="OnNewGameClicked"/>
 
     </Grid>
 

@@ -13,7 +13,8 @@ namespace DevelopmentInTeam.Logic
     public class ConnectFourGame
     {
         // declaring game board field
-        int[,] _gameBoard;
+        private int[,] _gameBoard;
+
         public int[,] GameBoard // getter/setter for game board field
         {
             get => _gameBoard;

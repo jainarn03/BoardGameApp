@@ -17,12 +17,33 @@ public partial class ConnectFourPage : ContentPage
         _connectFourGame = new ConnectFourGame();
     }
 
+
+    public void DisplayPlayerTurn()
+    {
+        bool playerTurn = _connectFourGame.IsPlayer1Turn(); // assigned to method that returns 1 if Player 1's turn and 0 if Player 2's turn
+
+        // changes icon color and label text based on the current player to move
+        if (playerTurn)
+        {
+            PlayerTurnIcon.Background = Color.FromArgb("ce3b28"); // player 1 (red)
+            PlayerToMove.Text = "Red To Move";
+        }
+        else
+        {
+            PlayerTurnIcon.Background = Color.FromArgb("2B5FC7"); // player 2 (blue)
+            PlayerToMove.Text = "Blue To Move";
+        }
+    }    
+
     /// <summary>
     /// updates the board in the UI (every slot is a button in a 7x6 grid)
     /// finds the corresponding button by name for each slot and changes its color to represent the tiles of both players.
     /// </summary>
     public void UpdateUI()
     {
+        // updates player turn status with corresponding icon color and text
+        DisplayPlayerTurn();
+
         // iterates through all the slots in the board
         for (int row = 0; row < 6; row++)
         {
@@ -37,13 +58,13 @@ public partial class ConnectFourPage : ContentPage
                 var button = (Button)this.FindByName(buttonName);
 
                 // changes the slot's color with respect to the player
-                if (ConnectFourGame.GameBoard[row, col] == 1) 
+                if (_connectFourGame.GameBoard[row, col] == 1) 
                 {
-                    button.Background = Color.FromArgb("ce3b28"); // dark color
+                    button.Background = Color.FromArgb("ce3b28"); // player 1 (red)
                 }
-                else if (ConnectFourGame.GameBoard[row, col] == 2)
+                else if (_connectFourGame.GameBoard[row, col] == 2)
                 {
-                    button.Background = Color.FromArgb("2B5FC7"); // light color
+                    button.Background = Color.FromArgb("2B5FC7"); // player 2 (blue)
                 }
             }
         }
@@ -63,17 +84,25 @@ public partial class ConnectFourPage : ContentPage
         {
             DisplayAlert("Game over!", "Player 1 has won.", "OK");
             TerminateGame();
+            PlayerTurnIcon.Background = Color.FromArgb("ce3b28"); // player 1 (red)
+            PlayerToMove.Text = "Red Won!";
+
+
         }
         else if (winner == 2)
         {
             DisplayAlert("Game over!", "Player 2 has won.", "OK");
             TerminateGame();
+            PlayerTurnIcon.Background = Color.FromArgb("2B5FC7"); // player 2 (blue)
+            PlayerToMove.Text = "Blue Won!";
         }
 
         else if (winner == 3)
         {
-            DisplayAlert("Game over!", "Draw.", "OK");
+            DisplayAlert("Game over!", "Game has ended in draw.", "OK");
             TerminateGame();
+            PlayerTurnIcon.Background = Color.FromArgb("Edf0f9"); // neutral empty slot color
+            PlayerToMove.Text = "Game Drawn!";
         }
     }
     
@@ -107,296 +136,296 @@ public partial class ConnectFourPage : ContentPage
     #region
     private void Slot11Clicked(object sender, EventArgs e)
     {
-        ConnectFourGame.MakeMove(0);
+        _connectFourGame.MakeMove(0);
         UpdateUI();
-        HandleGameStatusUI(ConnectFourGame.CheckGameStatus());
+        HandleGameStatusUI(_connectFourGame.CheckGameStatus());
     }
 
     private void Slot12Clicked(object sender, EventArgs e)
     {
-        ConnectFourGame.MakeMove(1);
+        _connectFourGame.MakeMove(1);
         UpdateUI();
-        HandleGameStatusUI(ConnectFourGame.CheckGameStatus());
+        HandleGameStatusUI(_connectFourGame.CheckGameStatus());
     }
 
     private void Slot13Clicked(object sender, EventArgs e)
     {
-        ConnectFourGame.MakeMove(2);
+        _connectFourGame.MakeMove(2);
         UpdateUI();
-        HandleGameStatusUI(ConnectFourGame.CheckGameStatus());
+        HandleGameStatusUI(_connectFourGame.CheckGameStatus());
     }
 
     private void Slot14Clicked(object sender, EventArgs e)
     {
-        ConnectFourGame.MakeMove(3);
+        _connectFourGame.MakeMove(3);
         UpdateUI();
-        HandleGameStatusUI(ConnectFourGame.CheckGameStatus());
+        HandleGameStatusUI(_connectFourGame.CheckGameStatus());
     }
 
     private void Slot15Clicked(object sender, EventArgs e)
     {
-        ConnectFourGame.MakeMove(4);
+        _connectFourGame.MakeMove(4);
         UpdateUI();
-        HandleGameStatusUI(ConnectFourGame.CheckGameStatus());
+        HandleGameStatusUI(_connectFourGame.CheckGameStatus());
     }
 
     private void Slot16Clicked(object sender, EventArgs e)
     {
-        ConnectFourGame.MakeMove(5);
+        _connectFourGame.MakeMove(5);
         UpdateUI();
-        HandleGameStatusUI(ConnectFourGame.CheckGameStatus());
+        HandleGameStatusUI(_connectFourGame.CheckGameStatus());
     }
 
     private void Slot17Clicked(object sender, EventArgs e)
     {
-        ConnectFourGame.MakeMove(6);
+        _connectFourGame.MakeMove(6);
         UpdateUI();
-        HandleGameStatusUI(ConnectFourGame.CheckGameStatus());
+        HandleGameStatusUI(_connectFourGame.CheckGameStatus());
     }
 
     private void Slot21Clicked(object sender, EventArgs e)
     {
-        ConnectFourGame.MakeMove(0);
+        _connectFourGame.MakeMove(0);
         UpdateUI();
-        HandleGameStatusUI(ConnectFourGame.CheckGameStatus());
+        HandleGameStatusUI(_connectFourGame.CheckGameStatus());
     }
 
     private void Slot22Clicked(object sender, EventArgs e)
     {
-        ConnectFourGame.MakeMove(1);
+        _connectFourGame.MakeMove(1);
         UpdateUI();
-        HandleGameStatusUI(ConnectFourGame.CheckGameStatus());
+        HandleGameStatusUI(_connectFourGame.CheckGameStatus());
     }
 
     private void Slot23Clicked(object sender, EventArgs e)
     {
-        ConnectFourGame.MakeMove(2);
+        _connectFourGame.MakeMove(2);
         UpdateUI();
-        HandleGameStatusUI(ConnectFourGame.CheckGameStatus());
+        HandleGameStatusUI(_connectFourGame.CheckGameStatus());
     }
 
     private void Slot24Clicked(object sender, EventArgs e)
     {
-        ConnectFourGame.MakeMove(3);
+        _connectFourGame.MakeMove(3);
         UpdateUI();
-        HandleGameStatusUI(ConnectFourGame.CheckGameStatus());
+        HandleGameStatusUI(_connectFourGame.CheckGameStatus());
     }
 
     private void Slot25Clicked(object sender, EventArgs e)
     {
-        ConnectFourGame.MakeMove(4);
+        _connectFourGame.MakeMove(4);
         UpdateUI();
-        HandleGameStatusUI(ConnectFourGame.CheckGameStatus());
+        HandleGameStatusUI(_connectFourGame.CheckGameStatus());
     }
 
     private void Slot26Clicked(object sender, EventArgs e)
     {
-        ConnectFourGame.MakeMove(5);
+        _connectFourGame.MakeMove(5);
         UpdateUI();
-        HandleGameStatusUI(ConnectFourGame.CheckGameStatus());
+        HandleGameStatusUI(_connectFourGame.CheckGameStatus());
     }
 
     private void Slot27Clicked(object sender, EventArgs e)
     {
-        ConnectFourGame.MakeMove(6);
+        _connectFourGame.MakeMove(6);
         UpdateUI();
-        HandleGameStatusUI(ConnectFourGame.CheckGameStatus());
+        HandleGameStatusUI(_connectFourGame.CheckGameStatus());
     }
 
     private void Slot31Clicked(object sender, EventArgs e)
     {
-        ConnectFourGame.MakeMove(0);
+        _connectFourGame.MakeMove(0);
         UpdateUI();
-        HandleGameStatusUI(ConnectFourGame.CheckGameStatus());
+        HandleGameStatusUI(_connectFourGame.CheckGameStatus());
     }
 
     private void Slot32Clicked(object sender, EventArgs e)
     {
-        ConnectFourGame.MakeMove(1);
+        _connectFourGame.MakeMove(1);
         UpdateUI();
-        HandleGameStatusUI(ConnectFourGame.CheckGameStatus());
+        HandleGameStatusUI(_connectFourGame.CheckGameStatus());
     }
 
     private void Slot33Clicked(object sender, EventArgs e)
     {
-        ConnectFourGame.MakeMove(2);
+        _connectFourGame.MakeMove(2);
         UpdateUI();
-        HandleGameStatusUI(ConnectFourGame.CheckGameStatus());
+        HandleGameStatusUI(_connectFourGame.CheckGameStatus());
     }
 
     private void Slot34Clicked(object sender, EventArgs e)
     {
-        ConnectFourGame.MakeMove(3);
+        _connectFourGame.MakeMove(3);
         UpdateUI();
-        HandleGameStatusUI(ConnectFourGame.CheckGameStatus());
+        HandleGameStatusUI(_connectFourGame.CheckGameStatus());
     }
 
     private void Slot35Clicked(object sender, EventArgs e)
     {
-        ConnectFourGame.MakeMove(4);
+        _connectFourGame.MakeMove(4);
         UpdateUI();
-        HandleGameStatusUI(ConnectFourGame.CheckGameStatus());
+        HandleGameStatusUI(_connectFourGame.CheckGameStatus());
     }
 
     private void Slot36Clicked(object sender, EventArgs e)
     {
-        ConnectFourGame.MakeMove(5);
+        _connectFourGame.MakeMove(5);
         UpdateUI();
-        HandleGameStatusUI(ConnectFourGame.CheckGameStatus());
+        HandleGameStatusUI(_connectFourGame.CheckGameStatus());
     }
 
     private void Slot37Clicked(object sender, EventArgs e)
     {
-        ConnectFourGame.MakeMove(6);
+        _connectFourGame.MakeMove(6);
         UpdateUI();
-        HandleGameStatusUI(ConnectFourGame.CheckGameStatus());
+        HandleGameStatusUI(_connectFourGame.CheckGameStatus());
     }
 
     private void Slot41Clicked(object sender, EventArgs e)
     {
-        ConnectFourGame.MakeMove(0);
+        _connectFourGame.MakeMove(0);
         UpdateUI();
-        HandleGameStatusUI(ConnectFourGame.CheckGameStatus());
+        HandleGameStatusUI(_connectFourGame.CheckGameStatus());
     }
 
     private void Slot42Clicked(object sender, EventArgs e)
     {
-        ConnectFourGame.MakeMove(1);
+        _connectFourGame.MakeMove(1);
         UpdateUI();
-        HandleGameStatusUI(ConnectFourGame.CheckGameStatus());
+        HandleGameStatusUI(_connectFourGame.CheckGameStatus());
     }
 
     private void Slot43Clicked(object sender, EventArgs e)
     {
-        ConnectFourGame.MakeMove(2);
+        _connectFourGame.MakeMove(2);
         UpdateUI();
-        HandleGameStatusUI(ConnectFourGame.CheckGameStatus());
+        HandleGameStatusUI(_connectFourGame.CheckGameStatus());
     }
 
     private void Slot44Clicked(object sender, EventArgs e)
     {
-        ConnectFourGame.MakeMove(3);
+        _connectFourGame.MakeMove(3);
         UpdateUI();
-        HandleGameStatusUI(ConnectFourGame.CheckGameStatus());
+        HandleGameStatusUI(_connectFourGame.CheckGameStatus());
     }
 
     private void Slot45Clicked(object sender, EventArgs e)
     {
-        ConnectFourGame.MakeMove(4);
+        _connectFourGame.MakeMove(4);
         UpdateUI();
-        HandleGameStatusUI(ConnectFourGame.CheckGameStatus());
+        HandleGameStatusUI(_connectFourGame.CheckGameStatus());
     }
 
     private void Slot46Clicked(object sender, EventArgs e)
     {
-        ConnectFourGame.MakeMove(5);
+        _connectFourGame.MakeMove(5);
         UpdateUI();
-        HandleGameStatusUI(ConnectFourGame.CheckGameStatus());
+        HandleGameStatusUI(_connectFourGame.CheckGameStatus());
     }
 
     private void Slot47Clicked(object sender, EventArgs e)
     {
-        ConnectFourGame.MakeMove(6);
+        _connectFourGame.MakeMove(6);
         UpdateUI();
-        HandleGameStatusUI(ConnectFourGame.CheckGameStatus());
+        HandleGameStatusUI(_connectFourGame.CheckGameStatus());
     }
 
     private void Slot51Clicked(object sender, EventArgs e)
     {
-        ConnectFourGame.MakeMove(0);
+        _connectFourGame.MakeMove(0);
         UpdateUI();
-        HandleGameStatusUI(ConnectFourGame.CheckGameStatus());
+        HandleGameStatusUI(_connectFourGame.CheckGameStatus());
     }
 
     private void Slot52Clicked(object sender, EventArgs e)
     {
-        ConnectFourGame.MakeMove(1);
+        _connectFourGame.MakeMove(1);
         UpdateUI();
-        HandleGameStatusUI(ConnectFourGame.CheckGameStatus());
+        HandleGameStatusUI(_connectFourGame.CheckGameStatus());
     }
 
     private void Slot53Clicked(object sender, EventArgs e)
     {
-        ConnectFourGame.MakeMove(2);
+        _connectFourGame.MakeMove(2);
         UpdateUI();
-        HandleGameStatusUI(ConnectFourGame.CheckGameStatus());
+        HandleGameStatusUI(_connectFourGame.CheckGameStatus());
     }
 
     private void Slot54Clicked(object sender, EventArgs e)
     {
-        ConnectFourGame.MakeMove(3);
+        _connectFourGame.MakeMove(3);
         UpdateUI();
-        HandleGameStatusUI(ConnectFourGame.CheckGameStatus());
+        HandleGameStatusUI(_connectFourGame.CheckGameStatus());
     }
 
     private void Slot55Clicked(object sender, EventArgs e)
     {
-        ConnectFourGame.MakeMove(4);
+        _connectFourGame.MakeMove(4);
         UpdateUI();
-        HandleGameStatusUI(ConnectFourGame.CheckGameStatus());
+        HandleGameStatusUI(_connectFourGame.CheckGameStatus());
     }
 
     private void Slot56Clicked(object sender, EventArgs e)
     {
-        ConnectFourGame.MakeMove(5);
+        _connectFourGame.MakeMove(5);
         UpdateUI();
-        HandleGameStatusUI(ConnectFourGame.CheckGameStatus());
+        HandleGameStatusUI(_connectFourGame.CheckGameStatus());
     }
 
     private void Slot57Clicked(object sender, EventArgs e)
     {
-        ConnectFourGame.MakeMove(6);
+        _connectFourGame.MakeMove(6);
         UpdateUI();
-        HandleGameStatusUI(ConnectFourGame.CheckGameStatus());
+        HandleGameStatusUI(_connectFourGame.CheckGameStatus());
     }
 
     private void Slot61Clicked(object sender, EventArgs e)
     {
-        ConnectFourGame.MakeMove(0);
+        _connectFourGame.MakeMove(0);
         UpdateUI();
-        HandleGameStatusUI(ConnectFourGame.CheckGameStatus());
+        HandleGameStatusUI(_connectFourGame.CheckGameStatus());
     }
 
     private void Slot62Clicked(object sender, EventArgs e)
     {
-        ConnectFourGame.MakeMove(1);
+        _connectFourGame.MakeMove(1);
         UpdateUI();
-        HandleGameStatusUI(ConnectFourGame.CheckGameStatus());
+        HandleGameStatusUI(_connectFourGame.CheckGameStatus());
     }
 
     private void Slot63Clicked(object sender, EventArgs e)
     {
-        ConnectFourGame.MakeMove(2);
+        _connectFourGame.MakeMove(2);
         UpdateUI();
-        HandleGameStatusUI(ConnectFourGame.CheckGameStatus());
+        HandleGameStatusUI(_connectFourGame.CheckGameStatus());
     }
 
     private void Slot64Clicked(object sender, EventArgs e)
     {
-        ConnectFourGame.MakeMove(3);
+        _connectFourGame.MakeMove(3);
         UpdateUI();
-        HandleGameStatusUI(ConnectFourGame.CheckGameStatus());
+        HandleGameStatusUI(_connectFourGame.CheckGameStatus());
     }
 
     private void Slot65Clicked(object sender, EventArgs e)
     {
-        ConnectFourGame.MakeMove(4);
+        _connectFourGame.MakeMove(4);
         UpdateUI();
-        HandleGameStatusUI(ConnectFourGame.CheckGameStatus());
+        HandleGameStatusUI(_connectFourGame.CheckGameStatus());
     }
 
     private void Slot66Clicked(object sender, EventArgs e)
     {
-        ConnectFourGame.MakeMove(5);
+        _connectFourGame.MakeMove(5);
         UpdateUI();
-        HandleGameStatusUI(ConnectFourGame.CheckGameStatus());
+        HandleGameStatusUI(_connectFourGame.CheckGameStatus());
     }
 
     private void Slot67Clicked(object sender, EventArgs e)
     {
-        ConnectFourGame.MakeMove(6);
+        _connectFourGame.MakeMove(6);
         UpdateUI();
-        HandleGameStatusUI(ConnectFourGame.CheckGameStatus());
+        HandleGameStatusUI(_connectFourGame.CheckGameStatus());
     }
     #endregion 
 
@@ -414,6 +443,6 @@ public partial class ConnectFourPage : ContentPage
         }
 
         _connectFourGame = new ConnectFourGame(); // resets old game object by assigning its field to new instance 
-
+        UpdateUI();
     }
 }

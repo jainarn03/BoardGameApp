@@ -6,7 +6,7 @@
              Shell.NavBarIsVisible="False">
     
     <!--MAIN GRID-->
-    <Grid BackgroundColor="#333333" RowDefinitions=".7*,310,*" ColumnDefinitions="*,360,*">
+    <Grid BackgroundColor="#333333" RowDefinitions=".7*,320,.4*,.6*" ColumnDefinitions="*,370,*">
         
         <!--TEST BUTTON-->
         <!-- <Button x:Name="TestButton" Grid.Row="1" Grid.Column="0" Text="Test Button" HorizontalOptions="Center" VerticalOptions="Center"  Clicked="OnTestClicked"/>-->
@@ -70,8 +70,30 @@
             
         </Grid>
 
+        <!--CURRENT PLAYER TURN / GAME STATUS DISPLAY-->
+        <HorizontalStackLayout Grid.Row="2" Grid.ColumnSpan="3" HorizontalOptions="Center" VerticalOptions="Center">
+            
+            <!--TURN/STATUS ICON-->
+            <Button 
+                x:Name="PlayerTurnIcon"
+                IsEnabled="False"
+                CornerRadius="100"
+                Background="#ce3b28"
+                />
+            
+            <!--TURN/STATUS MESSAGE-->
+            <Label
+                x:Name="PlayerToMove"
+                Text="Red to Move"
+                TextColor="#Edf0f9"
+                FontAttributes="Italic"
+                Margin="10.5"
+                />
+            
+        </HorizontalStackLayout>
+
         <!--NEW GAME BUTTON-->
-        <Button x:Name="NewGameButton" Grid.Row="2" Grid.Column="1" Text="Start New Game" HorizontalOptions="Center" VerticalOptions="CenterAndExpand"  Clicked="OnNewGameClicked"/>
+        <Button x:Name="NewGameButton" Grid.Row="3" Grid.Column="1" Text="Start New Game" HorizontalOptions="Center" VerticalOptions="CenterAndExpand"  Clicked="OnNewGameClicked"/>
 
     </Grid>
     
