@@ -7,6 +7,9 @@ public partial class CheckersPage : ContentPage
     private int _redCount;
     private int _blackCount;
     private int _currentPlayer;
+    private int _selectedRow;
+    private int _selectedCol;
+    private bool _isFirstClick = true;
 
     public CheckersPage()
     {
@@ -25,6 +28,8 @@ public partial class CheckersPage : ContentPage
         _redCount = 12;
         _blackCount = 1;
         _currentPlayer = 1;
+        _selectedCol= -1;
+        _selectedRow= -1;
 
         InitializeComponent();
     }
@@ -222,17 +227,61 @@ public partial class CheckersPage : ContentPage
         // Update current player
         _currentPlayer = (_currentPlayer == 1) ? 2 : 1;
 
-        // Print the updated game board
-        Console.WriteLine("Updated game board:");
-        for (int i = 0; i < 8; i++)
+        // Update the game board UI
+        for (int row = 0; row < 8; row++)
         {
-            for (int j = 0; j < 8; j++)
+            for (int col = 0; col < 8; col++)
             {
-                Console.Write(_gameBoard[i, j] + " ");
+                string redButtonName = "red" + (row) + (col);
+                string blackButtonName = "black" + (row) + (col);
+                var redbutton = (ImageButton)this.FindByName(redButtonName);
+                var blackbutton = (ImageButton)this.FindByName(blackButtonName);
+                switch (_gameBoard[row, col])
+                {
+                    case 0:
+                        //blank
+                        
+                        break;
+
+                    case 1:
+                        // Red piece
+                        if (row % 2 == 0 && col % 2 == 0 || row % 2 == 1 && col % 2 == 1)
+                        {
+                            redbutton.IsVisible = true;
+                            redbutton.Source = "red_c.png";
+                        }
+                        break;
+
+                    case 2:
+                        // Black piece
+                        if (row % 2 == 0 && col % 2 == 0 || row % 2 == 1 && col % 2 == 1)
+                        {
+                            blackbutton.IsVisible = true;
+                            blackbutton.Source= "black_c.png";
+                        }
+                        break;
+
+                    case 3:
+                        // Red king
+                        if (row % 2 == 0 && col % 2 == 0 || row % 2 == 1 && col % 2 == 1)
+                        {
+                            redbutton.IsVisible = true;
+                            redbutton.Source = "red_king.png";
+                        }
+                       break;
+
+                    case 4:
+                        if (row % 2 == 0 && col % 2 == 0 || row % 2 == 1 && col % 2 == 1)
+                        {
+                            blackbutton.IsVisible = true;
+                            blackbutton.Source = "black_king.png";
+                        }
+                        break;
+                }
             }
-            Console.WriteLine();
         }
     }
+
 
     private string CheckResult()
     {
@@ -257,11 +306,159 @@ public partial class CheckersPage : ContentPage
         }
     }
 
+    private void UpdateUI()
+    {
+
+    }
+    private void ButtonClicked(int row, int col)
+    {
+        // If no piece is currently selected, select the clicked piece
+        if (_selectedRow == -1 && _selectedCol == -1)
+        {
+            // Check if the clicked piece belongs to the current player
+            if (_gameBoard[row, col] == _currentPlayer || _gameBoard[row, col] == _currentPlayer + 2)
+            {
+                _selectedRow = row;
+                _selectedCol = col;
+            }
+        }
+        // If a piece is already selected, try to move it to the clicked position
+        else
+        {
+            // If the move is valid, update the game board and UI
+
+            // Reset the selected piece
+            _selectedRow = -1;
+            _selectedCol = -1;
+        }
+    }
+
+    private void buttonClicked(int row, int col, int click)
+    {
+        if (click == 1 && _currentPlayer == 1)
+        {
+            Console.WriteLine("Entered");
+            _selectedRow= row;
+            _selectedCol= col;
+            B8_greendot.IsVisible = true;
+            D8_greendot.IsVisible = true;
+            F8_greendot.IsVisible = true;
+            H8_greendot.IsVisible = true;
+            A7_greendot.IsVisible = true;
+            C7_greendot.IsVisible = true;
+            E7_greendot.IsVisible = true;
+            G7_greendot.IsVisible = true;
+            B6_greendot.IsVisible = true;
+            D6_greendot.IsVisible = true;
+            F6_greendot.IsVisible = true;
+            H6_greendot.IsVisible = true;
+            A5_greendot.IsVisible = true;
+            C5_greendot.IsVisible = true;
+            E5_greendot.IsVisible = true;
+            G5_greendot.IsVisible = true;
+            B4_greendot.IsVisible = true;
+            D4_greendot.IsVisible = true;
+            F4_greendot.IsVisible = true;
+            H4_greendot.IsVisible = true;
+            A3_greendot.IsVisible = true;
+            C3_greendot.IsVisible = true;
+            E3_greendot.IsVisible = true;
+            G3_greendot.IsVisible = true;
+            B2_greendot.IsVisible = true;
+            D2_greendot.IsVisible = true;
+            F2_greendot.IsVisible = true;
+            H2_greendot.IsVisible = true;
+            A1_greendot.IsVisible = true;
+            C1_greendot.IsVisible = true;
+            E1_greendot.IsVisible = true;
+            G1_greendot.IsVisible = true;
+        }
+        else if (click == 1 && _currentPlayer == 1)
+        {
+            _selectedRow = row;
+            _selectedCol = col;
+            B8_greendot.IsVisible = true;
+            D8_greendot.IsVisible = true;
+            F8_greendot.IsVisible = true;
+            H8_greendot.IsVisible = true;
+            A7_greendot.IsVisible = true;
+            C7_greendot.IsVisible = true;
+            E7_greendot.IsVisible = true;
+            G7_greendot.IsVisible = true;
+            B6_greendot.IsVisible = true;
+            D6_greendot.IsVisible = true;
+            F6_greendot.IsVisible = true;
+            H6_greendot.IsVisible = true;
+            A5_greendot.IsVisible = true;
+            C5_greendot.IsVisible = true;
+            E5_greendot.IsVisible = true;
+            G5_greendot.IsVisible = true;
+            B4_greendot.IsVisible = true;
+            D4_greendot.IsVisible = true;
+            F4_greendot.IsVisible = true;
+            H4_greendot.IsVisible = true;
+            A3_greendot.IsVisible = true;
+            C3_greendot.IsVisible = true;
+            E3_greendot.IsVisible = true;
+            G3_greendot.IsVisible = true;
+            B2_greendot.IsVisible = true;
+            D2_greendot.IsVisible = true;
+            F2_greendot.IsVisible = true;
+            H2_greendot.IsVisible = true;
+            A1_greendot.IsVisible = true;
+            C1_greendot.IsVisible = true;
+            E1_greendot.IsVisible = true;
+            G1_greendot.IsVisible = true;
+        }
+        else if (click == 3)
+        {
+            Console.WriteLine("Testing DONE!!!");
+            MovePiece(_selectedRow, _selectedCol, row, col);
+            B8_greendot.IsVisible = false;
+            D8_greendot.IsVisible = false;
+            F8_greendot.IsVisible = false;
+            H8_greendot.IsVisible = false;
+            A7_greendot.IsVisible = false;
+            C7_greendot.IsVisible = false;
+            E7_greendot.IsVisible = false;
+            G7_greendot.IsVisible = false;
+            B6_greendot.IsVisible = false;
+            D6_greendot.IsVisible = false;
+            F6_greendot.IsVisible = false;
+            H6_greendot.IsVisible = false;
+            A5_greendot.IsVisible = false;
+            C5_greendot.IsVisible = false;
+            E5_greendot.IsVisible = false;
+            G5_greendot.IsVisible = false;
+            B4_greendot.IsVisible = false;
+            D4_greendot.IsVisible = false;
+            F4_greendot.IsVisible = false;
+            H4_greendot.IsVisible = false;
+            A3_greendot.IsVisible = false;
+            C3_greendot.IsVisible = false;
+            E3_greendot.IsVisible = false;
+            G3_greendot.IsVisible = false;
+            B2_greendot.IsVisible = false;
+            D2_greendot.IsVisible = false;
+            F2_greendot.IsVisible = false;
+            H2_greendot.IsVisible = false;
+            A1_greendot.IsVisible = false;
+            C1_greendot.IsVisible = false;
+            E1_greendot.IsVisible = false;
+            G1_greendot.IsVisible = false;
+        }
+        else
+        {
+            return;
+        }
+    }
+
     #region Image Buttons
     //red peice image button event handler
     private void square_B8_red(object sender, EventArgs e)
     {
         int row = 0; int col = 1;
+        buttonClicked(row, col, 1);
     }
     private void square_D8_red(object sender, EventArgs e)
     {
@@ -295,6 +492,8 @@ public partial class CheckersPage : ContentPage
     private void square_B6_red(object sender, EventArgs e)
     {
         int row = 2; int col = 1;
+        buttonClicked(row, col, 1);
+        Console.WriteLine("works");
     }
     private void square_D6_red(object sender, EventArgs e)
     {
@@ -691,6 +890,8 @@ public partial class CheckersPage : ContentPage
     // green dot image button event handler
     private void square_B8_greendot(object sender, EventArgs e)
     {
+        B8_greendot.Opacity = 0;
+        Console.WriteLine("green");
     }
     private void square_D8_greendot(object sender, EventArgs e)
     {
@@ -727,6 +928,8 @@ public partial class CheckersPage : ContentPage
     }
     private void square_A5_greendot(object sender, EventArgs e)
     {
+        int row = 3; int col = 0; int count = 3;
+        buttonClicked(row, col, count);
     }
     private void square_C5_greendot(object sender, EventArgs e)
     {
