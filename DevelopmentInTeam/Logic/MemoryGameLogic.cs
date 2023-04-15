@@ -6,7 +6,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+// for any Memory Game related logic
 namespace DevelopmentInTeam.Logic
 {
     /// <summary>
@@ -38,7 +38,7 @@ namespace DevelopmentInTeam.Logic
             set { _isMatched = value; }
         }
         /// <summary>
-        /// class constructor, creating a card with an id, image source
+        /// class constructor, creating a card with an id, image source and value for whether card is matched
         /// </summary>
         /// <param name="id"></param>
         /// <param name="imageFileName"></param>
@@ -51,6 +51,9 @@ namespace DevelopmentInTeam.Logic
         }
     }
 
+    /// <summary>
+    /// class representing a functional memory game
+    /// </summary>
     public class MemoryGame
     {
         // declaring fields
@@ -58,7 +61,6 @@ namespace DevelopmentInTeam.Logic
         private Card _flippedCard;
         private int _matchedPairsCount; // number of matched card pairs
         private bool _gameOver; // indicates whether the game is over 
-        private Dictionary<int, string> _gameStatus; // dictionary holding status of each card
 
         // corresponding getters/setters
         public ObservableCollection<Card> Cards
@@ -84,18 +86,13 @@ namespace DevelopmentInTeam.Logic
             get { return _gameOver; }
             set { _gameOver = value; }
         }
-        public Dictionary<int, string> GameStatus
-        {
-            get { return _gameStatus; }
-            set { _gameStatus = value; }
-        }
 
         /// <summary>
-        /// class constructor
+        /// class constructor, makes 12 cards with 6 pairs of matching IDs and image strings, and shuffles the deck collection
         /// </summary>
         public MemoryGame() 
         {
-            // Initializing _cards observable collection field with 6 card objects
+            // Initializing _cards observable collection field with 12 card objects
             _cards = new ObservableCollection<Card>()
             {
                 new Card(1, "card_1.png", false),
@@ -103,80 +100,75 @@ namespace DevelopmentInTeam.Logic
                 new Card(3, "card_3.png", false),
                 new Card(4, "card_4.png", false),
                 new Card(5, "card_5.png", false),
-                new Card(6, "card_6.png", false)
+                new Card(6, "card_6.png", false),
+                new Card(1, "card_1.png", false), 
+                new Card(2, "card_2.png", false),
+                new Card(3, "card_3.png", false),
+                new Card(4, "card_4.png", false),
+                new Card(5, "card_5.png", false),
+                new Card(6, "card_6.png", false),
             };
 
-            InitializeGameStatus();
+            Shuffle(); // shuffles the observable collection deck of cards 
 
         }
-
-        /// <summary>
-        /// Initializes the game status dict with default values
-        /// </summary>
-        public void InitializeGameStatus()
-        {
-            _gameStatus = _cards.ToDictionary(c => c.ID, c => "unflipped");
-        }
-
-
 
         /// <summary>
         /// Method handling flipping cards: checks for a match with previously flipped card.
         /// If a match exists, the cards remain flipped. If no match, the cards are flipped back
-        /// after delay of 1-2 seconds (may change). Game will end when all cards are paired
+        /// _gameOver field will be set to true when all cards are paired.
         /// </summary>
-        /// <param name="card"></param>
-        public void FlipCard(Card card)
+        /// <param name="card">the card the player has clicked on</param>
+        public async void FlipCard(Card card)
         {
-            // checks whether card can be flipped or not if: game is not over, card flipped is not same as previously flipped card, 
+            // checks whether card can be flipped or not: if game is not over, card is not same as previously flipped card, and card is unmatched
             if (!_gameOver && _flippedCard != card && !card.IsMatched)
             {
                 // if no card previously flipped
                 if (_flippedCard == null)
                 {
                     _flippedCard = card;
-                    UpdateGameStatus(card.ID, "flipped"); // updates game status for current card
                     _flippedCard.IsMatched = true; // changes the card state to flipped
                 }
                 // second card flipped
                 else
                 {
-                    card.IsMatched = true; // change card state to flipped
-                    UpdateGameStatus(card.ID, "flipped"); // updates game status for current card
-                    if (_flippedCard.ID == card.ID) // if matching IDs
-                    {
-                        _flippedCard.IsMatched = true;
-                        _matchedPairsCount++; // increments matched pairs by 1
+                    card.IsMatched = true; // fixes unmatching bug: initially set is matched to true ensures cards can be matched
 
+                    // if matching IDs
+                    if (_flippedCard.ID == card.ID)
+                    {
+                        // set matching to true then resets flipped card 
+                        _flippedCard.IsMatched = true;
+                        _flippedCard = null;
+
+                        // increments matched pairs field by 1
+                        _matchedPairsCount++; 
+
+                        // check for game complete
                         if (_matchedPairsCount == _cards.Count / 2) // if all cards paired, game is complete
-                            _gameOver = true;
+                            _gameOver = true; 
                     }
-                    // no matches
+                    // if no matches
                     else
                     {
                         // milliseconds delay method found:
-                        //https://learn.microsoft.com/en-us/dotnet/api/system.threading.tasks.task.continuewith?view=net-8.0
-                        Task.Delay(2000).ContinueWith(t =>
+                        // https://learn.microsoft.com/en-us/dotnet/api/system.threading.tasks.task.continuewith?view=net-8.0
+                        // UPDATE: task delay doesn't actually serve its previous desired purpose, which makes sense.
+                        // it now remains only so that the currently flipped card remains visible and is not immediately nullified
+                        // allows player to see the card before it goes face-down in updateUI method.
+                        await Task.Delay(1); 
+
+                        if (_flippedCard != null) // avoiding null exception
                         {
-                            UpdateGameStatus(_flippedCard.ID, "unflipped"); // flip both cards back
-                            UpdateGameStatus(card.ID, "unflipped");
-                            _flippedCard.IsMatched = false;
+                            // set both cards' matched status to false, and reset the flipped card 
                             card.IsMatched = false;
-                            _flippedCard = null; // reset flipped card
-                        });
+                            _flippedCard.IsMatched = false;
+                            _flippedCard = null;
+                        }
                     }
                 }
             }
-        }
-
-        /// <summary>
-        /// Updates the game status for a given card ID with a new status
-        /// </summary>
-        /// <param name="cardId"></param>
-        /// <param name="status"></param>
-        private void UpdateGameStatus(int cardId, string status)
-        {
-            _gameStatus[cardId] = status;
         }
 
         /// <summary>
