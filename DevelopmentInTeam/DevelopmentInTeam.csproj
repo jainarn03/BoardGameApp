@@ -67,6 +67,7 @@
 	  <None Remove="Resources\Images\title3.png" />
 	  <None Remove="Resources\Images\title4.png" />
 	  <None Remove="Resources\Images\wordle_art.png" />
+	  <None Remove="Resources\Raw\jsconfig1.json" />
 	</ItemGroup>
 
 	<ItemGroup>
