@@ -6,6 +6,9 @@
              BackgroundColor="#333333">
 
     <Grid RowDefinitions="150,*,200">
+        
+        <Image Grid.Row="0" Grid.Column="1" Source="checkers_title.png" HorizontalOptions="Center" VerticalOptions="End" Margin="50"/>
+        
         <Grid Grid.Row="1" Grid.ColumnSpan="2"
              RowDefinitions="*,*,*,*,*,*,*,*"
              ColumnDefinitions="*,*,*,*,*,*,*,*">
@@ -198,9 +201,31 @@
 
 
         </Grid>
-        <Grid Grid.Row="2" RowDefinitions="*,*,*">
-            <Button x:Name="NewGame" Text="New Game" FontSize="Title" Grid.Row="1" HeightRequest="55" WidthRequest="250" HorizontalOptions="Center" Clicked="newGameClicked"/>
-            <Button x:Name="MainMenu" Text="Main Menu" FontSize="Title" Grid.Row="2" HeightRequest="55" WidthRequest="250" HorizontalOptions="Center" Clicked="mainMenuClicked"/>
+        <Grid Grid.Row="2" RowDefinitions="*,*">
+            <Grid Grid.Row="1" ColumnDefinitions="*,*">
+                <Button x:Name="NewGame" Text="New Game" FontSize="Body" Grid.Column="0" HeightRequest="55" WidthRequest="150" HorizontalOptions="Center" Clicked="newGameClicked"/>
+                <Button x:Name="MainMenu" Text="Main Menu" FontSize="Body" Grid.Column="1" HeightRequest="55" WidthRequest="150" HorizontalOptions="Center"  Clicked="mainMenuClicked"/>
+            </Grid>
+            <!-- Refercenced from Alkes' connect 4 game -->
+            <HorizontalStackLayout Grid.Row="0" Grid.ColumnSpan="3" HorizontalOptions="Center" VerticalOptions="Center">
+
+                <!--TURN/STATUS ICON-->
+                <Image 
+                x:Name="PlayerTurnIcon"
+                Source="red_c.png"
+                WidthRequest="50"
+                />
+
+                <!--TURN/STATUS MESSAGE-->
+                <Label
+                x:Name="PlayerToMove"
+                Text="Red to Move"
+                TextColor="#Edf0f9"
+                FontAttributes="Italic"
+                Margin="10.5"
+                />
+
+            </HorizontalStackLayout>
         </Grid>
     </Grid>
     

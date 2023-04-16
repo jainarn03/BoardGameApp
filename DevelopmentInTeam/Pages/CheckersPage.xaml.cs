@@ -1,5 +1,4 @@
 // Arnav's Page
-
 namespace DevelopmentInTeam.Pages;
 
 public partial class CheckersPage : ContentPage
@@ -28,20 +27,10 @@ public partial class CheckersPage : ContentPage
         _redCount = 12;
         _blackCount = 12;
         _currentPlayer = 1;
-        _selectedCol= -1;
-        _selectedRow= -1;
-
+        _selectedCol = -1;
+        _selectedRow = -1;
         InitializeComponent();
-    }
-
-    private async void newGameClicked(object sender, EventArgs e)
-    {
-        await Navigation.PushAsync(new CheckersPage());
-    }
-
-    private async void mainMenuClicked(object sender, EventArgs e)
-    {
-        await Navigation.PopAsync(); // navigation stack recursion here (pushes to mainpage instead of pop) code changed by aleks 
+        InitializeBoard();
     }
 
     public void InitializeBoard()
@@ -203,16 +192,19 @@ public partial class CheckersPage : ContentPage
         if (_redCount == 0)
         {
             Console.WriteLine("Black Wins!");
+            DisplayAlert("Game over!", "Red Won!", "OK");
             return "Black Wins!";
         }
         else if (_blackCount == 0)
         {
             Console.WriteLine("Red Wins!");
+            DisplayAlert("Game over!", "Black Won!", "OK");
             return "Red Wins!";
         }
         else if (_redCount == 1 && _blackCount == 1)
         {
             Console.WriteLine("Draw!");
+            DisplayAlert("Game over!", "Draw!", "OK");
             return "Draw!"; // Both have one piece left
         }
         else
@@ -221,8 +213,20 @@ public partial class CheckersPage : ContentPage
         }
     }
 
+private async void newGameClicked(object sender, EventArgs e)
+    {
+        await Navigation.PushAsync(new CheckersPage());
+    }
+
+    private async void mainMenuClicked(object sender, EventArgs e)
+    {
+        await Navigation.PopAsync(); // navigation stack recursion here (pushes to mainpage instead of pop) code changed by aleks 
+    }
+
     private void UpdateUI()
     {
+        UpdatePlayerTurn();
+
         // Array of desired coordinates
         int[][] desiredSquares = new int[][] { new int[] { 0, 1 }, new int[] { 0, 3 }, new int[] { 0, 5 }, new int[] { 0, 7 }, new int[] { 1, 0 }, new int[] { 1, 2 }, new int[] { 1, 4 }, new int[] { 1, 6 }, new int[] { 2, 1 }, new int[] { 2, 3 }, new int[] { 2, 5 }, new int[] { 2, 7 }, new int[] { 3, 0 }, new int[] { 3, 2 }, new int[] { 3, 4 }, new int[] { 3, 6 }, new int[] { 4, 1 }, new int[] { 4, 3 }, new int[] { 4, 5 }, new int[] { 4, 7 }, new int[] { 5, 0 }, new int[] { 5, 2 }, new int[] { 5, 4 }, new int[] { 5, 6 }, new int[] { 6, 1 }, new int[] { 6, 3 }, new int[] { 6, 5 }, new int[] { 6, 7 }, new int[] { 7, 0 }, new int[] { 7, 2 }, new int[] { 7, 4 }, new int[] { 7, 6 } };
 
@@ -271,6 +275,19 @@ public partial class CheckersPage : ContentPage
         }
     }
 
+    public void UpdatePlayerTurn()
+    {
+        if(_currentPlayer == 1)
+        {
+            PlayerTurnIcon.Source = "red_c.png";
+            PlayerToMove.Text = "Red To Move";
+        }
+        else if(_currentPlayer == 2)
+        {
+            PlayerTurnIcon.Source = "black_c.png";
+            PlayerToMove.Text = "Black To Move";
+        }
+    }
 
 
     private void buttonClicked(int row, int col, int click)
