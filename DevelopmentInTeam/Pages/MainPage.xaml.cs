@@ -4,20 +4,8 @@ namespace DevelopmentInTeam.Pages;
 /// 
 /// ALEKS' task
 /// main page
-/// do not touch unless messaged
 /// 
 /// </summary>
-
-
-// TERM PROJECT TODO: 
-//
-// 
-// folders needed: Logic (with subfolder for each page that needs logic separation: e.g. ConnectFourLogic)
-//
-
-// MAIN PAGE TODO:
-// add buttons for 
-//
 
 public partial class MainPage : ContentPage
 {

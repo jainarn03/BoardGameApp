@@ -8,6 +8,9 @@
     <!--MAIN GRID-->
     <Grid BackgroundColor="#333333" RowDefinitions=".7*,320,.4*,.6*" ColumnDefinitions="*,370,*">
         
+        <!--CONNECT FOUR TITLE-->
+        <Image Grid.Row="0" Grid.Column="1" Source="connectfour_title3.png" HorizontalOptions="Center" VerticalOptions="End" Margin="50"/>
+
         <!--TEST BUTTON-->
         <!-- <Button x:Name="TestButton" Grid.Row="1" Grid.Column="0" Text="Test Button" HorizontalOptions="Center" VerticalOptions="Center"  Clicked="OnTestClicked"/>-->
         
@@ -92,9 +95,12 @@
             
         </HorizontalStackLayout>
 
-        <!--NEW GAME BUTTON-->
-        <Button x:Name="NewGameButton" Grid.Row="3" Grid.Column="1" Text="Start New Game" HorizontalOptions="Center" VerticalOptions="CenterAndExpand"  Clicked="OnNewGameClicked"/>
-
+        <VerticalStackLayout Grid.Row="3" Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center">
+            <!--NEW GAME BUTTON-->
+            <Button x:Name="NewGameButton" Text="Start New Game" WidthRequest="140" Margin="3" HorizontalOptions="Center" VerticalOptions="Center" Clicked="OnNewGameClicked"/>
+            <Button x:Name="MainMenuButton" Text="Main Menu" WidthRequest="140" Margin="3" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" Clicked="OnMainMenuClicked"/>
+        </VerticalStackLayout>
+        
     </Grid>
     
 </ContentPage>
