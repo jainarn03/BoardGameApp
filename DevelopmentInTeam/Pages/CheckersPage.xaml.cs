@@ -3,7 +3,7 @@ namespace DevelopmentInTeam.Pages;
 
 public partial class CheckersPage : ContentPage
 {
-    int[,] _gameBoard;
+    private int[,] _gameBoard;
     private int _redCount;
     private int _blackCount;
     private int _currentPlayer;
