@@ -194,10 +194,7 @@ public partial class HangmanPage : ContentPage
 
     private async void OnMainMenuClicked(object sender, EventArgs e)
     {
-
-        await Navigation.PushAsync(new MainPage());
-        Navigation.RemovePage(this);
-
+        await Navigation.PopAsync(); // navigation stack recursion here (pushes to mainpage instead of pop) code changed by aleks 
     }
     private void LetterOnlyCheck(object sender, TextChangedEventArgs e)
     {
