@@ -35,7 +35,7 @@ public partial class MainPage : ContentPage
         "connectfour_art.png",
         "tictactoe_art.png",
         "memory_art.png",
-        "wordle_art.png",
+        //"wordle_art.png",  omitted per michael's request, as the game was unfinished
         "hangman_art.png"
         };
 
