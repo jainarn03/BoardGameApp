@@ -106,7 +106,8 @@ public partial class CheckersPage : ContentPage
         }
 
         // Move the piece and update the board
-        UpdateBoard(fromRow, fromCol, toRow, toCol);
+        _gameBoard[toRow, toCol] = piece;
+        _gameBoard[fromRow, fromCol] = 0;
         CheckResult();
 
         // Check if the piece should be promoted to a king
@@ -121,8 +122,10 @@ public partial class CheckersPage : ContentPage
             Console.WriteLine("Black piece promoted to king!");
         }
 
+        _currentPlayer = (_currentPlayer == 1) ? 2 : 1;
         // Switch the turn to the other player
     }
+
 
 
     private bool IsValidMove(int piece, int fromRow, int fromCol, int toRow, int toCol)
@@ -158,6 +161,11 @@ public partial class CheckersPage : ContentPage
                 Console.WriteLine("Valid move. The piece can jump over an opponent piece.");
                 return true;
             }
+            else if (piece == 3 || piece == 4)
+            {
+                Console.WriteLine("Valid move. The king can jump over any piece.");
+                return true;
+            }
             Console.WriteLine("Invalid move. The piece can only jump over an opponent piece.");
             return false;
         }
@@ -189,56 +197,6 @@ public partial class CheckersPage : ContentPage
         Console.WriteLine("Valid move.");
         return true;
     }
-
-    public void UpdateBoard(int oldRow, int oldCol, int newRow, int newCol)
-    {
-        // Check if the piece has captured an opponent's piece
-        int capturedRow = (oldRow + newRow) / 2;
-        int capturedCol = (oldCol + newCol) / 2;
-        int capturedPiece = _gameBoard[capturedRow, capturedCol];
-        if (capturedPiece != 0)
-        {
-            if (capturedPiece == 1 || capturedPiece == 3)
-            {
-                _redCount--;
-            }
-            else
-            {
-                _blackCount--;
-            }
-            _gameBoard[capturedRow, capturedCol] = 0;
-        }
-
-        // Move the piece to the new position
-        _gameBoard[newRow, newCol] = _gameBoard[oldRow, oldCol];
-        _gameBoard[oldRow, oldCol] = 0;
-
-        // Check if the piece has reached the last row of the opponent's side or if it is a king in the last row
-        if (_gameBoard[newRow, newCol] == 1 && (newRow == 7 || (newRow == 6 && _gameBoard[newRow, newCol] == 3)))
-        {
-            _gameBoard[newRow, newCol] = 3; // promote red piece to king
-        }
-        else if (_gameBoard[newRow, newCol] == 2 && (newRow == 0 || (newRow == 1 && _gameBoard[newRow, newCol] == 4)))
-        {
-            _gameBoard[newRow, newCol] = 4; // promote black piece to king
-        }
-
-        // Update current player
-        _currentPlayer = (_currentPlayer == 1) ? 2 : 1;
-        UpdateUI();
-
-        // Print the current state of the board
-        for (int i = 0; i < 8; i++)
-        {
-            for (int j = 0; j < 8; j++)
-            {
-                Console.Write(_gameBoard[i, j] + " ");
-            }
-            Console.WriteLine();
-        }
-        Console.WriteLine();
-    }
-
 
     private string CheckResult()
     {
