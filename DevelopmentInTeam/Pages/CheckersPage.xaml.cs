@@ -34,7 +34,8 @@ public partial class CheckersPage : ContentPage
 
     private async void newGameClicked(object sender, EventArgs e)
     {
-        await Navigation.PushAsync(new CheckersPage());
+        await Navigation.PushAsync(new CheckersPage()); 
+        Navigation.RemovePage(this); // navigation stack recursion here (pushes new page but doesn't pop old one) code changed by aleks 
     }
 
     private async void mainMenuClicked(object sender, EventArgs e)
