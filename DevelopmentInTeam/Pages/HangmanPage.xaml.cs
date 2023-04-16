@@ -219,12 +219,7 @@ public partial class HangmanPage : ContentPage
             }
         }
     }
-    private void NextLetter(Entry CurrentEntry, Entry NextEntry)
-    {
-        NextEntry.IsEnabled = true;
-        NextEntry.Focus();
-        CurrentEntry.IsEnabled = false;
-    }
+ 
 
     private async void OnRestartClicked(object sender, EventArgs e)
     {
@@ -234,10 +229,6 @@ public partial class HangmanPage : ContentPage
 
     private void EnterGuess(object sender, EventArgs e)
     {
-
-
-
-
 
         string prompt = randomWord;
         if (!string.IsNullOrEmpty(UserInput.Text))
