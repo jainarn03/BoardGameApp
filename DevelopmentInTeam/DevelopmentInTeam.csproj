@@ -62,14 +62,17 @@
 	  <None Remove="Resources\Images\connectfour_title2.png" />
 	  <None Remove="Resources\Images\connectfour_title3.png" />
 	  <None Remove="Resources\Images\hangman_art.png" />
+	  <None Remove="Resources\Images\hangman_title.png" />
 	  <None Remove="Resources\Images\memory_art.png" />
 	  <None Remove="Resources\Images\memory_art2.png" />
+	  <None Remove="Resources\Images\memory_title.png" />
 	  <None Remove="Resources\Images\tictactoe_art.png" />
 	  <None Remove="Resources\Images\title1.png" />
 	  <None Remove="Resources\Images\title2.png" />
 	  <None Remove="Resources\Images\title3.png" />
 	  <None Remove="Resources\Images\title4.png" />
 	  <None Remove="Resources\Images\wordle_art.png" />
+	  <None Remove="Resources\Images\wordle_title.png" />
 	</ItemGroup>
 
 	<ItemGroup>

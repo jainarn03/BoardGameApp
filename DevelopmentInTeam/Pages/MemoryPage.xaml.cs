@@ -150,4 +150,12 @@ public partial class MemoryPage : ContentPage
         _memoryGame = new MemoryGame(); // resets old game object by assigning its field to new instance 
         UpdateUI();
     }
+
+    /// <summary>
+    /// main menu clicked event handler pops page and goes back to main menu
+    /// </summary>
+    private async void OnMainMenuClicked(object sender, EventArgs e)
+    {
+        await Navigation.PopAsync();
+    }
 }

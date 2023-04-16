@@ -8,6 +8,9 @@
     <!--MAIN GRID-->
     <Grid BackgroundColor="#333333" RowDefinitions=".7*,400,.4*,.6*" ColumnDefinitions="*,300,*">
 
+        <!--CONNECT FOUR TITLE-->
+        <Image Grid.Row="0" Grid.Column="1" Source="memory_title.png" HorizontalOptions="Center" VerticalOptions="End" Margin="50"/>
+
         <!--MEMORY DECK SUB-GRID-->
         <Grid x:Name="MemoryDeck" Grid.Row="1" Grid.Column="1" RowDefinitions="*,*,*,*" ColumnDefinitions="*,*,*" ColumnSpacing="0" RowSpacing="6" BackgroundColor="#333333" >
 
