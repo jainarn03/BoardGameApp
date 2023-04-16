@@ -78,54 +78,58 @@ public partial class CheckersPage : ContentPage
 
     public void MovePiece(int fromRow, int fromCol, int toRow, int toCol)
     {
-        int piece = _gameBoard[fromRow, fromCol];
+        int piece = _gameBoard[fromRow, fromCol]; // Get the piece to be moved from its original position
 
         // Check if the move is valid
         if (!IsValidMove(piece, fromRow, fromCol, toRow, toCol))
         {
-            return;
+            return; // If the move is not valid, exit the method
         }
 
         // Check if a piece was captured
-        if (Math.Abs(fromRow - toRow) == 2)
+        if (Math.Abs(fromRow - toRow) == 2) // If the move was a jump (i.e., a capture), calculate the captured piece's position
         {
             int capturedRow = (fromRow + toRow) / 2;
             int capturedCol = (fromCol + toCol) / 2;
-            int capturedPiece = _gameBoard[capturedRow, capturedCol];
-            if (capturedPiece == 1 || capturedPiece == 3)
+            int capturedPiece = _gameBoard[capturedRow, capturedCol]; // Get the piece being captured
+
+            if (capturedPiece == 1 || capturedPiece == 3) // If the captured piece was red, decrement the red count
             {
                 _redCount--;
             }
-            else if (capturedPiece == 2 || capturedPiece == 4)
+            else if (capturedPiece == 2 || capturedPiece == 4) // If the captured piece was black, decrement the black count
             {
                 _blackCount--;
             }
-            _gameBoard[capturedRow, capturedCol] = 0;
+            _gameBoard[capturedRow, capturedCol] = 0; // Set the captured piece's position to 0 to signify that it is no longer on the board
         }
 
         // Move the piece and update the board
-        _gameBoard[toRow, toCol] = piece;
-        _gameBoard[fromRow, fromCol] = 0;
-        CheckResult();
+        _gameBoard[toRow, toCol] = piece; // Set the piece's new position on the board
+        _gameBoard[fromRow, fromCol] = 0; // Set the piece's old position to 0 to signify that it is no longer there
+        CheckResult(); // Check if the move resulted in a win or a tie
 
         // Check if the piece should be promoted to a king
-        if (_gameBoard[toRow, toCol] == 1 && toRow == 7)
+        if (_gameBoard[toRow, toCol] == 1 && toRow == 7) // If the piece is red and has reached the opposite end of the board, promote it to a red king
         {
-            _gameBoard[toRow, toCol] = 3; // Promote to red king
+            _gameBoard[toRow, toCol] = 3;
             Console.WriteLine("Red piece promoted to king!");
         }
-        else if (_gameBoard[toRow, toCol] == 2 && toRow == 0)
+        else if (_gameBoard[toRow, toCol] == 2 && toRow == 0) // If the piece is black and has reached the opposite end of the board, promote it to a black king
         {
-            _gameBoard[toRow, toCol] = 4; // Promote to black king
+            _gameBoard[toRow, toCol] = 4;
             Console.WriteLine("Black piece promoted to king!");
         }
 
-        _currentPlayer = (_currentPlayer == 1) ? 2 : 1;
-        // Switch the turn to the other player
+        _currentPlayer = (_currentPlayer == 1) ? 2 : 1; // Switch the turn to the other player
     }
 
 
-
+    // This method checks if a move is valid by verifying if the target cell is empty,
+    // if the piece is moving diagonally, if it's jumping over another piece, if it's jumping over
+    // an opponent piece, if the piece is a king, and if it's moving in the correct direction.
+    // It takes as input the piece to be moved, the starting row and column, and the ending row and column.
+    // It returns a boolean value indicating whether the move is valid or not.
     private bool IsValidMove(int piece, int fromRow, int fromCol, int toRow, int toCol)
     {
         // Check if the target cell is empty
@@ -134,7 +138,6 @@ public partial class CheckersPage : ContentPage
             Console.WriteLine("Target cell is not empty. Invalid move.");
             return false;
         }
-
         // Check if the piece is moving diagonally
         if (Math.Abs(fromRow - toRow) != 1 || Math.Abs(fromCol - toCol) != 1)
         {
@@ -196,24 +199,25 @@ public partial class CheckersPage : ContentPage
         return true;
     }
 
-    private string CheckResult()
+    //chceks the status of the game
+        private string CheckResult()
     {
         if (_redCount == 0)
         {
             Console.WriteLine("Black Wins!");
-            DisplayAlert("Game over!", "Black Won!", "OK");
-            StopGame();
             PlayerTurnIcon.Source = "black_king.png";
             PlayerToMove.Text = "Black Wins!";
+            DisplayAlert("Game over!", "Black Won!", "OK");
+            StopGame();
             return "Black Wins!";
         }
         else if (_blackCount == 0)
         {
             Console.WriteLine("Red Wins!");
-            DisplayAlert("Game over!", "Red Won!", "OK");
-            StopGame();
             PlayerTurnIcon.Source = "red_king.png";
             PlayerToMove.Text = "Red Wins!";
+            DisplayAlert("Game over!", "Red Won!", "OK");
+            StopGame();
             return "Red Wins!";
         }
         else if (_redCount == 1 && _blackCount == 1)
@@ -231,8 +235,10 @@ public partial class CheckersPage : ContentPage
         }
     }
 
+    // This method updates the game board UI
     private void UpdateUI()
     {
+        // Update whose turn it is
         UpdatePlayerTurn();
 
         // Array of desired coordinates
@@ -241,48 +247,60 @@ public partial class CheckersPage : ContentPage
         // Update the game board UI for the desired squares
         foreach (int[] square in desiredSquares)
         {
+            // Get the row and column of the current square
             int row = square[0];
             int col = square[1];
+
+            // Get the names of the red and black buttons for the current square
             string redButtonName = "red" + (row) + (col);
             string blackButtonName = "black" + (row) + (col);
 
+            // Find the red and black buttons for the current square
             var redbutton = (ImageButton)this.FindByName(redButtonName);
             var blackbutton = (ImageButton)this.FindByName(blackButtonName);
 
+            // If either button is null, skip this square
             if (redbutton == null || blackbutton == null)
             {
                 continue;
             }
 
+            // Update the visibility and source of the red and black buttons for the current square
             if (_gameBoard[row, col] == 0)
             {
+                // Empty square
                 redbutton.IsVisible = false;
                 blackbutton.IsVisible = false;
             }
             else if (_gameBoard[row, col] == 1)
             {
+                // Red checker
                 redbutton.IsVisible = true;
                 redbutton.Source = "red_c.png";
             }
             else if (_gameBoard[row, col] == 2)
             {
+                // Black checker
                 blackbutton.IsVisible = true;
                 blackbutton.Source = "black_c.png";
             }
             else if (_gameBoard[row, col] == 3)
             {
-                    redbutton.IsVisible = true;
-                    redbutton.Source = "red_king.png";
+                // Red king
+                redbutton.IsVisible = true;
+                redbutton.Source = "red_king.png";
             }
             else if (_gameBoard[row, col] == 4)
             {
-                    blackbutton.IsVisible = true;
-                    blackbutton.Source = "black_king.png";
+                // Black king
+                blackbutton.IsVisible = true;
+                blackbutton.Source = "black_king.png";
 
             }
         }
     }
 
+    //this function updates players turn on the UI by switching between red and black based on the field variable "_currentPlayerTurn"
     public void UpdatePlayerTurn()
     {
         if(_currentPlayer == 1)
@@ -297,6 +315,8 @@ public partial class CheckersPage : ContentPage
         }
     }
 
+    // this function iterated through every button and turns it invisible
+    //same foreach as the updateUI function
     public void StopGame()
     {
         int[][] desiredSquares = new int[][] { new int[] { 0, 1 }, new int[] { 0, 3 }, new int[] { 0, 5 }, new int[] { 0, 7 }, new int[] { 1, 0 }, new int[] { 1, 2 }, new int[] { 1, 4 }, new int[] { 1, 6 }, new int[] { 2, 1 }, new int[] { 2, 3 }, new int[] { 2, 5 }, new int[] { 2, 7 }, new int[] { 3, 0 }, new int[] { 3, 2 }, new int[] { 3, 4 }, new int[] { 3, 6 }, new int[] { 4, 1 }, new int[] { 4, 3 }, new int[] { 4, 5 }, new int[] { 4, 7 }, new int[] { 5, 0 }, new int[] { 5, 2 }, new int[] { 5, 4 }, new int[] { 5, 6 }, new int[] { 6, 1 }, new int[] { 6, 3 }, new int[] { 6, 5 }, new int[] { 6, 7 }, new int[] { 7, 0 }, new int[] { 7, 2 }, new int[] { 7, 4 }, new int[] { 7, 6 } };
@@ -312,18 +332,13 @@ public partial class CheckersPage : ContentPage
             var redbutton = (ImageButton)this.FindByName(redButtonName);
             var blackbutton = (ImageButton)this.FindByName(blackButtonName);
 
-            if (_blackCount == 0)
-            {
                 redbutton.IsVisible = false;
-            }
-            else if (_redCount == 0)
-            {
                 blackbutton.IsVisible = false;
-            }
         }
     }
 
-
+    //this function is called by every image button and if a piece is clciked then it saves its coordinates and enables an overlay of greendots that are invisble
+    //on the second click the greenbutton is clicked and it saves that coordinates as the destination corodinates and passes all that to make move which makes the move
     private void buttonClicked(int row, int col, int click)
     {
         if ((click == 1) && (_currentPlayer == 1))
