@@ -18,7 +18,7 @@
     </ContentPage.Resources>
     <!--MAIN GRID-->
     <Grid BackgroundColor="#333333" RowDefinitions="*,*,3*,0.75*,*,*" ColumnDefinitions="*">
-        <Label Text="Hangman" Grid.Row="0" FontSize="50" HorizontalTextAlignment="Center" TextColor="#822fad"/>
+        <Image Source="=hangman_title"  HorizontalOptions="Center"  />
         <Label x:Name="Used" Text="Used Letters:" Grid.Row="1" FontSize="30" VerticalTextAlignment="Start" HorizontalTextAlignment="Start" TextColor="#822fad"/>
         <Image x:Name="HangmanImage" Source="hangmanempty.svg" Grid.Row="2"/>
         <Grid Grid.Row="3" RowDefinitions="*" ColumnDefinitions="*,*,*,*,*,*,*,*" BackgroundColor="#333333">
