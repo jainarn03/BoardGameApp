@@ -12,6 +12,8 @@ public partial class CheckersPage : ContentPage
 
     public CheckersPage()
     {
+        //2D Game Board of the checkers game
+        //0 = empty, 1 = red, 2 = black, 3 = red king, 4 = black king
         _gameBoard = new int[8, 8] {
             { 0, 1, 0, 1, 0, 1, 0, 1 },
             { 1, 0, 1, 0, 1, 0, 1, 0 },
@@ -41,40 +43,6 @@ public partial class CheckersPage : ContentPage
     private async void mainMenuClicked(object sender, EventArgs e)
     {
         await Navigation.PopAsync(); // navigation stack recursion here (pushes to mainpage instead of pop) code changed by aleks 
-    }
-
-    public void InitializeBoard()
-    {
-        for (int row = 0; row < 8; row++)
-        {
-            for (int col = 0; col < 8; col++)
-            {
-                if ((row + col) % 2 == 0 && row < 3)
-                {
-                    _gameBoard[row, col] = 2; // black piece
-                }
-                else if ((row + col) % 2 == 0 && row > 4)
-                {
-                    _gameBoard[row, col] = 1; // red piece
-                }
-                else //empty square
-                {
-                    _gameBoard[row, col] = 0;
-                }
-
-                // Initialize red king pieces
-                if (_gameBoard[row, col] == 1 && row == 0)
-                {
-                    _gameBoard[row, col] = 3;
-                }
-
-                // Initialize black king pieces
-                if (_gameBoard[row, col] == 2 && row == 7)
-                {
-                    _gameBoard[row, col] = 4;
-                }
-            }
-        }
     }
 
     public void MovePiece(int fromRow, int fromCol, int toRow, int toCol)
@@ -108,7 +76,7 @@ public partial class CheckersPage : ContentPage
         // Move the piece and update the board
         _gameBoard[toRow, toCol] = piece; // Set the piece's new position on the board
         _gameBoard[fromRow, fromCol] = 0; // Set the piece's old position to 0 to signify that it is no longer there
-        CheckResult(); // Check if the move resulted in a win or a tie
+         // Check if the move resulted in a win or a tie
 
         // Check if the piece should be promoted to a king
         if (_gameBoard[toRow, toCol] == 1 && toRow == 7) // If the piece is red and has reached the opposite end of the board, promote it to a red king
@@ -123,6 +91,8 @@ public partial class CheckersPage : ContentPage
         }
 
         _currentPlayer = (_currentPlayer == 1) ? 2 : 1; // Switch the turn to the other player
+        UpdatePlayerTurn();
+        CheckResult();
     }
 
 
@@ -205,7 +175,6 @@ public partial class CheckersPage : ContentPage
     {
         if (_redCount == 0)
         {
-            Console.WriteLine("Black Wins!");
             PlayerTurnIcon.Source = "black_king.png";
             PlayerToMove.Text = "Black Wins!";
             DisplayAlert("Game over!", "Black Won!", "OK");
@@ -214,7 +183,6 @@ public partial class CheckersPage : ContentPage
         }
         else if (_blackCount == 0)
         {
-            Console.WriteLine("Red Wins!");
             PlayerTurnIcon.Source = "red_king.png";
             PlayerToMove.Text = "Red Wins!";
             DisplayAlert("Game over!", "Red Won!", "OK");
@@ -223,10 +191,9 @@ public partial class CheckersPage : ContentPage
         }
         else if (_redCount == 1 && _blackCount == 1)
         {
-            Console.WriteLine("Draw!");
             DisplayAlert("Game over!", "Draw!", "OK");
             StopGame();
-            PlayerTurnIcon.Source = null;
+            PlayerTurnIcon.Source = "cloud_art.png";
             PlayerToMove.Text = "Draw!";
             return "Draw!"; // Both have one piece left
         }
@@ -240,7 +207,6 @@ public partial class CheckersPage : ContentPage
     private void UpdateUI()
     {
         // Update whose turn it is
-        UpdatePlayerTurn();
 
         // Array of desired coordinates
         int[][] desiredSquares = new int[][] { new int[] { 0, 1 }, new int[] { 0, 3 }, new int[] { 0, 5 }, new int[] { 0, 7 }, new int[] { 1, 0 }, new int[] { 1, 2 }, new int[] { 1, 4 }, new int[] { 1, 6 }, new int[] { 2, 1 }, new int[] { 2, 3 }, new int[] { 2, 5 }, new int[] { 2, 7 }, new int[] { 3, 0 }, new int[] { 3, 2 }, new int[] { 3, 4 }, new int[] { 3, 6 }, new int[] { 4, 1 }, new int[] { 4, 3 }, new int[] { 4, 5 }, new int[] { 4, 7 }, new int[] { 5, 0 }, new int[] { 5, 2 }, new int[] { 5, 4 }, new int[] { 5, 6 }, new int[] { 6, 1 }, new int[] { 6, 3 }, new int[] { 6, 5 }, new int[] { 6, 7 }, new int[] { 7, 0 }, new int[] { 7, 2 }, new int[] { 7, 4 }, new int[] { 7, 6 } };
@@ -332,9 +298,12 @@ public partial class CheckersPage : ContentPage
 
             var redbutton = (ImageButton)this.FindByName(redButtonName);
             var blackbutton = (ImageButton)this.FindByName(blackButtonName);
-
-                redbutton.IsVisible = false;
-                blackbutton.IsVisible = false;
+            
+            if (_gameBoard[row, col] == 1 || _gameBoard[row, col] == 2 || _gameBoard[row, col] == 3 || _gameBoard[row, col] == 4)
+            {
+                redbutton.IsEnabled = false;
+                blackbutton.IsEnabled = false;
+            }
         }
     }
 
